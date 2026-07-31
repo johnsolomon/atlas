@@ -1,0 +1,37 @@
+
+<div class='tool'>
+ <div class='hg-h' style='margin-bottom:6px'>17-segment MPI scorer &#8212; click each segment to cycle 0&#8594;4</div>
+ <div class='seg-lab'>Stress</div><div class='seg-grid' id='seg-s'></div>
+ <div class='seg-lab'>Rest</div><div class='seg-grid' id='seg-r'></div>
+ <div class='t-grid' style='margin-top:12px'>
+  <div class='t-f'><label>TID ratio (optional)</label><div class='t-in'><input type='number' id='seg-tid' value='1.0' step='0.01'></div></div>
+  <div class='t-f'><label>Post-stress LVEF (optional)</label><div class='t-in'><input type='number' id='seg-ef' value='60' step='1'><span class='u'>%</span></div></div>
+ </div>
+ <div class='t-row' id='seg-row'></div>
+ <div class='t-badge' id='seg-bd'></div>
+ <div class='t-note'>SSS=&#931;stress, SRS=&#931;rest, SDS=SSS&#8722;SRS (ischemia). %myocardium = score&#247;68. Territories &#8212; LAD: 1,2,7,8,13,14,17 &#183; LCx: 5,6,11,12,16 &#183; RCA: 3,4,9,10,15. TID &gt; ~1.2 and a post-stress LVEF drop are high-risk. Confirm against your lab software/normal database.</div>
+</div>
+<script>(function(){
+var g=function(i){return document.getElementById(i);};
+var LAD=[1,2,7,8,13,14,17],LCX=[5,6,11,12,16],RCA=[3,4,9,10,15];
+var S=[],R=[];for(var i=0;i<17;i++){S[i]=0;R[i]=0;}
+function build(box,arr){var h='';for(var i=0;i<17;i++){h+='<div class="seg" data-i="'+i+'">'+(i+1)+'<b>0</b></div>';}box.innerHTML=h;
+ box.querySelectorAll('.seg').forEach(function(el){el.addEventListener('click',function(){var i=+el.getAttribute('data-i');arr[i]=(arr[i]+1)%5;el.querySelector('b').textContent=arr[i];el.className='seg s'+arr[i];calc();});});}
+function terr(a,seg){var s=0;seg.forEach(function(n){s+=a[n-1];});return s;}
+function calc(){var sss=S.reduce(function(a,b){return a+b;},0),srs=R.reduce(function(a,b){return a+b;},0),sds=sss-srs;
+ var tid=+g('seg-tid').value,ef=+g('seg-ef').value,isch=sds/68*100,scar=srs/68*100;
+ var ladS=terr(S,LAD)-terr(R,LAD),lcxS=terr(S,LCX)-terr(R,LCX),rcaS=terr(S,RCA)-terr(R,RCA);
+ g('seg-row').innerHTML='<div class="t-mini"><b>'+sss+'</b><span>SSS</span></div>'+
+  '<div class="t-mini"><b>'+srs+'</b><span>SRS</span></div>'+
+  '<div class="t-mini"><b>'+sds+'</b><span>SDS (ischemia)</span></div>'+
+  '<div class="t-mini"><b>'+isch.toFixed(0)+'%</b><span>ischemic</span></div>'+
+  '<div class="t-mini"><b>'+scar.toFixed(0)+'%</b><span>scar</span></div>'+
+  '<div class="t-mini"><b>'+ladS+'/'+lcxS+'/'+rcaS+'</b><span>SDS LAD/LCx/RCA</span></div>';
+ var sev=sss<=3?'Normal':sss<=8?'Mildly abnormal':sss<=13?'Moderately abnormal':'Severely abnormal';
+ var cls=sss<=3?'ok':sss<=8?'warn':'bad',flags=[];
+ if(tid>=1.22)flags.push('TID '+tid.toFixed(2)+' high-risk');
+ if(ef>0&&ef<45)flags.push('low post-stress LVEF');
+ if(isch>=10)flags.push('&#8805;10% ischemic');
+ g('seg-bd').className='t-badge '+cls;
+ g('seg-bd').innerHTML='SSS '+sss+' &#8212; '+sev+(flags.length?' &#183; '+flags.join(' &#183; '):'');}
+build(g('seg-s'),S);build(g('seg-r'),R);['seg-tid','seg-ef'].forEach(function(i){g(i).addEventListener('input',calc);});calc();})();</script>

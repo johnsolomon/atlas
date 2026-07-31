@@ -1,0 +1,26 @@
+
+<div class='tool'>
+ <div class='hg-h' style='margin-bottom:10px'>Y-90 lung-shunt fraction &amp; lung-dose limit</div>
+ <div class='t-grid'>
+  <div class='t-f'><label>Lung counts (Tc-99m-MAA)</label><div class='t-in'><input type='number' id='ls-lung' value='4000' step='1'></div></div>
+  <div class='t-f'><label>Liver counts (Tc-99m-MAA)</label><div class='t-in'><input type='number' id='ls-liver' value='46000' step='1'></div></div>
+  <div class='t-f'><label>Planned Y-90 activity</label><div class='t-in'><input type='number' id='ls-act' value='1.5' step='0.1'><span class='u'>GBq</span></div></div>
+  <div class='t-f'><label>Lung mass</label><div class='t-in'><input type='number' id='ls-mass' value='1.0' step='0.1'><span class='u'>kg</span></div></div>
+  <div class='t-f'><label>Lung-dose limit</label><div class='t-in'><input type='number' id='ls-lim' value='30' step='1'><span class='u'>Gy</span></div></div>
+ </div>
+ <div class='t-row' id='ls-row'></div>
+ <div class='t-badge' id='ls-bd'></div>
+ <div class='t-note'>LSF = lung&#247;(lung+liver). Lung dose (Gy) &#8776; 49.67 &#215; A(GBq) &#215; LSF &#247; lung mass(kg). Common caps: &#8804;30 Gy single / &#8804;50 Gy cumulative. Max activity = limit &#215; mass &#247; (49.67 &#215; LSF). High LSF reduces deliverable activity.</div>
+</div>
+<script>(function(){
+var g=function(i){return document.getElementById(i);};
+function f(){var lu=+g('ls-lung').value,li=+g('ls-liver').value,A=+g('ls-act').value,m=+g('ls-mass').value,lim=+g('ls-lim').value;
+ if(!((lu+li)>0)||!(m>0)||!(A>=0)||!(lim>0)){g('ls-row').innerHTML='';g('ls-bd').className='t-badge';g('ls-bd').textContent='Enter lung &amp; liver counts, planned activity, lung mass, and dose limit.';return;}
+ var lsf=lu/(lu+li),dose=49.67*A*lsf/m,maxA=lsf>0?lim*m/(49.67*lsf):null;
+ g('ls-row').innerHTML='<div class="t-mini"><b>'+(lsf*100).toFixed(1)+'%</b><span>lung-shunt fraction</span></div>'+
+  '<div class="t-mini"><b>'+dose.toFixed(1)+'</b><span>predicted lung dose Gy</span></div>'+
+  '<div class="t-mini"><b>'+(maxA===null?'&#8734;':maxA.toFixed(2))+'</b><span>max GBq @'+lim+' Gy</span></div>';
+ var cls=dose<=lim?((lsf*100)<20?'ok':'warn'):'bad';
+ g('ls-bd').className='t-badge '+cls;
+ g('ls-bd').textContent=dose<=lim?('Within limit ('+dose.toFixed(1)+' <= '+lim+' Gy)'):('EXCEEDS limit - reduce to <= '+(maxA===null?'n/a':maxA.toFixed(2))+' GBq');}
+['ls-lung','ls-liver','ls-act','ls-mass','ls-lim'].forEach(function(i){g(i).addEventListener('input',f);});f();})();</script>

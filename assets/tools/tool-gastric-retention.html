@@ -1,0 +1,24 @@
+
+<div class='tool'>
+ <div class='hg-h' style='margin-bottom:10px'>Gastric emptying &#8212; retention classifier</div>
+ <div class='t-grid'>
+  <div class='t-f'><label>% retained at 1 h</label><div class='t-in'><input type='number' id='gr-1' value='75' step='1'><span class='u'>%</span></div></div>
+  <div class='t-f'><label>% retained at 2 h</label><div class='t-in'><input type='number' id='gr-2' value='55' step='1'><span class='u'>%</span></div></div>
+  <div class='t-f'><label>% retained at 3 h</label><div class='t-in'><input type='number' id='gr-3' value='30' step='1'><span class='u'>%</span></div></div>
+  <div class='t-f'><label>% retained at 4 h</label><div class='t-in'><input type='number' id='gr-4' value='12' step='1'><span class='u'>%</span></div></div>
+ </div>
+ <div class='t-row' id='gr-row'></div>
+ <div class='t-badge' id='gr-bd'></div>
+ <div class='t-note'>Standardized solid-meal (Tougas) upper limits: 90% (1 h), 60% (2 h), 30% (3 h), 10% (4 h); lower (rapid): 70% (1 h), 30% (2 h). <b>Delayed</b> if &gt;60% at 2 h and/or &gt;10% at 4 h; <b>rapid</b> if below the 1 h/2 h lower limits. The 4 h value is the key single point.</div>
+</div>
+<script>(function(){
+var g=function(i){return document.getElementById(i);};
+function f(){var r1=+g('gr-1').value,r2=+g('gr-2').value,r3=+g('gr-3').value,r4=+g('gr-4').value;
+ function chip(v,hi,lo,t){var c=v>hi?'bad':((lo!=null&&v<lo)?'warn':'ok');return '<div class="t-mini '+c+'"><b>'+v+'%</b><span>'+t+'</span></div>';}
+ g('gr-row').innerHTML=chip(r1,90,70,'1 h')+chip(r2,60,30,'2 h')+chip(r3,30,null,'3 h')+chip(r4,10,null,'4 h');
+ var delayed=(r2>60)||(r4>10),rapid=(r1<70)||(r2<30),cat,cls;
+ if(delayed){cls='bad';var gg=r4>35?'4 (very severe)':r4>20?'3 (severe)':r4>15?'2 (moderate)':'1 (mild)';cat='Delayed emptying (gastroparesis) - grade '+gg;}
+ else if(rapid){cls='warn';cat='Rapid gastric emptying (dumping)';}
+ else{cls='ok';cat='Normal gastric emptying';}
+ g('gr-bd').className='t-badge '+cls;g('gr-bd').textContent=cat;}
+['gr-1','gr-2','gr-3','gr-4'].forEach(function(i){g(i).addEventListener('input',f);});f();})();</script>

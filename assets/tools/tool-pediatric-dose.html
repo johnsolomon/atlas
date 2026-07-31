@@ -1,0 +1,27 @@
+
+<div class='tool'>
+ <div class='hg-h' style='margin-bottom:10px'>Pediatric weight-based activity (with minimum)</div>
+ <div class='t-grid'>
+  <div class='t-f'><label>Agent</label><div class='t-in'><select id='pd-ag'>
+   <option value='14,26,700'>Tc-99m-MDP (bone)</option>
+   <option value='14,80,700'>Tc-99m-MAG3 (renal)</option>
+   <option value='1.85,18.5,55'>Tc-99m-DMSA (cortical)</option>
+   <option value='7.4,26,555'>Tc-99m-sestamibi (rest)</option>
+   <option value='3.7,26,370'>F-18-FDG (body PET)</option>
+   <option value='2.11,14,110'>Tc-99m-MAA (perfusion)</option>
+   <option value='5.18,18.5,555'>Tc-99m-pertechnetate (Meckel)</option></select></div></div>
+  <div class='t-f'><label>Weight</label><div class='t-in'><input type='number' id='pd-w' value='20' step='0.5'><span class='u'>kg</span></div></div>
+ </div>
+ <div class='t-row' id='pd-row'></div>
+ <div class='t-note'>Recommended = weight &#215; per-kg activity, floored at the <b>minimum</b> and capped near the <b>adult</b> activity (North American Consensus / EANM paediatric dosage-card values, MBq). Never scale below the minimum &#8212; too little activity gives a non-diagnostic study and a repeat. Confirm against the current dose card.</div>
+</div>
+<script>(function(){
+var g=function(i){return document.getElementById(i);};
+function f(){var p=g('pd-ag').value.split(','),perkg=+p[0],mn=+p[1],adult=+p[2],w=+g('pd-w').value;
+ var raw=perkg*w,rec=Math.max(mn,Math.min(raw,adult)),floored=(rec===mn&&raw<mn),capped=(raw>adult);
+ g('pd-row').innerHTML='<div class="t-mini"><b>'+rec.toFixed(1)+'</b><span>recommended MBq</span></div>'+
+  '<div class="t-mini"><b>'+(rec/37).toFixed(2)+'</b><span>mCi</span></div>'+
+  '<div class="t-mini"><b>'+perkg+'/'+mn+'/'+adult+'</b><span>perkg/min/adult</span></div>'+
+  (floored?'<div class="t-mini warn"><b>MIN</b><span>floored to minimum</span></div>':'')+
+  (capped?'<div class="t-mini warn"><b>CAP</b><span>capped at adult</span></div>':'');}
+['pd-ag','pd-w'].forEach(function(i){g(i).addEventListener('input',f);});f();})();</script>

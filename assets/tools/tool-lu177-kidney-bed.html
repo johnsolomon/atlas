@@ -1,0 +1,48 @@
+
+<div class='tool'>
+ <div class='hg-h' style='margin-bottom:10px'>Lu-177 PRRT &#8212; cumulative kidney BED</div>
+ <div class='t-grid'>
+  <div class='t-f'><label>Cycle 1 &#8212; kidney dose (Gy)</label><div class='t-in'><input id='kb-d1' type='number' value='4.5' step='0.1' min='0'></div></div>
+  <div class='t-f'><label>Cycle 2 &#8212; kidney dose (Gy)</label><div class='t-in'><input id='kb-d2' type='number' value='4.5' step='0.1' min='0'></div></div>
+  <div class='t-f'><label>Cycle 3 &#8212; kidney dose (Gy)</label><div class='t-in'><input id='kb-d3' type='number' value='4.5' step='0.1' min='0'></div></div>
+  <div class='t-f'><label>Cycle 4 &#8212; kidney dose (Gy)</label><div class='t-in'><input id='kb-d4' type='number' value='4.5' step='0.1' min='0'></div></div>
+ </div>
+ <div class='t-grid'>
+  <div class='t-f'><label>Kidney effective half-life (h)</label><div class='t-in'><input id='kb-teff' type='number' value='50' step='1' min='0'></div></div>
+  <div class='t-f'><label>&#945;/&#946; (Gy)</label><div class='t-in'><input id='kb-ab' type='number' value='2.6' step='0.1' min='0'></div></div>
+  <div class='t-f'><label>Repair half-time (h)</label><div class='t-in'><input id='kb-rep' type='number' value='2.8' step='0.1' min='0'></div></div>
+  <div class='t-f'><label>Renal risk factors</label><div class='t-in'>
+   <select id='kb-risk'>
+    <option value='40'>None &#8212; limit 40 Gy</option>
+    <option value='28'>Present (HTN / diabetes) &#8212; limit 28 Gy</option>
+   </select></div></div>
+ </div>
+ <div class='t-row' id='kb-row'></div>
+ <div class='t-badge' id='kb-bd'></div>
+ <div class='t-note'>Per cycle, BED = D &#215; [1 + (D / (&#945;/&#946;)) &#215; &#955;/(&#956;+&#955;)], with &#955; = ln2/T<sub>eff</sub> (kidney) and &#956; = ln2/repair&#8209;half&#8209;time; cycle BEDs are <b>additive</b>. Defaults: &#945;/&#946; = 2.6 Gy, repair half-time 2.8 h (Barone/Wessels). Tolerance &#8776; <b>40 Gy</b> BED without renal risk factors, <b>28 Gy</b> with them; classic absorbed-dose TD&#8325;/&#8325; is 23 Gy. Uses one shared effective half-life for all cycles &#8212; enter per-cycle absorbed doses from your imaging-based dosimetry. Educational estimate &#8212; confirm with medical physics and your institutional protocol.</div>
+</div>
+<script>(function(){
+var g=function(i){return document.getElementById(i);};
+function clear(){g('kb-row').innerHTML='';g('kb-bd').textContent='';g('kb-bd').className='t-badge';}
+function f(){
+ var teff=+g('kb-teff').value, ab=+g('kb-ab').value, rep=+g('kb-rep').value, limit=+g('kb-risk').value;
+ if(teff<=0||ab<=0||rep<=0){clear();return;}
+ var lam=Math.LN2/teff, mu=Math.LN2/rep, factor=lam/(mu+lam);
+ var totD=0, totBED=0, n=0;
+ ['kb-d1','kb-d2','kb-d3','kb-d4'].forEach(function(id){var D=+g(id).value;
+  if(D>0){totD+=D; totBED+=D*(1+(D/ab)*factor); n++;}});
+ if(n===0){clear();return;}
+ var avgBED=totBED/n, head=limit-totBED;
+ var row='<div class="t-mini"><b>'+totD.toFixed(1)+'</b><span>cumulative dose (Gy)</span></div>'+
+  '<div class="t-mini"><b>'+totBED.toFixed(1)+'</b><span>cumulative BED (Gy)</span></div>'+
+  '<div class="t-mini"><b>'+(head>0?head.toFixed(1):'0')+'</b><span>headroom to limit (Gy)</span></div>';
+ if(head>0)row+='<div class="t-mini"><b>&#8776;'+Math.floor(head/avgBED)+'</b><span>more cycles at this rate</span></div>';
+ g('kb-row').innerHTML=row;
+ var pct=totBED/limit, cls, msg;
+ if(pct<=0.85){cls='ok';msg='Within kidney BED tolerance ('+limit+' Gy)';}
+ else if(pct<=1.0){cls='warn';msg='Approaching the '+limit+' Gy BED limit';}
+ else{cls='bad';msg='Exceeds the '+limit+' Gy BED limit';}
+ g('kb-bd').className='t-badge '+cls; g('kb-bd').textContent=msg;
+}
+['kb-d1','kb-d2','kb-d3','kb-d4','kb-teff','kb-ab','kb-rep'].forEach(function(i){g(i).addEventListener('input',f);});
+g('kb-risk').addEventListener('change',f); f();})();</script>

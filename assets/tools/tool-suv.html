@@ -1,0 +1,53 @@
+
+<div class='tool'>
+ <div class='hg-h' style='margin-bottom:10px'>SUV / SUL &#8212; decay &amp; lean-body-mass corrected</div>
+ <div class='t-grid'>
+  <div class='t-f'><label>Lesion activity concentration</label><div class='t-in'><input type='number' id='suv-c' value='8.5' step='0.1'><span class='u'>kBq/mL</span></div></div>
+  <div class='t-f'><label>Injected activity (at injection)</label><div class='t-in'><input type='number' id='suv-d' value='350' step='1'><span class='u'>MBq</span></div></div>
+  <div class='t-f'><label>Uptake time (inj &#8594; scan)</label><div class='t-in'><input type='number' id='suv-t' value='60' step='1'><span class='u'>min</span></div></div>
+  <div class='t-f'><label>Isotope</label><div class='t-in'><select id='suv-hl'><option value='109.8'>F-18 (110 min)</option><option value='68'>Ga-68 (68 min)</option><option value='762'>Cu-64 (12.7 h)</option></select></div></div>
+  <div class='t-f'><label>Weight</label><div class='t-in'><input type='number' id='suv-w' value='75' step='1'><span class='u'>kg</span></div></div>
+  <div class='t-f'><label>Height</label><div class='t-in'><input type='number' id='suv-h' value='172' step='1'><span class='u'>cm</span></div></div>
+  <div class='t-f'><label>Sex</label><div class='t-in'><select id='suv-sex'><option value='m'>Male</option><option value='f'>Female</option></select></div></div>
+  <div class='t-f'><label>Blood glucose (optional)</label><div class='t-in'><input type='number' id='suv-glu' value='0' step='1'><span class='u'>mg/dL</span></div></div>
+ </div>
+ <div class='t-row' id='suv-row'></div>
+ <div class='t-note'>SUVbw = conc(kBq/mL)&#215;weight(kg)&#247;dose(MBq). SUL normalizes to lean body mass (Janmahasatian). Injected dose is decay-corrected to scan time. Optional glucose-corrected SUV (&#215;glucose/100) is shown when entered. Keep uptake time, glucose and reconstruction constant for serial comparison; small lesions are underestimated (partial-volume).</div>
+</div>
+<div class='tool'>
+ <div class='hg-h' style='margin-bottom:10px'>PERCIST response (two time-points)</div>
+ <div class='t-grid'>
+  <div class='t-f'><label>Baseline target SUL peak</label><div class='t-in'><input type='number' id='pc-b' value='12' step='0.1'></div></div>
+  <div class='t-f'><label>Follow-up target SUL peak</label><div class='t-in'><input type='number' id='pc-f' value='7' step='0.1'></div></div>
+  <div class='t-f'><label>Liver SUL mean (reference)</label><div class='t-in'><input type='number' id='pc-liv' value='2.0' step='0.1'></div></div>
+  <div class='t-f'><label>New lesion?</label><div class='t-in'><select id='pc-new'><option value='0'>No</option><option value='1'>Yes</option></select></div></div>
+ </div>
+ <div class='t-out'><div class='n' id='pc-out'>&#8212;</div><div class='l'>change in SUL peak</div><div class='x' id='pc-x'></div></div>
+ <div class='t-badge' id='pc-bd'></div>
+ <div class='t-note'>PERCIST: a measurable target must exceed ~1.5&#215;liver SUL mean + 2. CMR = below liver/background &#183; PMR = &#8805;30% decrease &#183; PMD = &#8805;30% increase or a new lesion &#183; SMD = neither. Uses SUL peak, fixed liver reference, matched technique.</div>
+</div>
+<script>(function(){
+var g=function(i){return document.getElementById(i);};
+function lbm(w,h,s){var b=w/((h/100)*(h/100));return s==='m'?9270*w/(6680+216*b):9270*w/(8780+244*b);}
+function f(){var c=+g('suv-c').value,d0=+g('suv-d').value,t=+g('suv-t').value,hl=+g('suv-hl').value,w=+g('suv-w').value,h=+g('suv-h').value,s=g('suv-sex').value,glu=+g('suv-glu').value;
+ if(!d0||!w){g('suv-row').innerHTML='';return;}
+ var d=d0*Math.pow(0.5,t/hl),suvbw=c*w/d,L=lbm(w,h,s),sul=c*L/d;
+ var html='<div class="t-mini"><b>'+suvbw.toFixed(2)+'</b><span>SUVbw</span></div>'+
+  '<div class="t-mini"><b>'+sul.toFixed(2)+'</b><span>SUL (lean)</span></div>'+
+  '<div class="t-mini"><b>'+d.toFixed(0)+'</b><span>dose @scan MBq</span></div>'+
+  '<div class="t-mini"><b>'+L.toFixed(1)+'</b><span>LBM kg</span></div>';
+ if(glu>0)html+='<div class="t-mini"><b>'+(suvbw*glu/100).toFixed(2)+'</b><span>gluc-corr SUV</span></div>';
+ g('suv-row').innerHTML=html;}
+function p(){var b=+g('pc-b').value,fu=+g('pc-f').value,liv=+g('pc-liv').value,nw=g('pc-new').value==='1';
+ var thr=1.5*liv+2,pct=b>0?(fu-b)/b*100:0,cat,cls;
+ g('pc-out').textContent=(pct>0?'+':'')+pct.toFixed(0)+'%';
+ if(nw){cat='PMD - progressive (new lesion)';cls='bad';}
+ else if(fu<thr){cat='CMR - complete metabolic response';cls='ok';}
+ else if(pct<=-30){cat='PMR - partial metabolic response';cls='ok';}
+ else if(pct>=30){cat='PMD - progressive metabolic disease';cls='bad';}
+ else{cat='SMD - stable metabolic disease';cls='warn';}
+ g('pc-x').textContent='measurability threshold (1.5 x liver + 2) = '+thr.toFixed(1);
+ var bd=g('pc-bd');bd.className='t-badge '+cls;bd.textContent=cat;}
+['suv-c','suv-d','suv-t','suv-hl','suv-w','suv-h','suv-sex','suv-glu'].forEach(function(i){g(i).addEventListener('input',f);});
+['pc-b','pc-f','pc-liv','pc-new'].forEach(function(i){g(i).addEventListener('input',p);});
+f();p();})();</script>

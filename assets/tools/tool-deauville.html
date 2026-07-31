@@ -1,0 +1,40 @@
+
+<div class='tool'>
+ <div class='hg-h' style='margin-bottom:10px'>Deauville score &amp; response &#8212; computed from SUVs</div>
+ <div class='t-grid'>
+  <div class='t-f'><label>Most avid residual lesion SUVmax</label><div class='t-in'><input type='number' id='dv-les' value='4.0' step='0.1'></div></div>
+  <div class='t-f'><label>Mediastinal blood-pool SUVmax</label><div class='t-in'><input type='number' id='dv-med' value='1.8' step='0.1'></div></div>
+  <div class='t-f'><label>Liver SUVmax</label><div class='t-in'><input type='number' id='dv-liv' value='2.8' step='0.1'></div></div>
+  <div class='t-f'><label>New / progressive lesions?</label><div class='t-in'><select id='dv-new'><option value='0'>No</option><option value='1'>Yes</option></select></div></div>
+  <div class='t-f'><label>No visible residual uptake?</label><div class='t-in'><select id='dv-none'><option value='0'>No (uptake present)</option><option value='1'>Yes (background only)</option></select></div></div>
+  <div class='t-f'><label>Timing</label><div class='t-in'><select id='dv-ctx'><option value='interim'>Interim (mid-treatment)</option><option value='eot'>End of treatment</option></select></div></div>
+  <div class='t-f'><label>Baseline lesion SUVmax (optional, for &#916;SUV)</label><div class='t-in'><input type='number' id='dv-base' value='0' step='0.1'></div></div>
+ </div>
+ <div class='t-out'><div class='n' id='dv-out'>&#8212;</div><div class='l'>Deauville 5-point score</div><div class='x' id='dv-x'></div></div>
+ <div class='t-badge' id='dv-b'></div>
+ <div class='t-note'>1 = no uptake &#183; 2 = &#8804; mediastinum &#183; 3 = &gt; mediastinum but &#8804; liver &#183; 4 = moderately &gt; liver &#183; 5 = markedly &gt; liver (&gt;~2&#215;) and/or new lesions. Interim 1&#8211;3 is favourable; a Deauville 4 with a large interim &#916;SUVmax (&gt;66%) may still indicate response (per PET-adapted trials). At end-of-treatment, 1&#8211;3 = complete metabolic response, 4&#8211;5 = residual disease. Integrate with the full study and clinical context.</div>
+</div>
+<script>(function(){
+var g=function(i){return document.getElementById(i);};
+function f(){var les=+g('dv-les').value,med=+g('dv-med').value,liv=+g('dv-liv').value,nw=g('dv-new').value==='1',none=g('dv-none').value==='1',ctx=g('dv-ctx').value,base=+g('dv-base').value;
+ var s;
+ if(nw)s=5;else if(none)s=1;
+ else if(les<=med)s=2;else if(les<=liv)s=3;else if(les<=2*liv)s=4;else s=5;
+ g('dv-out').textContent=s;
+ var dsuv=base>0?(base-les)/base*100:null;
+ var refs='lesion '+les.toFixed(1)+' vs mediastinum '+med.toFixed(1)+', liver '+liv.toFixed(1);
+ if(dsuv!==null)refs+='  |  &#916;SUVmax '+dsuv.toFixed(0)+'%';
+ g('dv-x').innerHTML=refs;
+ var cat,cls;
+ if(ctx==='interim'){
+  if(s<=3){cls='ok';cat='Interim Deauville '+s+' - favourable (adequate early response)';}
+  else if(s===4&&dsuv!==null&&dsuv>66){cls='warn';cat='Interim Deauville 4 but ΔSUVmax >66% - may still be responding';}
+  else{cls='bad';cat='Interim Deauville '+s+' - positive (inadequate response) - consider escalation';}
+ } else {
+  if(s<=3){cls='ok';cat='End-of-treatment Deauville '+s+' - complete metabolic response';}
+  else{cls='bad';cat='End-of-treatment Deauville '+s+' - residual metabolic disease (biopsy / next-line)';}
+ }
+ var b=g('dv-b');b.className='t-badge '+cls;b.textContent=cat.replace('Δ','change in ');
+}
+['dv-les','dv-med','dv-liv','dv-new','dv-none','dv-ctx','dv-base'].forEach(function(i){g(i).addEventListener('input',f);});f();
+})();</script>

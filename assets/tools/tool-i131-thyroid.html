@@ -1,0 +1,34 @@
+
+<div class='tool'>
+ <div class='hg-h' style='margin-bottom:10px'>Calculated &#185;&#179;&#185;I activity &#8212; benign hyperthyroidism</div>
+ <div class='t-grid'>
+  <div class='t-f'><label>Diagnosis (sets a typical target)</label><div class='t-in'><select id='thy-dx'>
+    <option value='160'>Graves' disease</option>
+    <option value='200'>Toxic multinodular goiter</option>
+    <option value='200'>Toxic adenoma</option>
+    <option value='0'>Custom</option>
+  </select></div></div>
+  <div class='t-f'><label>Target dose per gram</label><div class='t-in'><input type='number' id='thy-target' value='160' step='10'><span class='u'>&#181;Ci/g</span></div></div>
+  <div class='t-f'><label>Estimated gland mass</label><div class='t-in'><input type='number' id='thy-mass' value='40' step='1'><span class='u'>g</span></div></div>
+  <div class='t-f'><label>24-hour RAIU</label><div class='t-in'><input type='number' id='thy-raiu' value='55' step='1'><span class='u'>%</span></div></div>
+ </div>
+ <div class='t-out'><div class='n' id='thy-out'>&#8212;</div><div class='l'>administered activity</div><div class='x' id='thy-x'></div></div>
+ <div class='t-row' id='thy-row'></div>
+ <div class='t-note'>Calculated method: activity (&#181;Ci) = target dose per gram (&#181;Ci/g) &#215; gland mass (g) &#247; fractional 24-h RAIU. Typical targets: Graves' ~120&#8211;200 &#181;Ci/g, toxic nodular disease ~200 &#181;Ci/g (more radioresistant). Fixed-activity alternative: Graves' commonly ~10&#8211;15 mCi (370&#8211;555 MBq); toxic nodular ~15&#8211;30 mCi (555&#8211;1110 MBq). Calculated and fixed methods have comparable cure rates &#8212; method and target are institution- and physician-specific. &#181;Ci/g and gland mass are estimates; RAIU is patient-specific. Contraindicated in pregnancy and breastfeeding. Educational estimate only &#8212; verify against your written directive and local protocol.</div>
+</div>
+<script>(function(){
+var g=function(i){return document.getElementById(i);};
+function calc(){
+ var tgt=+g('thy-target').value, m=+g('thy-mass').value, raiu=+g('thy-raiu').value;
+ if(!tgt||!m||!raiu){g('thy-out').textContent='—';g('thy-x').textContent='';g('thy-row').innerHTML='';return;}
+ var frac=raiu/100, uCi=tgt*m/frac, mCi=uCi/1000, MBq=mCi*37;
+ g('thy-out').textContent=mCi.toFixed(1)+' mCi';
+ g('thy-x').textContent='= '+Math.round(uCi).toLocaleString()+' µCi · '+Math.round(MBq).toLocaleString()+' MBq';
+ g('thy-row').innerHTML=
+   '<div class="t-mini"><b>'+mCi.toFixed(1)+'</b><span>mCi</span></div>'+
+   '<div class="t-mini"><b>'+Math.round(MBq).toLocaleString()+'</b><span>MBq</span></div>'+
+   '<div class="t-mini"><b>'+(tgt/frac).toFixed(0)+'</b><span>µCi per g gland</span></div>';
+}
+g('thy-dx').addEventListener('change',function(){var v=+g('thy-dx').value;if(v>0){g('thy-target').value=v;}calc();});
+['thy-target','thy-mass','thy-raiu'].forEach(function(i){g(i).addEventListener('input',function(){g('thy-dx').value='0';calc();});});
+calc();})();</script>

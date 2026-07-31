@@ -1,0 +1,32 @@
+
+<div class='tool'>
+ <div class='hg-h' style='margin-bottom:10px'>Cumulative effective dose (multi-study)</div>
+ <div class='t-grid'>
+  <div class='t-f'><label>Add a procedure</label><div class='t-in'><select id='ed-sel'>
+   <option value='1.5'>Thyroid uptake/scan (I-123) ~1-2</option>
+   <option value='1.5'>Renal MAG3 ~1-2</option>
+   <option value='2'>V/Q lung scan ~2</option>
+   <option value='2.5'>Hepatobiliary HIDA ~2-3</option>
+   <option value='5'>Bone scan (Tc-MDP) ~4-6</option>
+   <option value='6'>FDG-PET (tracer only) ~5-7</option>
+   <option value='5'>PSMA / DOTATATE PET ~3-8</option>
+   <option value='10'>MPI SPECT (Tc-99m) ~8-12</option>
+   <option value='20'>MPI SPECT (Tl-201) ~15-25</option>
+   <option value='3.5'>MPI PET (Rb-82) ~3-4</option>
+   <option value='7'>MUGA ~6-8</option>
+   <option value='12'>Ga-67 / labeled-WBC ~10-15</option></select></div></div>
+  <div class='t-f'><label>CT component</label><div class='t-in'><select id='ed-ct'><option value='0'>none (tracer only)</option><option value='2'>low-dose AC CT ~2</option><option value='8'>diagnostic CT ~8</option></select></div></div>
+ </div>
+ <div style='margin:10px 0'><span class='t-addbtn' id='ed-add'>+ Add study</span> <span class='t-addbtn' id='ed-clear'>Clear</span></div>
+ <div class='t-out'><div class='n' id='ed-out'>0.0</div><div class='l'>cumulative effective dose (mSv)</div><div class='x' id='ed-x'></div></div>
+ <div class='t-note' id='ed-list'></div>
+ <div class='t-note'>Representative doses (mSv), scaling with administered activity, patient size and CT. Context: natural background &#8776;3 mSv/yr; chest CT ~5&#8211;7 mSv. Diagnostic doses carry only stochastic risk. Verify locally.</div>
+</div>
+<script>(function(){
+var g=function(i){return document.getElementById(i);};var items=[];
+function render(){var tot=items.reduce(function(a,b){return a+b.v;},0);
+ g('ed-out').textContent=tot.toFixed(1);
+ g('ed-x').textContent='~ '+(tot/3).toFixed(1)+' yr background  |  ~ '+(tot/6).toFixed(1)+' chest CT';
+ g('ed-list').innerHTML=items.length?('<b>Studies:</b> '+items.map(function(x){return x.n+' ('+x.v.toFixed(1)+')';}).join(' &#183; ')):'';}
+g('ed-add').addEventListener('click',function(){var s=g('ed-sel'),ct=+g('ed-ct').value,v=+s.value+ct,n=s.options[s.selectedIndex].text.replace(/ ~.*/,'')+(ct?' +CT':'');items.push({n:n,v:v});render();});
+g('ed-clear').addEventListener('click',function(){items=[];render();});render();})();</script>

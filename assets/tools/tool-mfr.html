@@ -1,0 +1,34 @@
+
+<div class='tool'>
+ <div class='hg-h' style='margin-bottom:10px'>Global myocardial flow reserve (MFR)</div>
+ <div class='t-grid'>
+  <div class='t-f'><label>Stress MBF</label><div class='t-in'><input type='number' id='mfr-s' value='2.2' step='0.1'><span class='u'>mL/g/min</span></div></div>
+  <div class='t-f'><label>Rest MBF</label><div class='t-in'><input type='number' id='mfr-r' value='0.9' step='0.05'><span class='u'>mL/g/min</span></div></div>
+  <div class='t-f'><label>Normalize rest to RPP?</label><div class='t-in'><select id='mfr-corr'><option value='0'>No — raw ratio</option><option value='1'>Yes — RPP-corrected</option></select></div></div>
+  <div class='t-f'><label>Rest heart rate</label><div class='t-in'><input type='number' id='mfr-hr' value='65' step='1'><span class='u'>bpm</span></div></div>
+  <div class='t-f'><label>Rest systolic BP</label><div class='t-in'><input type='number' id='mfr-sbp' value='130' step='1'><span class='u'>mmHg</span></div></div>
+  <div class='t-f'><label>Reference RPP (convention)</label><div class='t-in'><input type='number' id='mfr-ref' value='10000' step='500'></div></div>
+ </div>
+ <div class='t-out'><div class='n' id='mfr-out'>&#8212;</div><div class='l'>myocardial flow reserve</div><div class='x' id='mfr-x'></div></div>
+ <div class='t-badge' id='mfr-bd'></div>
+ <div class='t-note'>MFR = stress MBF &#247; rest MBF. Optional normalization: corrected rest MBF = rest &#215; (reference RPP &#247; measured RPP), RPP = heart rate &#215; systolic BP. Prognostic bands for <b>global</b> MFR: &#8805;2.0 preserved &#183; 1.5&#8211;2.0 mildly reduced &#183; &lt;1.5 severely reduced / high risk. These are lab- and tracer-dependent (Rb-82, &#185;&#179;N-ammonia, &#185;&#8309;O-water) and are not vessel-specific diagnostic cut-offs &#8212; read with relative perfusion, clinical context, and your normal database. Educational estimate only.</div>
+</div>
+<script>(function(){
+var g=function(i){return document.getElementById(i);};
+function calc(){
+ var s=+g('mfr-s').value, r=+g('mfr-r').value, corr=g('mfr-corr').value==='1',
+     hr=+g('mfr-hr').value, sbp=+g('mfr-sbp').value, ref=+g('mfr-ref').value;
+ if(!s||!r){g('mfr-out').textContent='—';g('mfr-x').textContent='';g('mfr-bd').className='t-badge';g('mfr-bd').textContent='';return;}
+ var restUsed=r, xtra='';
+ if(corr && hr>0 && sbp>0 && ref>0){var rpp=hr*sbp; restUsed=r*(ref/rpp); xtra='RPP '+rpp.toLocaleString()+' · corrected rest MBF '+restUsed.toFixed(2)+' mL/g/min';}
+ else{xtra='raw stress ÷ rest (no RPP correction)';}
+ var mfr=s/restUsed, cat, cls;
+ if(mfr>=2.0){cat='Preserved flow reserve (≥2.0)';cls='ok';}
+ else if(mfr>=1.5){cat='Mildly reduced (1.5–2.0)';cls='warn';}
+ else{cat='Severely reduced — high risk (<1.5)';cls='bad';}
+ g('mfr-out').textContent=mfr.toFixed(2);
+ g('mfr-x').textContent=xtra;
+ var bd=g('mfr-bd');bd.className='t-badge '+cls;bd.textContent=cat;
+}
+['mfr-s','mfr-r','mfr-corr','mfr-hr','mfr-sbp','mfr-ref'].forEach(function(i){g(i).addEventListener('input',calc);g(i).addEventListener('change',calc);});
+calc();})();</script>

@@ -1,0 +1,45 @@
+
+<div class="tool">
+ <div class="t-grid">
+  <div class="t-f"><label>Tumor</label><div class="t-in"><select id="pr-tu"><option value="wd">Well-differentiated NET (G1/G2/G3)</option><option value="nec">Poorly-differentiated NEC</option></select></div></div>
+  <div class="t-f"><label>SSTR-PET (DOTATATE) — Krenning</label><div class="t-in"><select id="pr-k"><option value="hi">3–4 (≥ liver) — SSTR-avid</option><option value="lo">0–2 (&lt; liver) — low/negative</option><option value="none">Not performed</option></select></div></div>
+  <div class="t-f"><label>Grade</label><div class="t-in"><select id="pr-g"><option value="g12">G1 / G2</option><option value="g23">G2 / G3 (well-differentiated)</option></select></div></div>
+  <div class="t-f"><label>Prior therapy</label><div class="t-in"><select id="pr-pt"><option value="ssa">Progression on somatostatin analog</option><option value="first">First-line / treatment-naïve</option></select></div></div>
+  <div class="t-f"><label>FDG / SSTR discordance</label><div class="t-in"><select id="pr-f"><option value="no">No significant FDG+ / SSTR− disease</option><option value="yes">Significant FDG+ / SSTR− disease</option><option value="na">Not assessed</option></select></div></div>
+  <div class="t-f"><label>Organ function (marrow, renal, hepatic)</label><div class="t-in"><select id="pr-o"><option value="ok">Adequate</option><option value="no">Inadequate / not yet assessed</option></select></div></div>
+ </div>
+ <div class="t-out" style="text-align:left"><div class="l" style="margin-top:0">Recommendation</div><div class="n" id="pr-tier" style="font-size:22px;margin-top:6px">—</div><div class="x" id="pr-line" style="margin-top:8px"></div></div>
+ <div id="pr-basis" class="rl-basis"></div>
+ <div id="pr-tension"></div>
+ <div class="t-note">Encodes NETTER-1/NETTER-2 and label criteria. Standard regimen is 7.4 GBq × 4 cycles (q8 weeks) with amino-acid renal protection. Does not replace multidisciplinary judgement or a written directive.</div>
+</div>
+<script>(function(){
+ var GR={A:'gA',B:'gB',C:'gC',I:'gI'};
+ function chip(g){return '<span class="gr '+GR[g]+'">'+(g==='I'?'INF':g)+'</span>';}
+ function v(id){return document.getElementById(id).value;}
+ function f(){
+  var tu=v('pr-tu'),k=v('pr-k'),g=v('pr-g'),pt=v('pr-pt'),fd=v('pr-f'),o=v('pr-o');
+  var tier,cls,line,basis=[],tension='';
+  if(tu==='nec'){tier='PRRT not standard';cls='bad';line='Poorly-differentiated neuroendocrine carcinoma usually lacks somatostatin-receptor expression — platinum-based chemotherapy is standard; consider PRRT only if unexpectedly SSTR-avid.';basis=[['B','PRRT evidence (NETTER-1/2) is in well-differentiated, SSTR-positive NETs.']];}
+  else if(k==='lo'){tier='Not eligible';cls='bad';line='PRRT requires adequate somatostatin-receptor expression (Krenning 3–4); low/negative uptake predicts no benefit.';basis=[['C','Krenning 3–4 (uptake ≥ liver) is the accepted threshold for expected PRRT benefit.']];}
+  else if(k==='none'){tier='Obtain SSTR-PET first';cls='warn';line='SSTR-PET (Ga-68/Cu-64-DOTATATE) is the gatekeeper — image and grade (Krenning) before deciding.';basis=[['B','Patient selection for PRRT is driven by SSTR-PET positivity.']];}
+  else if(o==='no'){tier='Not eligible yet';cls='warn';line='Adequate marrow, renal, and hepatic function are required — correct/assess, then reconsider.';basis=[['B','Organ-function thresholds are prerequisites; kidney and marrow are dose-limiting (amino-acid renal protection given).']];}
+  else{
+   if(pt==='ssa'){tier='Recommended';cls='ok';line='Progressive, SSTR-positive well-differentiated NET after somatostatin-analog therapy — the NETTER-1 setting, with a randomized PFS benefit.';basis=[['A','NETTER-1 (Strosberg, NEJM 2017): markedly improved PFS in progressive midgut NETs after SSA.']];}
+   else { // first-line
+    if(g==='g23'){tier='Supported';cls='ok';line='First-line, SSTR-positive grade 2–3 well-differentiated GEP-NET — supported by NETTER-2.';basis=[['A','NETTER-2 (Singh, Lancet 2024): first-line ¹⁷⁷Lu-DOTATATE reduced progression/death in grade 2–3 GEP-NET.']];
+     tension='<h2 style="margin-top:22px">Two defensible readings</h2><div class="blk-note"><b>First-line PRRT &nbsp;·&nbsp; and a somatostatin analog (± other systemic therapy) is also appropriate</b><p>NETTER-2 supports first-line PRRT for higher-grade disease, but somatostatin analogs, everolimus, and (for pancreatic NET) sunitinib/chemotherapy remain evidence-based options; the choice turns on grade, tumor burden/tempo, functionality, and pancreatic vs non-pancreatic primary. '+chip('A')+' NETTER-2 (Singh, Lancet 2024).</p></div>';}
+    else {tier='Consider after progression';cls='warn';line='First-line G1/G2 without documented progression — somatostatin analogs are generally first; PRRT is well-supported once progression occurs.';basis=[['A','NETTER-1 enrolled patients after SSA progression; first-line SSA is standard for lower-grade indolent disease.']];}
+   }
+   if(fd==='yes'&&cls==='ok'){cls='warn';tier=tier+' — with caution';line+=' Significant FDG-positive / SSTR-negative disease predicts poorer PRRT benefit; weigh this and consider treating discordant sites differently.';basis.push(['C','FDG-positive/SSTR-negative phenotype indicates dedifferentiation and inferior PRRT response.']);}
+   else if(fd==='na'&&cls==='ok'){basis.push(['C','Dual SSTR + FDG imaging in higher-grade disease helps exclude significant SSTR-negative clones before PRRT.']);}
+  }
+  document.getElementById('pr-tier').textContent=tier;
+  document.getElementById('pr-tier').style.color=(cls==='ok'?'var(--A)':cls==='warn'?'#8A6009':'#9E3417');
+  document.getElementById('pr-line').textContent=line;
+  document.getElementById('pr-basis').innerHTML='<div class="cites" style="margin-top:14px">'+basis.map(function(x){return '<div class="ct">'+chip(x[0])+'<span>'+x[1]+'</span></div>';}).join('')+'</div>';
+  document.getElementById('pr-tension').innerHTML=tension;
+ }
+ ['pr-tu','pr-k','pr-g','pr-pt','pr-f','pr-o'].forEach(function(i){document.getElementById(i).addEventListener('change',f);});
+ f();
+})();</script>

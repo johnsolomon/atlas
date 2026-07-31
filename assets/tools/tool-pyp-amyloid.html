@@ -1,0 +1,13 @@
+
+<div class="tool">
+ <div class="t-grid">
+  <div class="t-f"><label>Heart ROI (mean counts)</label><div class="t-in"><input type="number" id="pp-h" value="1800" step="10"></div></div>
+  <div class="t-f"><label>Contralateral chest ROI (mean counts)</label><div class="t-in"><input type="number" id="pp-c" value="1000" step="10"></div></div>
+  <div class="t-f"><label>Imaging timepoint</label><div class="t-in"><select id="pp-t"><option value="1.5">1 hour (threshold 1.5)</option><option value="1.3">3 hours (threshold 1.3)</option></select></div></div>
+  <div class="t-f"><label>Perugini visual grade</label><div class="t-in"><select id="pp-g"><option value="0">0 — no cardiac uptake</option><option value="1">1 — less than bone</option><option value="2" selected>2 — equal to bone</option><option value="3">3 — greater than bone</option></select></div></div>
+ </div>
+ <div class="t-out"><div class="n" id="pp-out">—</div><div class="l">Heart-to-contralateral (H/CL) ratio</div><div class="x" id="pp-x"></div></div>
+ <div class="t-badge" id="pp-b"></div>
+ <div class="t-note"><b>Mandatory:</b> a positive scan diagnoses ATTR only after a monoclonal protein is excluded (serum/urine immunofixation + free light chains). SPECT is required to confirm uptake is myocardial, not blood pool or bone.</div>
+</div>
+<script>(function(){function f(){var h=+document.getElementById('pp-h').value,c=+document.getElementById('pp-c').value,th=+document.getElementById('pp-t').value,g=+document.getElementById('pp-g').value,o=document.getElementById('pp-out'),x=document.getElementById('pp-x'),b=document.getElementById('pp-b');if(!c){o.textContent='—';b.textContent='';return}var ratio=h/c;o.textContent=ratio.toFixed(2);var pos=ratio>=th,gpos=g>=2;x.textContent='Threshold '+th.toFixed(1)+' · Perugini grade '+g;if(gpos&&pos){b.className='t-badge bad';b.textContent='Consistent with ATTR (grade '+g+', H/CL '+ratio.toFixed(2)+') — exclude monoclonal protein';}else if(gpos||pos){b.className='t-badge warn';b.textContent='Borderline / discordant — confirm with SPECT and quantification';}else{b.className='t-badge ok';b.textContent='Not suggestive of ATTR cardiac uptake';}}['pp-h','pp-c','pp-t','pp-g'].forEach(function(i){document.getElementById(i).addEventListener('input',f);document.getElementById(i).addEventListener('change',f)});f();})();</script>

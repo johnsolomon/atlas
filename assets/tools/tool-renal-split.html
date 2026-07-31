@@ -1,0 +1,28 @@
+
+<div class='tool'>
+ <div class='hg-h' style='margin-bottom:10px'>Split (differential) renal function &#8212; geometric mean</div>
+ <div class='t-grid'>
+  <div class='t-f'><label>Left &#8212; posterior counts</label><div class='t-in'><input type='number' id='rs-lp' value='12000' step='1'></div></div>
+  <div class='t-f'><label>Right &#8212; posterior counts</label><div class='t-in'><input type='number' id='rs-rp' value='9000' step='1'></div></div>
+  <div class='t-f'><label>Left &#8212; anterior (optional)</label><div class='t-in'><input type='number' id='rs-la' value='0' step='1'></div></div>
+  <div class='t-f'><label>Right &#8212; anterior (optional)</label><div class='t-in'><input type='number' id='rs-ra' value='0' step='1'></div></div>
+  <div class='t-f'><label>Background per kidney (optional)</label><div class='t-in'><input type='number' id='rs-bg' value='0' step='1'></div></div>
+ </div>
+ <div class='t-row' id='rs-row'></div>
+ <div class='t-badge' id='rs-bd'></div>
+ <div class='t-note'>Background-subtracted counts in the 1&#8211;2.5 min uptake window. With anterior counts, each kidney uses the <b>geometric mean</b> &#8730;(ant&#215;post) (depth-independent); otherwise posterior only. Normal &#8776; 50/50; &lt;45% suggests reduced contribution.</div>
+</div>
+<script>(function(){
+var g=function(i){return document.getElementById(i);};
+function f(){var lp=+g('rs-lp').value,rp=+g('rs-rp').value,la=+g('rs-la').value,ra=+g('rs-ra').value,bg=+g('rs-bg').value;
+ function net(po,an){po=Math.max(0,po-bg);an=an>0?Math.max(0,an-bg):0;return an>0?Math.sqrt(po*an):po;}
+ var L=net(lp,la),Rk=net(rp,ra),tot=L+Rk;
+ if(tot<=0){g('rs-row').innerHTML='';g('rs-bd').textContent='';return;}
+ var lpct=L/tot*100,rpct=Rk/tot*100;
+ g('rs-row').innerHTML='<div class="t-mini"><b>'+lpct.toFixed(1)+'%</b><span>Left</span></div>'+
+  '<div class="t-mini"><b>'+rpct.toFixed(1)+'%</b><span>Right</span></div>'+
+  '<div class="t-mini"><b>'+((la>0||ra>0)?'GM':'post')+'</b><span>method</span></div>';
+ var lo=Math.min(lpct,rpct),cls=lo>=45?'ok':lo>=40?'warn':'bad',side=lpct<rpct?'left':'right';
+ g('rs-bd').className='t-badge '+cls;
+ g('rs-bd').textContent=lo>=45?'Symmetric function (~50/50)':'Asymmetric - reduced '+side+' ('+lo.toFixed(0)+'%)';}
+['rs-lp','rs-rp','rs-la','rs-ra','rs-bg'].forEach(function(i){g(i).addEventListener('input',f);});f();})();</script>

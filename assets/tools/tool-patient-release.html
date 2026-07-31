@@ -1,0 +1,42 @@
+
+<div class='tool'>
+ <div class='hg-h' style='margin-bottom:10px'>Patient release &#8212; projected dose to others (10 CFR 35.75)</div>
+ <div class='t-grid'>
+  <div class='t-f'><label>Radionuclide</label><div class='t-in'>
+   <select id='pr-iso'>
+    <option value='192.5'>I-131 (T&#189; 8.02 d)</option>
+    <option value='159.5'>Lu-177 (T&#189; 6.65 d)</option>
+    <option value='274.3'>Ra-223 (T&#189; 11.4 d)</option>
+    <option value='64.05'>Y-90 (T&#189; 2.67 d)</option>
+    <option value='13.2'>I-123 (T&#189; 13.2 h)</option>
+    <option value='-1'>Other &#8212; enter T&#189;</option>
+   </select></div></div>
+  <div class='t-f'><label>Measured dose rate at 1 m (&#181;Sv/h)</label><div class='t-in'><input type='number' id='pr-dr' value='70' step='1' min='0'></div></div>
+  <div class='t-f'><label>Effective half-life (h)</label><div class='t-in'><input type='number' id='pr-teff' value='192.5' step='0.1' min='0'></div></div>
+  <div class='t-f'><label>Occupancy factor E</label><div class='t-in'><input type='number' id='pr-e' value='0.25' step='0.05' min='0' max='1'></div></div>
+ </div>
+ <div class='t-row' id='pr-row'></div>
+ <div class='t-badge' id='pr-bd'></div>
+ <div class='t-note'>Projected total effective dose to the maximally-exposed individual = dose&#8209;rate(1 m) &#215; 1.44 &#215; T<sub>eff</sub> &#215; E (Reg. Guide 8.39). <b>Release</b> if &#8804; 5 mSv; provide <b>written instructions</b> if &gt; 1 mSv. The <b>physical</b> half-life (auto-filled) is a conservative upper bound because it ignores biological clearance &#8212; enter a measured <b>effective</b> half-life for a patient-specific estimate. Occupancy 0.25 is the RG 8.39 default. <b>Breastfeeding</b> is a separate determination (may require interruption/cessation). Educational estimate &#8212; the authorized user and RSO make the release decision per your institutional protocol.</div>
+</div>
+<script>(function(){
+var g=function(i){return document.getElementById(i);};
+g('pr-iso').addEventListener('change',function(){var v=+g('pr-iso').value;if(v>0)g('pr-teff').value=v;f();});
+function f(){
+ var dr=+g('pr-dr').value, teff=+g('pr-teff').value, E=+g('pr-e').value;
+ if(dr<=0||teff<=0||E<=0){g('pr-row').innerHTML='';g('pr-bd').textContent='';g('pr-bd').className='t-badge';return;}
+ var tede=(dr/1000)*1.44*teff*E;               // mSv
+ var mini='<div class="t-mini"><b>'+tede.toFixed(2)+'</b><span>projected TEDE (mSv)</span></div>';
+ mini+='<div class="t-mini"><b>'+(tede>1?'Yes':'No')+'</b><span>written instructions?</span></div>';
+ var cls,msg;
+ if(tede<=1){cls='ok';msg='Releasable — no written instructions required';}
+ else if(tede<=5){cls='warn';msg='Releasable WITH written radiation-safety instructions';}
+ else{cls='bad';
+  var th=teff*Math.log2(tede/5)/24;            // days until projected TEDE ≤ 5 mSv
+  mini+='<div class="t-mini"><b>'+th.toFixed(1)+'</b><span>days to release</span></div>';
+  msg='Do not release yet — exceeds 5 mSv limit';}
+ g('pr-row').innerHTML=mini;
+ g('pr-bd').className='t-badge '+cls;
+ g('pr-bd').textContent=msg;
+}
+['pr-dr','pr-teff','pr-e'].forEach(function(i){g(i).addEventListener('input',f);});f();})();</script>

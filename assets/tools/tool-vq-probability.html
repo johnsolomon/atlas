@@ -1,0 +1,36 @@
+
+<div class="tool">
+ <div class="t-grid">
+  <div class="t-f"><label>Perfusion / ventilation pattern</label><div class="t-in"><select id="vq-p">
+    <option value="normal">Normal perfusion (no defects)</option>
+    <option value="subseg">Non-segmental or small subsegmental defects only</option>
+    <option value="matched">Matched V/Q defect(s) — perfusion defect with matching ventilation defect</option>
+    <option value="one">Single segmental mismatch (V normal, Q defect)</option>
+    <option value="two">≥2 segmental mismatches (V normal, Q defect)</option></select></div></div>
+  <div class="t-f"><label>Chest radiograph</label><div class="t-in"><select id="vq-c">
+    <option value="normal">Normal / clear</option>
+    <option value="opacity">Opacity matching a perfusion defect (same region)</option></select></div></div>
+ </div>
+ <div class="t-out" style="text-align:left"><div class="l" style="margin-top:0">Category</div><div class="n" id="vq-cat" style="font-size:22px;margin-top:6px">—</div><div class="x" id="vq-line" style="margin-top:8px"></div></div>
+ <div id="vq-basis" class="rl-basis"></div>
+ <div class="t-note">Simplified modified-PIOPED-II / EANM mismatch-based aid. A normal perfusion scan effectively excludes PE; the hallmark of PE is segmental (or larger) mismatch. Integrate with clinical probability (Wells) and the full study — not a written directive.</div>
+</div>
+<script>(function(){
+ function chip(g){return '<span class="gr g'+g+'">'+g+'</span>';}
+ function v(id){return document.getElementById(id).value;}
+ function f(){
+  var p=v('vq-p'),c=v('vq-c'),cat,cls,line,basis=[];
+  if(p==='normal'){cat='Normal';cls='ok';line='No perfusion defects — a normal perfusion scan effectively excludes pulmonary embolism.';basis=[['A','A normal perfusion scan has a very high negative predictive value for PE (PIOPED).']];}
+  else if(p==='two'){cat='High probability';cls='bad';line='Two or more segmental mismatched perfusion defects — high probability for PE.';basis=[['A','≥2 large segmental mismatches indicate high probability (PIOPED).'],['B','EANM: segmental mismatch is the diagnostic pattern for PE.']];}
+  else if(p==='one'){cat='Intermediate / non-diagnostic';cls='warn';line='A single segmental mismatch is indeterminate — correlate with clinical probability and consider CTPA or SPECT V/Q.';basis=[['A','Single segmental mismatch falls in the intermediate category (PIOPED).']];}
+  else if(p==='matched'){cat='Low probability';cls='warn';line='Matched V/Q defects suggest parenchymal disease rather than PE (low probability).';basis=[['A','Matched defects lower PE probability (PIOPED).']];
+    if(c==='opacity'){cat='Indeterminate — triple match';cls='warn';line='A matched V/Q defect with a matching chest-radiograph opacity (triple match), especially in the lower lobe, is indeterminate — consider further testing.';basis.push(['B','Triple match (V+Q defect + CXR opacity) is indeterminate, particularly in the lower lobes.']);}}
+  else {cat='Very low probability';cls='ok';line='Only non-segmental or small subsegmental defects — very low probability for PE.';basis=[['A','Non-segmental / small subsegmental defects confer very low probability (PIOPED).']];}
+  document.getElementById('vq-cat').textContent=cat;
+  document.getElementById('vq-cat').style.color=(cls==='ok'?'var(--A)':cls==='warn'?'#8A6009':'#9E3417');
+  document.getElementById('vq-line').textContent=line;
+  document.getElementById('vq-basis').innerHTML='<div class="cites" style="margin-top:14px">'+basis.map(function(x){return '<div class="ct">'+chip(x[0])+'<span>'+x[1]+'</span></div>';}).join('')+'</div>';
+ }
+ ['vq-p','vq-c'].forEach(function(i){document.getElementById(i).addEventListener('change',f);});
+ f();
+})();</script>

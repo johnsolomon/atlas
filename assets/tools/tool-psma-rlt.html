@@ -1,0 +1,44 @@
+
+<div class="tool">
+ <div class="t-grid">
+  <div class="t-f"><label>Disease state</label><div class="t-in"><select id="rl-m"><option value="mcrpc">Metastatic castration-resistant (mCRPC)</option><option value="other">Not mCRPC / uncertain</option></select></div></div>
+  <div class="t-f"><label>PSMA-PET</label><div class="t-in"><select id="rl-p"><option value="pos">Positive — adequate uptake in target lesions</option><option value="low">Low / negative uptake</option><option value="none">Not performed</option></select></div></div>
+  <div class="t-f"><label>Prior androgen-receptor pathway inhibitor (ARPI)</label><div class="t-in"><select id="rl-a"><option value="yes">Received ARPI (abiraterone/enzalutamide/…)</option><option value="no">ARPI-naïve</option></select></div></div>
+  <div class="t-f"><label>Prior taxane chemotherapy</label><div class="t-in"><select id="rl-t"><option value="yes">Received a taxane</option><option value="no">Taxane-naïve</option></select></div></div>
+  <div class="t-f"><label>FDG / PSMA discordance</label><div class="t-in"><select id="rl-f"><option value="no">No significant FDG+ / PSMA− disease</option><option value="yes">Significant FDG+ / PSMA− disease</option><option value="na">Not assessed</option></select></div></div>
+  <div class="t-f"><label>Organ function (marrow, renal, hepatic)</label><div class="t-in"><select id="rl-o"><option value="ok">Adequate</option><option value="no">Inadequate / not yet assessed</option></select></div></div>
+ </div>
+ <div class="t-out" style="text-align:left"><div class="l" style="margin-top:0">Recommendation</div><div class="n" id="rl-tier" style="font-size:22px;margin-top:6px">—</div><div class="x" id="rl-line" style="margin-top:8px"></div></div>
+ <div id="rl-basis" class="rl-basis"></div>
+ <div id="rl-tension"></div>
+ <div class="t-note">Encodes the population-level evidence (VISION, PSMAfore, TheraP) and label requirements. It does not replace multidisciplinary judgement, dosimetry, or a written directive. Confirm the current approved indication and funding at time of use — the label has moved.</div>
+</div>
+<script>(function(){
+ var GR={A:'gA',B:'gB',C:'gC',I:'gI'};
+ function chip(g){return '<span class="gr '+GR[g]+'">'+(g==='I'?'INF':g)+'</span>';}
+ function f(){
+  var m=v('rl-m'),p=v('rl-p'),a=v('rl-a'),t=v('rl-t'),fd=v('rl-f'),o=v('rl-o');
+  var tier,cls,line,basis=[],tension='';
+  if(m==='other'){tier='Not indicated';cls='bad';line='¹⁷⁷Lu-PSMA-617 is indicated for metastatic castration-resistant prostate cancer — confirm mCRPC before proceeding.';basis=[['B','Indication is restricted to mCRPC (FDA prescribing information).']];}
+  else if(p==='low'){tier='Not eligible';cls='bad';line='Therapy requires PSMA-avid disease; inadequate PSMA-PET uptake predicts no benefit.';basis=[['A','VISION required PSMA-positive disease on ⁶⁸Ga-PSMA-11 PET for enrolment.'],['B','PSMA positivity is a labelled eligibility requirement.']];}
+  else if(p==='none'){tier='Cannot determine';cls='warn';line='PSMA-PET is the gatekeeper — obtain PSMA-PET (± FDG-PET) before deciding.';basis=[['A','Patient selection in VISION and subsequent practice is driven by PSMA-PET positivity.']];}
+  else if(o==='no'){tier='Not eligible yet';cls='warn';line='Adequate marrow, renal, and hepatic function are required — correct/assess, then reconsider.';basis=[['B','Organ-function thresholds are labelled prerequisites; marrow and kidney are dose-limiting.']];}
+  else{
+   // PSMA-positive mCRPC with adequate organ function
+   if(a==='no'){tier='Outside current standard indication';cls='warn';line='Current approvals follow prior ARPI therapy; use in ARPI-naïve mCRPC is investigational (e.g. PSMAddition).';basis=[['A','VISION and PSMAfore populations had prior ARPI.'],['I','ARPI-naïve use is under study, not yet standard of care.']];}
+   else if(t==='yes'){tier='Recommended';cls='ok';line='Post-ARPI and post-taxane, PSMA-positive mCRPC — the VISION population, with a randomized overall-survival benefit.';basis=[['A','VISION: improved OS and rPFS vs standard care in this exact setting (Sartor, NEJM 2021).']];}
+   else{tier='Supported';cls='ok';line='Post-ARPI, taxane-naïve, PSMA-positive mCRPC — supported by the PSMAfore-based 2025 label expansion; the Lu-PSMA-vs-taxane choice is a genuine decision.';basis=[['A','PSMAfore: benefit in taxane-naïve mCRPC after ARPI (label expanded 2025).']];
+    tension='<h2 style="margin-top:22px">Two defensible readings</h2><div class="blk-note"><b>¹⁷⁷Lu-PSMA-617 &nbsp;·&nbsp; and taxane chemotherapy is also appropriate</b><p>In taxane-eligible patients, TheraP randomized ¹⁷⁷Lu-PSMA-617 against cabazitaxel and found comparable-to-favorable outcomes with a better toxicity profile — but chemotherapy remains a standard, evidence-based option, and the choice turns on fitness, preference, disease tempo, and prior response. '+chip('A')+' TheraP (Hofman, Lancet 2021).</p></div>';}
+   if(fd==='yes'&&cls==='ok'){cls='warn';tier=tier+' — with caution';line+=' Significant FDG-positive / PSMA-negative disease predicts poorer benefit; weigh this in the risk–benefit and sequencing.';basis.push(['B','FDG/PSMA discordance predicts inferior outcomes (Buteau, Lancet Oncol 2022).']);}
+   else if(fd==='na'&&cls==='ok'){basis.push(['C','Dual FDG/PSMA imaging is used in many centres to exclude significant PSMA-negative disease before therapy.']);}
+  }
+  document.getElementById('rl-tier').textContent=tier;
+  document.getElementById('rl-tier').style.color=(cls==='ok'?'var(--A)':cls==='warn'?'#8A6009':'#9E3417');
+  document.getElementById('rl-line').textContent=line;
+  document.getElementById('rl-basis').innerHTML='<div class="cites" style="margin-top:14px">'+basis.map(function(x){return '<div class="ct">'+chip(x[0])+'<span>'+x[1]+'</span></div>';}).join('')+'</div>';
+  document.getElementById('rl-tension').innerHTML=tension;
+ }
+ function v(id){return document.getElementById(id).value;}
+ ['rl-m','rl-p','rl-a','rl-t','rl-f','rl-o'].forEach(function(i){document.getElementById(i).addEventListener('change',f);});
+ f();
+})();</script>

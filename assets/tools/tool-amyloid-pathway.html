@@ -1,0 +1,82 @@
+
+<div class="tool">
+ <div class="t-grid">
+  <div class="t-f"><label>Clinical / echo–CMR suspicion of infiltration</label><div class="t-in"><select id="am-s"><option value="high">High (↑ wall thickness, apical-sparing strain, low-voltage ECG)</option><option value="mod">Moderate</option><option value="low">Low / incidental</option></select></div></div>
+  <div class="t-f"><label>Monoclonal-protein screen — SPEP + UPEP + immunofixation + serum free light chains</label><div class="t-in"><select id="am-m"><option value="neg">Negative (all three)</option><option value="pos">Positive / abnormal</option><option value="none">Not done</option></select></div></div>
+ </div>
+ <div id="am-scan" class="t-grid" style="margin-top:12px">
+  <div class="t-f"><label>Bone-tracer scan (PYP / DPD / HMDP) — Perugini grade</label><div class="t-in"><select id="am-g"><option value="none">Not performed</option><option value="0">Grade 0 — no cardiac uptake</option><option value="1">Grade 1 — less than bone</option><option value="2">Grade 2 — equal to bone</option><option value="3">Grade 3 — greater than bone</option></select></div></div>
+  <div class="t-f"><label>SPECT confirms uptake is myocardial (not blood pool / bone)</label><div class="t-in"><select id="am-sp"><option value="none">Not done</option><option value="yes">Yes — myocardial</option><option value="no">No — blood pool / equivocal</option></select></div></div>
+  <div class="t-f"><label>H/CL ratio (optional)</label><div class="t-in"><input type="number" id="am-h" value="" step="0.01" placeholder="—"><select id="am-ht" style="border:0;background:transparent"><option value="1.5">at 1 h</option><option value="1.3">at 3 h</option></select></div></div>
+ </div>
+ <div id="am-route" class="t-out" style="text-align:left"><div class="l" style="margin-top:0">Verdict</div><div class="n" id="am-v" style="font-size:21px;margin-top:6px">—</div><div class="x" id="am-line" style="margin-top:8px"></div></div>
+ <div id="am-body"></div>
+ <div class="shotbar" style="display:flex;gap:8px;margin-top:14px;align-items:center"><button id="am-copy" class="am-btn">Copy summary</button><span style="font-size:11px;color:var(--faint)">Copy the verdict + basis as text.</span></div>
+ <div class="t-note"><b>The monoclonal screen is the cardinal rule:</b> AL amyloidosis can also take up bone tracer, so a positive scan is only ATTR when a monoclonal protein has been excluded. Bone-tracer imaging alone never diagnoses AL. Not a written directive.</div>
+</div>
+<script>(function(){
+ var GR={A:'gA',B:'gB',C:'gC',I:'gI'};
+ var REF={
+  gill:['B','<b>Gillmore JD, et al.</b> <i>Circulation</i> 2016;133:2404–2412. n=1217: grade 2–3 cardiac bone-tracer uptake with a <b>negative monoclonal screen</b> had specificity and PPV &gt;99% for ATTR — the basis for non-biopsy diagnosis.'],
+  peru:['C','<b>Perugini E, et al.</b> <i>J Am Coll Cardiol</i> 2005;46:1076–1084 — original 0–3 visual grading of cardiac bone-tracer uptake.'],
+  multi:['B','<b>Multisociety practice points</b> (ASNC/AHA/ASE/EANM/SNMMI/SCMR) — SPECT mandatory; monoclonal screen required; H/CL thresholds.'],
+  al:['B','<b>AL amyloidosis takes up bone tracer too</b> — a positive scan with any monoclonal component mandates tissue diagnosis and typing, not an ATTR label.'],
+  spect:['B','<b>SPECT confirmation</b> separates true myocardial uptake from blood pool and overlying rib; planar-only reads overcall ATTR.'],
+  hcl:['C','<b>H/CL ratio</b> — ≥1.5 at 1 h (or ≥1.3 at 3 h) supports ATTR; planar H/CL is confounded by blood pool and bone.'],
+  attract:['A','<b>ATTR-ACT</b> — Maurer MS, et al. <i>N Engl J Med</i> 2018;379:1007–1016: tafamidis reduced mortality and CV hospitalization in ATTR cardiomyopathy — accurate diagnosis is actionable.'],
+  geno:['B','<b>TTR genotyping</b> distinguishes hereditary (variant) from wild-type ATTR — informs family screening and therapy/trial eligibility.'],
+  esc:['B','<b>ESC 2023 guidance</b> on cardiomyopathies — diagnostic algorithm integrating the monoclonal screen with bone scintigraphy.']
+ };
+ function chip(g){return '<span class="gr '+GR[g]+'">'+(g==='I'?'INF':g)+'</span>';}
+ function blk(title,paras,cites,color){return '<div class="blk-note"'+(color?' style="border-left-color:'+color+'"':'')+'><b>'+title+'</b>'+paras.map(function(p){return '<p style="margin:0 0 8px">'+p+'</p>';}).join('')+'<div class="cites" style="margin-top:6px">'+cites.map(function(k){return '<div class="ct">'+chip(REF[k][0])+'<span>'+REF[k][1]+'</span></div>';}).join('')+'</div></div>';}
+ var lastSummary='';
+ function f(){
+  var s=v('am-s'),m=v('am-m'),g=v('am-g'),sp=v('am-sp'),h=parseFloat(document.getElementById('am-h').value),ht=parseFloat(v('am-ht'));
+  // dynamic fields: scan inputs matter only once the monoclonal screen is negative
+  document.getElementById('am-scan').style.display = (m==='neg') ? 'grid' : 'none';
+  var verdict,cls,line,body='';
+  if(m==='pos'){
+   verdict='Tissue biopsy required'; cls='#9E3417';
+   line='A positive monoclonal screen means a bone-tracer scan cannot diagnose ATTR — AL amyloidosis must be excluded and the amyloid typed.';
+   body=blk('Stop — the imaging pathway does not apply','A monoclonal gammopathy is present (or the light-chain ratio is abnormal). Because AL amyloid also takes up bone tracer, imaging cannot distinguish AL from ATTR here. Proceed to <b>endomyocardial or extracardiac biopsy with typing</b> (mass spectrometry / immunohistochemistry) and hematology referral. Note a monoclonal gammopathy can also coexist incidentally with ATTR — typing resolves it.'.split('||'),['al','gill'],'#9E3417');
+  }
+  else if(m==='none'){
+   verdict='Obtain the monoclonal screen first'; cls='#8A6009';
+   line='The scan cannot be interpreted for ATTR until a monoclonal protein has been excluded.';
+   body=blk('Gate not yet satisfied',['Send <b>serum and urine immunofixation and serum free light chains</b> before acting on any bone-tracer result. Serum/urine protein electrophoresis alone is insufficient — immunofixation and free light chains are required to exclude a plasma-cell process.'],['multi','esc'],'#8A6009');
+  }
+  else { // monoclonal negative — apply the scan
+   if(g==='none'){ verdict='Perform PYP/DPD with SPECT'; cls='#8A6009'; line='With the monoclonal screen negative, obtain a bone-tracer scan (planar + SPECT) and grade it.'; body=blk('Next step',['Acquire Tc-99m-PYP (or DPD/HMDP) at 1 h (± 3 h) with <b>planar and SPECT</b>, and grade uptake (Perugini 0–3) with the H/CL ratio.'],['multi'],'#8A6009'); }
+   else if(g==='0'){ verdict='ATTR unlikely'; cls='#8A6009'; line='No cardiac bone-tracer uptake — ATTR cardiac amyloidosis is unlikely.'; body=blk('No cardiac uptake',['Grade 0 argues against ATTR. If clinical/echo–CMR suspicion is high, pursue an alternative cause (or biopsy) — a small minority of ATTR (notably some variant/early disease) can be scan-negative.'],['gill','peru'],'#8A6009'); }
+   else if(g==='1'){ verdict='Equivocal — further evaluation'; cls='#8A6009'; line='Grade 1 uptake is indeterminate; quantify with SPECT and H/CL, and consider biopsy if suspicion is high.';
+    body=blk('Grade 1 is the uncertainty zone',['Faint (less-than-bone) uptake is neither clearly positive nor negative. Confirm whether uptake is truly myocardial on SPECT and integrate the H/CL ratio.'],['peru','spect'],'#8A6009')
+     +'<h2 style="margin-top:20px">Two defensible readings</h2>'
+     +blk('Quantitative SPECT + repeat imaging &nbsp;·&nbsp; and endomyocardial biopsy is also appropriate',['With a negative monoclonal screen and equivocal grade 1, some centres re-image with quantitative SPECT and short-interval follow-up; others move to biopsy when the pretest probability is high. Both are defensible — the choice turns on suspicion, comorbidity, and how much the result changes management.'],['gill','spect'],'#215D91'); }
+   else { // grade 2 or 3
+    if(sp==='yes'){ verdict='ATTR — diagnosable without biopsy'; cls='#0B6B52';
+     line='Grade '+g+' myocardial uptake (SPECT-confirmed) with a negative monoclonal screen meets the non-biopsy criteria for ATTR cardiac amyloidosis.';
+     var hnote = (!isNaN(h)) ? (h>=ht ? ' The H/CL ratio ('+h.toFixed(2)+' ≥ '+ht.toFixed(1)+') is supportive.' : ' Note the H/CL ratio ('+h.toFixed(2)+') is below the '+ht.toFixed(1)+' threshold — reconcile with the visual grade and SPECT.') : '';
+     body=blk('Non-biopsy ATTR diagnosis met',['Grade 2–3 cardiac uptake, SPECT-confirmed as myocardial, with a negative monoclonal screen has &gt;99% specificity/PPV for ATTR — biopsy is not required.'+hnote],['gill','spect','hcl'],'#0B6B52')
+      +blk('Next steps',['<b>TTR genotyping</b> to distinguish hereditary from wild-type ATTR (and enable family screening). <b>Refer for disease-modifying therapy</b> — tafamidis improved survival and CV hospitalization in ATTR-ACT. Confirm cardiology co-management.'],['geno','attract'],'#0B6B52');
+     if(s==='low'){ body+=blk('Caution — low pretest suspicion',['With low clinical/echo suspicion, consider incidental causes of myocardial bone-tracer uptake (e.g. recent myocardial infarction with dystrophic calcification) and correlate before finalizing.'],['spect'],'#8A6009'); }
+    } else { verdict='Confirm with SPECT before diagnosis'; cls='#8A6009';
+     line='Grade '+g+' on planar imaging requires SPECT confirmation that uptake is myocardial, not blood pool or overlying rib.';
+     body=blk('SPECT is mandatory',['Planar grade 2–3 can be produced by retained blood pool or rib overlap. Obtain SPECT (or SPECT/CT) to confirm true myocardial uptake before diagnosing ATTR.'],['spect','multi'],'#8A6009'); }
+   }
+  }
+  // differential (always shown when a scan is in play)
+  if(m==='neg' && g!=='none' && g!=='0'){
+   body+=blk('Differential & mimics',['<b>AL amyloid</b> (positive monoclonal — excluded here), <b>retained blood pool</b> (early/renal failure), <b>rib/sternal overlap</b> on planar, and <b>prior myocardial infarction</b> (dystrophic calcification).'],['al','spect'],null);
+  }
+  document.getElementById('am-v').textContent=verdict;
+  document.getElementById('am-v').style.color=cls;
+  document.getElementById('am-line').textContent=line;
+  document.getElementById('am-body').innerHTML=body;
+  lastSummary='CARDIAC AMYLOID PATHWAY — Verdict: '+verdict+'\n'+line+'\n(Monoclonal screen: '+m+'; Perugini grade: '+g+'; SPECT: '+sp+')';
+ }
+ function v(id){return document.getElementById(id).value;}
+ ['am-s','am-m','am-g','am-sp','am-ht'].forEach(function(i){document.getElementById(i).addEventListener('change',f);});
+ document.getElementById('am-h').addEventListener('input',f);
+ document.getElementById('am-copy').addEventListener('click',function(){navigator.clipboard.writeText(lastSummary).then(function(){var b=document.getElementById('am-copy');b.textContent='Copied';setTimeout(function(){b.textContent='Copy summary';},1400);});});
+ f();
+})();</script>

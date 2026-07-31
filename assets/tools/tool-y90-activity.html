@@ -1,0 +1,66 @@
+
+<div class='tool'>
+ <div class='hg-h' style='margin-bottom:10px'>Y-90 radioembolization &#8212; prescribed activity</div>
+ <div class='t-grid'>
+  <div class='t-f'><label>Method</label><div class='t-in'>
+   <select id='y9-m'>
+    <option value='glass'>MIRD single-compartment (glass &#183; TheraSphere)</option>
+    <option value='resin'>BSA method (resin &#183; SIR-Spheres)</option>
+    <option value='part'>Partition model (tumour / liver / lung)</option>
+   </select></div></div>
+  <div class='t-f'><label>Lung shunt fraction (%)</label><div class='t-in'><input id='y9-lsf' type='number' value='5' step='0.5' min='0' max='100'></div></div>
+  <div class='t-f'><label>Lung mass (kg)</label><div class='t-in'><input id='y9-lung' type='number' value='1' step='0.1' min='0.1'></div></div>
+ </div>
+ <div class='t-grid y9-glass'>
+  <div class='t-f'><label>Target absorbed dose (Gy)</label><div class='t-in'><input id='y9-d' type='number' value='120' step='5' min='0'></div></div>
+  <div class='t-f'><label>Perfused liver mass (kg)</label><div class='t-in'><input id='y9-mliv' type='number' value='1.5' step='0.1' min='0'></div></div>
+ </div>
+ <div class='t-grid y9-resin' style='display:none'>
+  <div class='t-f'><label>BSA (m&#178;)</label><div class='t-in'><input id='y9-bsa' type='number' value='1.8' step='0.05' min='0'></div></div>
+  <div class='t-f'><label>Tumour volume (mL)</label><div class='t-in'><input id='y9-tv' type='number' value='300' step='10' min='0'></div></div>
+  <div class='t-f'><label>Normal liver volume (mL)</label><div class='t-in'><input id='y9-nv' type='number' value='1200' step='10' min='0'></div></div>
+ </div>
+ <div class='t-grid y9-part' style='display:none'>
+  <div class='t-f'><label>Target tumour dose (Gy)</label><div class='t-in'><input id='y9-td' type='number' value='120' step='5' min='0'></div></div>
+  <div class='t-f'><label>Tumour-to-normal ratio (T/N)</label><div class='t-in'><input id='y9-tn' type='number' value='3' step='0.1' min='0.1'></div></div>
+  <div class='t-f'><label>Tumour mass (kg)</label><div class='t-in'><input id='y9-tm' type='number' value='0.3' step='0.05' min='0'></div></div>
+  <div class='t-f'><label>Normal liver mass (kg)</label><div class='t-in'><input id='y9-nm' type='number' value='1.2' step='0.1' min='0'></div></div>
+ </div>
+ <div class='t-row' id='y9-row'></div>
+ <div class='t-badge' id='y9-bd'></div>
+ <div class='t-note'>All methods use the Y-90 constant <b>50 Gy&#183;kg/GBq</b>. <b>Glass/MIRD:</b> A = D &#215; m / [50 &#215; (1&#8722;LSF)]. <b>Resin/BSA:</b> A = (BSA &#8722; 0.2) + V<sub>tumour</sub>/(V<sub>tumour</sub>+V<sub>liver</sub>). <b>Partition:</b> tumour, normal-liver, and lung doses from T/N and masses. <b>Lung dose</b> = 50 &#215; A &#215; LSF / m<sub>lung</sub>; keep &#8804; <b>30 Gy</b> per administration (&#8804; 50 Gy cumulative). Residual/reflux and non-target deposition are not modelled. Educational estimate &#8212; confirm every prescription with medical physics and your institutional protocol.</div>
+</div>
+<script>(function(){
+var g=function(i){return document.getElementById(i);};
+function toggle(){var m=g('y9-m').value;
+ document.querySelector('.y9-glass').style.display=(m==='glass')?'':'none';
+ document.querySelector('.y9-resin').style.display=(m==='resin')?'':'none';
+ document.querySelector('.y9-part').style.display=(m==='part')?'':'none';
+ f();}
+function f(){
+ var m=g('y9-m').value, lsf=(+g('y9-lsf').value)/100, ml=+g('y9-lung').value, A=0, extra='';
+ if(lsf<0||lsf>=1||ml<=0){clear();return;}
+ if(m==='glass'){var D=+g('y9-d').value, mass=+g('y9-mliv').value;
+  if(D>0&&mass>0)A=D*mass/(50*(1-lsf));}
+ else if(m==='resin'){var bsa=+g('y9-bsa').value, tv=+g('y9-tv').value, nv=+g('y9-nv').value;
+  if(bsa>0&&(tv+nv)>0)A=(bsa-0.2)+tv/(tv+nv);}
+ else{var td=+g('y9-td').value, tn=+g('y9-tn').value, tm=+g('y9-tm').value, nm=+g('y9-nm').value, den=tm*tn+nm;
+  if(td>0&&tn>0&&den>0){A=td*den/(50*tn*(1-lsf));
+   extra='<div class="t-mini"><b>'+(td/tn).toFixed(0)+'</b><span>normal-liver dose (Gy)</span></div>';}}
+ if(A<=0){clear();return;}
+ var dlung=50*A*lsf/ml;
+ var row='<div class="t-mini"><b>'+A.toFixed(2)+'</b><span>activity (GBq)</span></div>'+
+  '<div class="t-mini"><b>'+(A*27.03).toFixed(0)+'</b><span>activity (mCi)</span></div>'+extra+
+  '<div class="t-mini"><b>'+dlung.toFixed(1)+'</b><span>lung dose (Gy)</span></div>';
+ g('y9-row').innerHTML=row;
+ var cls,msg;
+ if(dlung>30){cls='bad';msg='Lung dose exceeds 30 Gy — reduce activity or reconsider';}
+ else if(dlung>25){cls='warn';msg='Lung dose approaching the 30 Gy limit';}
+ else{cls='ok';msg='Lung dose within the 30 Gy single-administration limit';}
+ g('y9-bd').className='t-badge '+cls; g('y9-bd').textContent=msg;
+}
+function clear(){g('y9-row').innerHTML='';g('y9-bd').textContent='';g('y9-bd').className='t-badge';}
+g('y9-m').addEventListener('change',toggle);
+['y9-lsf','y9-lung','y9-d','y9-mliv','y9-bsa','y9-tv','y9-nv','y9-td','y9-tn','y9-tm','y9-nm']
+ .forEach(function(i){g(i).addEventListener('input',f);});
+toggle();})();</script>

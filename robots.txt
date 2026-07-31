@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://nuclear-medicine-atlas.org/sitemap.xml

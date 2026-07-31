@@ -1,0 +1,24 @@
+<div class='tool'>
+ <div class='hg-h' style='margin-bottom:10px'>Nuclear medicine unit converter</div>
+ <div class='t-grid'>
+  <div class='t-f'><label>Quantity</label><div class='t-in'><select id='uc-q'><option value='act'>Activity</option><option value='abs'>Absorbed dose</option><option value='eq'>Equivalent / effective dose</option></select></div></div>
+  <div class='t-f'><label>Value &amp; unit</label><div class='t-in'><input type='number' id='uc-v' value='10' step='any'><select id='uc-u'></select></div></div>
+ </div>
+ <div class='t-row' id='uc-out'></div>
+ <div class='t-note'>Exact definitional factors. Activity: 1 Ci = 3.7&#215;10&#185;&#8304; Bq = 37 GBq, so 1 mCi = 37 MBq. Absorbed dose: 1 Gy = 100 rad (1 cGy = 1 rad). Equivalent/effective dose: 1 Sv = 100 rem.</div>
+</div>
+<script>(function(){
+var UNITS={
+ act:[['mCi',3.7e7],['µCi',3.7e4],['Ci',3.7e10],['MBq',1e6],['GBq',1e9],['kBq',1e3],['Bq',1]],
+ abs:[['Gy',1],['cGy',0.01],['mGy',0.001],['rad',0.01],['mrad',1e-5]],
+ eq:[['Sv',1],['mSv',0.001],['µSv',1e-6],['rem',0.01],['mrem',1e-5]]
+};
+function g(i){return document.getElementById(i);}
+function fillUnits(){var q=g('uc-q').value;g('uc-u').innerHTML=UNITS[q].map(function(u){return '<option value="'+u[1]+'">'+u[0]+'</option>';}).join('');}
+function fmt(x){if(!isFinite(x))return '—';if(x===0)return '0';var a=Math.abs(x);if(a>=1e6||a<1e-3)return x.toExponential(3);return (Math.round(x*1e4)/1e4).toString();}
+function calc(){var q=g('uc-q').value,v=+g('uc-v').value,f=+g('uc-u').value,base=v*f;
+ g('uc-out').innerHTML=UNITS[q].map(function(u){return '<div class="t-mini"><b>'+fmt(base/u[1])+'</b><span>'+u[0]+'</span></div>';}).join('');}
+g('uc-q').addEventListener('change',function(){fillUnits();calc();});
+['uc-v','uc-u'].forEach(function(i){g(i).addEventListener('input',calc);g(i).addEventListener('change',calc);});
+fillUnits();calc();
+})();</script>
