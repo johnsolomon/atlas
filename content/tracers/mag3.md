@@ -4,7 +4,7 @@ title: Tc-99m-MAG3
 chapter: genitourinary
 order: 20
 isotope_label: "⁹⁹ᵐTc-MAG3"
-subtitle: Renal tubular agent for dynamic renography — function, drainage, and split function
+subtitle: Renal tubular agent for dynamic renography, function, drainage, and split function
 aliases: [MAG3, mertiatide, Tc-99m MAG3, renal scan, renography, diuretic renogram, Lasix renogram, split renal function, F+20, tubular secretion, mercaptoacetyltriglycine]
 isotope: Technetium-99m
 half_life: "6.0 hours"

@@ -1,6 +1,6 @@
 ---
 type: therapy
-title: Theranostics — Overview
+title: "Theranostics: Overview"
 chapter: theranostics
 order: 10
 subtitle: The "see it, treat it" paradigm of paired diagnostic imaging and targeted radionuclide therapy

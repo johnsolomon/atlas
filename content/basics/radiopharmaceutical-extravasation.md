@@ -3,7 +3,7 @@ type: physics
 title: Radiopharmaceutical Extravasation & Injection Quality
 chapter: dosimetry-safety
 order: 40
-subtitle: Paravenous administration — effects on SUV, dosimetry, image artifacts, and therapy safety
+subtitle: Paravenous administration, effects on SUV, dosimetry, image artifacts, and therapy safety
 aliases: [extravasation, infiltration, paravenous injection, injection site, SUV artifact, axillary node uptake, therapy extravasation, injection quality, tissue dose, dose infiltration reporting]
 review_status: physician-reviewed
 last_updated: 2026-07-27

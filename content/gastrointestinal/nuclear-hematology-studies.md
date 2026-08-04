@@ -1,6 +1,6 @@
 ---
 type: protocol
-title: Hematologic Studies — RBC Survival, Sequestration & Blood Volume
+title: "Hematologic Studies: RBC Survival, Sequestration & Blood Volume"
 chapter: gastrointestinal
 order: 80
 subtitle: Cr-51 red-cell survival, splenic sequestration, and blood-volume measurement

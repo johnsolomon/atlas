@@ -129,6 +129,13 @@ Staged by **ISS/R-ISS** (β2-microglobulin, albumin, LDH, high-risk cytogenetics
 - A **modality-complementarity** plate (CT vs MRI vs FDG-PET; what each detects).
 - **IMPeTUs / Deauville-like** reference schematic for myeloma response.
 
+## Common Pitfalls
+
+- {H} **Diffuse marrow infiltration** can be missed on FDG-PET when uptake only mildly exceeds the reference organs — whole-body MRI is more sensitive for the purely diffuse pattern.
+- **Skull and skull-base lesions** are easily obscured by intense physiologic **brain FDG** — scrutinize the calvarium and correlate with CT/MRI.
+- **Recent corticosteroids or recent chemotherapy** suppress FDG uptake and can render active disease falsely negative — record steroid/chemo timing before calling a lesion resolved.
+- **Degenerative joints, fractures, and post-vertebroplasty/surgical change** take up FDG and can be mistaken for focal myeloma lesions.
+
 ## Self-Check (Board-Style)
 
 <details><summary><strong>Q1.</strong> A myeloma patient's ⁹⁹ᵐTc-MDP bone scan is unremarkable despite known lytic lesions. Why?</summary>

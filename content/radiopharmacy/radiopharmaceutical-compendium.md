@@ -3,7 +3,7 @@ type: reference
 title: Radiopharmaceutical Compendium
 chapter: radiopharmacy
 order: 5
-subtitle: An interactive tracer–target matrix — every major radiopharmaceutical by isotope, modality, mechanism, and use
+subtitle: An interactive tracer/target matrix, every major radiopharmaceutical by isotope, modality, mechanism, and use
 aliases: [radiopharmaceutical compendium, tracer matrix, tracer target table, radiopharmaceutical table, tracer list, agent index, mechanism table]
 review_status: physician-reviewed
 last_updated: 2026-07-28

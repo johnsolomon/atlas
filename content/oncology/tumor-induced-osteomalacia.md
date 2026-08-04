@@ -60,6 +60,22 @@ Tumor-induced osteomalacia (TIO) is a rare **paraneoplastic** syndrome in which 
 
 - Tracers: **⁶⁸Ga-DOTATATE**, **FAPI**; therapy context: **PRRT / theranostics**.
 
+## Differential Diagnosis
+
+- Other **FGF23-mediated hypophosphatemia without a tumor** — **X-linked (XLH)** and **autosomal-dominant (ADHR)** hypophosphatemic rickets are germline, present in childhood with a family history, and have no culprit lesion to localize.
+- **Non-FGF23 renal phosphate wasting** — **Fanconi syndrome**, drugs (tenofovir, ifosfamide), and **IV iron**-induced FGF23 elevation cause phosphaturia without a PMT.
+- **Nutritional/vitamin-D-deficiency osteomalacia** — different biochemistry (phosphate wasting is secondary, driven by hyperparathyroidism), no FGF23 excess.
+- **SSTR-PET false positives** mimicking the culprit — physiologic uncinate-process/splenunculus/adrenal uptake, degenerative joint uptake, and other SSTR-expressing lesions (meningioma, neuroendocrine tumor, granuloma).
+- **FAPI false positives** — arthritis, healing insufficiency **fractures**, and inflammation are FAPI-avid, a real trap in TIO patients who characteristically have fragility fractures.
+
+## Reporting Checklist
+
+- {H} Confirm **whole-body coverage from skull to feet** (extend fields to hands and feet) — PMTs commonly lodge at acral/extremity sites outside the routine PET range.
+- Report each SSTR-avid focus with **size, uptake versus background, bone-vs-soft-tissue location**, and a precise anatomic description for surgical mapping.
+- Provide the **CT/MRI correlate** and state whether disease appears **solitary or multifocal**.
+- Distinguish a likely culprit from **physiologic, degenerative, or inflammatory** uptake.
+- If imaging is equivocal or multifocal, recommend **selective venous sampling for FGF23**; if negative, recommend a **complementary tracer** (FAPI or FDG).
+
 ## Self-Check
 
 <details><summary><strong>Q1.</strong> What hormone and electrolyte disturbance define tumor-induced osteomalacia?</summary>

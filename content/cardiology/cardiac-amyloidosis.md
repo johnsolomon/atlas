@@ -140,6 +140,14 @@ ATTR-CM is progressive but its trajectory has improved with **disease-modifying 
 - The **Perugini 0–3** visual-grade plate (cardiac vs rib uptake).
 - **Planar vs SPECT** teaching pair showing blood-pool mimicry resolved by SPECT.
 
+## Common Pitfalls
+
+- {H} A **negative bone-tracer scan does not exclude AL amyloidosis** — AL is often non-avid or only faintly avid, so cardiac amyloidosis can still be present; pursue biopsy/typing if clinical suspicion remains high.
+- **Grade 1 uptake is equivocal, not negative** — SPECT is needed to decide whether faint activity is truly myocardial; dismissing it as normal can miss early ATTR.
+- Applying the **1-hour H/CL cutoff (~1.5) to 3-hour images** (or vice versa) — thresholds differ because blood pool clears over time.
+- Poor **contralateral ROI placement** or inclusion of sternal/rib activity can spuriously inflate the H/CL ratio.
+- Focal mimics such as **recent rib fracture, valvular calcification, or overlying breast/soft-tissue attenuation** distorting the visual grade.
+
 ## Self-Check (Board-Style)
 
 <details><summary><strong>Q1.</strong> A grade-3 PYP scan is obtained. What single result must be checked before diagnosing ATTR, and why?</summary>

@@ -41,7 +41,7 @@ Each page displays a **review-status badge** and a **last-updated date**. *AI-dr
 
 ## Related Pages
 
-- **[About & Methodology](#/about-methodology)** — the Six-Domain framework and maintenance model.
+- **[About & Methodology](#/about-methodology)** — how the atlas is organized, graded, and maintained.
 - **[Feedback & Corrections](#/feedback-corrections)** — how to report an error or suggest an edit.
 - **[Contribute to the Atlas — Author Guide](#/contribute-author-guide)** — authorship and review for contributed articles.
 - **[Disclaimer & Terms of Use](#/disclaimer-terms)** — what the atlas is and is not.

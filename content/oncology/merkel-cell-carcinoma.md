@@ -129,6 +129,13 @@ MCC is **aggressive and stage-dependent**, with a substantial risk of nodal and 
 - A **dual-pathway** biology diagram (MCPyV vs UV-mutagenesis → neuroendocrine carcinoma).
 - An **FDG staging upstaging** before/after schematic.
 
+## Common Pitfalls
+
+- {H} On checkpoint immunotherapy, **immune-related inflammation** (sarcoid-like nodes, immune-organ uptake) and **pseudoprogression** mimic true progression — as in melanoma, confirm equivocal change before calling failure.
+- MCC is **radiosensitive** and often irradiated, so **post-radiotherapy inflammatory uptake** at the primary or nodal bed can simulate residual or recurrent disease — account for treatment timing.
+- **DOTATATE uptake is variable or absent**, so SSTR-PET cannot be relied on for staging (FDG remains the staging tracer) and a negative DOTATATE study does not exclude MCC.
+- Head/neck sentinel-node mapping is prone to **injection-site shine-through** and ambiguous drainage — SPECT/CT clarifies the true first-echelon node.
+
 ## Self-Check (Board-Style)
 
 <details><summary><strong>Q1.</strong> Why is FDG-PET/CT recommended for staging Merkel cell carcinoma?</summary>

@@ -3,7 +3,7 @@ type: practice
 title: On-Call & STAT Nuclear Medicine
 chapter: boards
 order: 25
-subtitle: The urgent studies a resident must know cold — GI bleed, torsion, PE, biliary leak, brain death
+subtitle: "The urgent studies a resident must know cold: GI bleed, torsion, PE, biliary leak, brain death"
 aliases: [on call nuclear medicine, STAT nuclear medicine, emergency nuclear medicine, GI bleed scan urgent, testicular torsion scan, brain death scintigraphy, HIDA bile leak, V/Q on call, urgent nuclear study]
 isotope_label: "⁹⁹ᵐTc · ¹³³Xe"
 modality: [Planar, SPECT]

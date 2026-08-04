@@ -125,6 +125,14 @@ Many patients (especially **Löfgren**) remit spontaneously. **Cardiac, neurolog
 - The **panda/lambda** Ga-67 sign plate.
 - A **biopsy-targeting** schematic (most active accessible lesion).
 
+## Common Pitfalls
+
+- {K} For **cardiac** imaging, inadequate dietary suppression leaves **residual physiologic myocardial FDG** (often lateral wall) that mimics or masks active inflammation — verify suppression before interpreting.
+- **FDG cannot distinguish** active sarcoid granulomas from lymphoma, TB/fungal infection, or metastatic nodes — avid disease still requires **histology with infection excluded**.
+- **Sarcoid-like reactions** (checkpoint-immunotherapy irAE, reaction adjacent to malignancy) can be mistaken for lymphoma progression or metastatic spread — biopsy before calling progression.
+- A **negative or low-uptake FDG study does not exclude structural disease** — burnt-out fibrotic sarcoid is photopenic despite significant organ damage.
+- Physiologic uptake (brown fat, muscle, bowel, thymus) can be over-read as active extrapulmonary disease — correlate with CT and pattern.
+
 ## Self-Check (Board-Style)
 
 <details><summary><strong>Q1.</strong> What does FDG uptake indicate in sarcoidosis, and how does it help management?</summary>

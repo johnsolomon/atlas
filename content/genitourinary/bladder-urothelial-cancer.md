@@ -3,7 +3,7 @@ type: disease
 title: Bladder & Urothelial Cancer
 chapter: genitourinary
 order: 150
-subtitle: FDG-PET for distant staging — and the urinary-excretion problem in the pelvis
+subtitle: FDG-PET for distant staging, and the urinary-excretion problem in the pelvis
 aliases: [bladder cancer, urothelial carcinoma, transitional cell carcinoma, TCC, muscle invasive, NMIBC, MIBC, upper tract urothelial, nectin-4, enfortumab, FGFR3, erdafitinib, schistosomiasis]
 review_status: physician-reviewed
 last_updated: 2026-07-27
@@ -129,6 +129,13 @@ Prognosis hinges on **muscle invasion and stage**: NMIBC is often chronic-relaps
 - A **pelvic-clearance technique** graphic (hydration → diuretic → post-void/delayed imaging).
 - An **NMIBC vs MIBC** molecular/clinical two-track diagram.
 - A **targeted-therapy** map (FGFR3/erdafitinib, nectin-4/enfortumab).
+
+## Common Pitfalls
+
+- {H} Even with a diuretic protocol, **residual layering urine or focal Foley-catheter activity** at the bladder base can hide the primary or mimic a lesion — the bladder primary is unreliable on PET regardless of technique.
+- **Post-chemoradiation inflammatory uptake** in the bladder wall and pelvic nodes mimics residual or recurrent tumor — allow an adequate treatment-to-scan interval before response assessment.
+- **Small or normal-sized nodal metastases** fall below FDG resolution (false negative), so a negative PET does not exclude nodal disease; conversely, **reactive nodes** can be falsely positive.
+- **Ureteral/collecting-system urinary stasis** or a **bladder diverticulum** retaining excreted tracer can simulate a mass — correlate with CT.
 
 ## Self-Check (Board-Style)
 

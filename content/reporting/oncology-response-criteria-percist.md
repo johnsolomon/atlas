@@ -1,6 +1,6 @@
 ---
 type: reference
-title: Oncology Response Criteria — RECIST & PERCIST
+title: "Oncology Response Criteria: RECIST & PERCIST"
 chapter: reporting
 order: 50
 subtitle: Anatomic and metabolic response frameworks, and where each applies

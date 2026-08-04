@@ -3,7 +3,7 @@ type: reference
 title: Urgent & Actionable CT Findings to Report
 chapter: correlative-ct
 order: 25
-subtitle: The findings on a localization CT that are serious enough to catch, report, and often communicate directly — regardless of the study's primary indication
+subtitle: The findings on a localization CT that are serious enough to catch, report, and often communicate directly, regardless of the study's primary indication
 aliases: [urgent CT findings, critical results communication, must not miss CT nuclear medicine, actionable incidental findings, aortic aneurysm incidental, pneumothorax localization CT, free air perforation, cord compression, closed loop communication, critical findings PET CT]
 review_status: physician-reviewed
 last_updated: 2026-07-28

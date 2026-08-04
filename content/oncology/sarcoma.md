@@ -135,6 +135,13 @@ Prognosis depends on **grade, size, depth, histology, and resectability** (and, 
 - A **GIST imatinib response** panel: early SUV drop and CT-density (Choi) change vs unchanged size.
 - **Fusion-driven vs complex-karyotype** sarcoma classification diagram.
 
+## Common Pitfalls
+
+- {H} FDG-PET is **insensitive for small pulmonary metastases** — dedicated **chest CT** remains the staging test for the lungs (the commonest sarcoma metastatic site).
+- Benign but **hypermetabolic** lesions (myositis ossificans, nodular fasciitis, giant cell tumor, fibrous dysplasia) can show high SUV and produce **false-positive** grade/malignancy reads.
+- In responding **GIST**, lesions may develop **cystic/hemorrhagic change or a thin avid rim** — do not overcall this as progression; correlate with Choi (density) response.
+- **Physiologic muscle uptake** (recent exertion) and **brown fat** adjacent to an extremity mass can be mistaken for tumor or nodal spread.
+
 ## Self-Check (Board-Style)
 
 <details><summary><strong>Q1.</strong> Three days after starting imatinib for metastatic GIST, lesions are unchanged in size but FDG uptake has fallen sharply. Response or not?</summary>

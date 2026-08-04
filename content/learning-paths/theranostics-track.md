@@ -3,7 +3,7 @@ type: reference
 title: Theranostics Deep-Dive
 chapter: learning-paths
 order: 40
-subtitle: The radioligand-therapy track — from the see-and-treat concept to running a program and reading the pipeline
+subtitle: The radioligand-therapy track, from the see-and-treat concept to running a program and reading the pipeline
 aliases: [theranostics track, radioligand therapy curriculum, RPT learning path, PRRT PSMA path, theranostics deep dive, therapy track]
 review_status: physician-reviewed
 last_updated: 2026-07-29

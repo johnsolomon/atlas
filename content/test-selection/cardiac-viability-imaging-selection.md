@@ -1,6 +1,6 @@
 ---
 type: comparison
-title: Myocardial Viability Imaging — Which Test When
+title: "Myocardial Viability Imaging: Which Test When"
 chapter: test-selection
 order: 60
 subtitle: Choosing among FDG-PET perfusion/metabolism, SPECT (thallium/sestamibi), and cardiac MRI to identify hibernating myocardium

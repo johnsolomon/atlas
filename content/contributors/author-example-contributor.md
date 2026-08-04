@@ -3,7 +3,7 @@ type: author
 title: Example Contributor, MD, PhD
 chapter: contributors
 order: 10
-subtitle: Template profile — replace with a real contributor
+subtitle: Template profile, replace with a real contributor
 credentials: MD, PhD
 role: Nuclear Medicine Physician · Theranostics
 affiliation: Department of Nuclear Medicine, [Institution]

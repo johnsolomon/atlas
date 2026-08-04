@@ -17,9 +17,9 @@ related_calculators: []
 
 ## Quick Answer
 
-The Nuclear Medicine Atlas is a single, self-contained reference intended to be **exhaustive enough for a practising nuclear medicine physician and high-yield enough for a resident preparing for boards**. It is written in original prose, organized on an original **Six-Domain framework**, graded for evidence strength, and built by a reproducible pipeline from plain-text source so it can be maintained and extended over many years. This page states the editorial method so the resource can be judged, cited, and contributed to transparently.
+The Nuclear Medicine Atlas is a single, self-contained reference intended to be **exhaustive enough for a practising nuclear medicine physician and high-yield enough for a resident preparing for boards**. It is written in original prose, organized to follow the causal arc of a nuclear medicine study, graded for evidence strength, and built by a reproducible pipeline from plain-text source so it can be maintained and extended over many years. This page states the editorial method so the resource can be judged, cited, and contributed to transparently.
 
-## The Six-Domain framework
+## How the atlas is organized
 
 {K} The atlas is organized not by textbook tradition but by the **causal arc of a nuclear medicine study** — how the signal is made, what carries it, what it reveals, how it treats, how we read it, and how we quantify and verify it. Each domain has a single inclusion rule, so there is never ambiguity about where a new page belongs and the taxonomy scales without reorganization.
 
@@ -61,7 +61,7 @@ Each page carries a copy-ready citation and a stable in-document permalink of th
 
 ## Self-Check
 
-<details><summary><strong>Q1.</strong> What organizing principle underlies the Six-Domain framework?</summary>
+<details><summary><strong>Q1.</strong> What organizing principle underlies the atlas's structure?</summary>
 <p><strong>Answer:</strong> The <strong>causal arc of a nuclear medicine study</strong> — how the signal is made (I), what carries it (II), what it reveals (III), how it treats (IV), how we read it (V), and how we quantify and verify it (VI) — with each domain given a single inclusion rule so the taxonomy scales without reorganization.</p>
 </details>
 

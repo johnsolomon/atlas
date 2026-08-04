@@ -3,7 +3,7 @@ type: pattern
 title: Discordant PSMA / FDG Disease
 chapter: pearls
 order: 70
-subtitle: PSMA-negative but FDG-positive lesions — the dedifferentiation pattern that governs theranostic eligibility
+subtitle: PSMA-negative but FDG-positive lesions, the dedifferentiation pattern that governs theranostic eligibility
 aliases: [discordant PSMA FDG, PSMA-negative FDG-positive, dual tracer prostate, dedifferentiated prostate cancer, PSMA-FDG mismatch, mismatch prostate]
 review_status: physician-reviewed
 last_updated: 2026-07-28

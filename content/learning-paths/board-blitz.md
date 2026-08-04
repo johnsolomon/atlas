@@ -1,9 +1,9 @@
 ---
 type: reference
-title: Board Blitz — High-Yield Sprint
+title: "Board Blitz: High-Yield Sprint"
 chapter: learning-paths
 order: 30
-subtitle: The final-weeks review track — patterns, thresholds, reporting frameworks, and the trials, then drill in Study mode
+subtitle: The final-weeks review track, patterns, thresholds, reporting frameworks, and the trials, then drill in Study mode
 aliases: [board review nuclear medicine, ABNM review, high yield sprint, board blitz, exam cram, board prep path, final review]
 review_status: physician-reviewed
 last_updated: 2026-07-29

@@ -3,7 +3,7 @@ type: practice
 title: Protocoling & Appropriate Use
 chapter: boards
 order: 22
-subtitle: Turning a clinical question into the right study — justification, appropriate-use criteria, and avoiding low-value imaging
+subtitle: Turning a clinical question into the right study, justification, appropriate-use criteria, and avoiding low-value imaging
 aliases: [protocoling, appropriate use criteria, AUC, clinical decision support, justification, ALARA imaging, low value imaging, pretest probability, imaging stewardship, PAMA]
 isotope_label: ""
 modality: [PET]

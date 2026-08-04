@@ -68,6 +68,14 @@ Meningiomas arise from **arachnoid cap cells**, are usually **dural-based and ex
 - A **DOTATATE-defined RT target** vs MRI-only volume (osseous/skull-base extent).
 - A **physiologic uptake** map (pituitary, venous sinuses) vs tumor.
 
+## Differential Diagnosis
+
+- {H} **Dural metastases** (especially neuroendocrine, breast, or prostate primaries) can express SSTR and mimic meningioma — multiplicity and a known primary favor metastasis.
+- **Solitary fibrous tumor / hemangiopericytoma** — a dural-based MRI mimic with variable, often lower SSTR uptake.
+- At the **cerebellopontine angle**, DOTATATE helps separate an avid **meningioma** from a typically low-uptake **vestibular schwannoma**.
+- **Inflammatory/granulomatous pachymeningitis** (neurosarcoidosis, IgG4-related disease) can cause dural uptake mimicking en-plaque meningioma.
+- Other **skull-base SSTR-avid tumors** (paraganglioma, olfactory neuroblastoma) enter the differential by location.
+
 ## Self-Check
 
 <details><summary><strong>Q1.</strong> Why is Ga-68-DOTATATE well suited to meningioma imaging?</summary>

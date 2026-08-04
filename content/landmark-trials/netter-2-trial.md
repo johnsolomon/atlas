@@ -3,7 +3,7 @@ type: trial
 title: NETTER-2
 chapter: landmark-trials
 order: 60
-subtitle: ¹⁷⁷Lu-DOTATATE moved to the front line — first-line PRRT for higher-grade GEP-NETs
+subtitle: ¹⁷⁷Lu-DOTATATE moved to the front line, first-line PRRT for higher-grade GEP-NETs
 aliases: [NETTER-2 trial, first-line PRRT trial, Lu-177 DOTATATE first line, Singh NETTER-2, grade 2 grade 3 NET PRRT, high-grade neuroendocrine PRRT]
 review_status: physician-reviewed
 last_updated: 2026-07-28

@@ -3,7 +3,7 @@ type: disease
 title: Hepatocellular Carcinoma
 chapter: oncology
 order: 190
-subtitle: The role of nuclear medicine — Y-90 radioembolization and its work-up
+subtitle: "The role of nuclear medicine: Y-90 radioembolization and its work-up"
 aliases: [HCC, hepatocellular carcinoma, liver cancer, cirrhosis, LI-RADS, radioembolization, TARE, SIRT, radiation segmentectomy, MAA mapping, BCLC, AFP]
 review_status: physician-reviewed
 last_updated: 2026-07-27
@@ -127,6 +127,13 @@ Prognosis integrates **tumor stage (BCLC), liver function (Child-Pugh/ALBI), and
 - A **BCLC-to-therapy** map highlighting where Y-90 (segmentectomy, intermediate, downstaging) fits.
 - The **MAA simulation → Y-90 delivery** workflow with lung-shunt gating.
 - **Well- vs poorly-differentiated HCC** FDG behavior (G6Pase washout vs avid).
+
+## Common Pitfalls
+
+- **Free ⁹⁹ᵐTc-pertechnetate** from poorly-labeled MAA falsely elevates the **lung-shunt fraction** and adds gastric/thyroid activity that can be mistaken for extrahepatic GI deposition — check label quality before acting on shunt numbers.
+- Assuming the **MAA "simulation" perfectly predicts Y-90 microsphere distribution**: catheter repositioning, differing particle load, and altered arterial flow between mapping and treatment can produce a **mismatch**.
+- Judging treated-lesion **response by size**: after Y-90/TACE a lesion may transiently enlarge or not shrink; viability is assessed by **arterial enhancement (mRECIST)**, not diameter.
+- {H} Treating a **negative FDG-PET as reassurance**: well-differentiated HCC is characteristically FDG-low, so FDG cannot exclude or "clear" viable tumor — it only stratifies grade/prognosis when positive.
 
 ## Self-Check (Board-Style)
 

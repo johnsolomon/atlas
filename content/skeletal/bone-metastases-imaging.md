@@ -1,6 +1,6 @@
 ---
 type: disease
-title: Skeletal Metastases — Imaging
+title: "Skeletal Metastases: Imaging"
 chapter: musculoskeletal
 order: 30
 subtitle: How the bone scan detects metastases, the patterns that matter, and where NaF PET, FDG, PSMA, CT and MRI fit
@@ -62,6 +62,24 @@ The **⁹⁹ᵐTc-diphosphonate bone scan** detects skeletal metastases by imagi
 ## Related Pages
 
 - Protocol: **Bone scintigraphy**; tracer: **¹⁸F-NaF bone PET**; patterns: **Superscan**, **Photopenic/cold lesions**, **Flare phenomenon**.
+
+## Differential Diagnosis
+
+- {H} **Degenerative disease** — periarticular, symmetric, joint-centered uptake (facets, shoulders, knees) is the commonest benign mimic of metastatic foci.
+- **Trauma/healing fractures** — rib fractures in a linear, aligned ("string of beads") pattern; correlate mechanism and CT.
+- **Paget disease** — intense uptake involving a **whole bone** with expansion/bowing and characteristic distribution (pelvis, spine, skull).
+- **Benign lesions** (fibrous dysplasia, osteoid osteoma, enchondroma) presenting as focal uptake.
+- **Metabolic bone disease / renal osteodystrophy**, which can produce a superscan mimicking diffuse blastic metastases.
+- **Post-therapy flare** vs true progression on early follow-up scans.
+
+## Reporting Checklist
+
+- Describe **number and distribution** (multiple random asymmetric axial foci favor mets; periarticular/symmetric favors degenerative).
+- Flag a **solitary** lesion as often benign and recommend **SPECT/CT** or correlative imaging before calling a metastasis.
+- State the **lytic-cancer caveat** — a normal or photopenic scan does not exclude disease in renal cell/myeloma; recommend **FDG/MRI**.
+- Identify a **superscan** (diffuse uptake with faint/absent kidneys) and distinguish blastic mets from metabolic bone disease.
+- On follow-up, address **flare timing** (transient worsening at ~2–3 months = healing) and compare later scans/markers.
+- Correlate with **CT** for blastic vs lytic morphology and fracture risk.
 
 ## Self-Check
 

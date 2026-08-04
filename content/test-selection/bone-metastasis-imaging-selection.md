@@ -1,6 +1,6 @@
 ---
 type: comparison
-title: Bone Metastasis Imaging — Which Test When
+title: "Bone Metastasis Imaging: Which Test When"
 chapter: test-selection
 order: 80
 subtitle: Choosing among ⁹⁹ᵐTc bone scan, NaF PET, FDG PET, and tumor-specific tracers by cancer type and lesion biology

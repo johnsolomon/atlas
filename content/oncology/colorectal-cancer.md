@@ -144,6 +144,13 @@ Stage is the dominant driver (TNM). **MSI-high** early-stage disease has a favor
 - A **rising-CEA work-up** algorithm ending at FDG-PET/CT.
 - **FDG vs FAPI** side-by-side for mucinous/peritoneal disease.
 
+## Common Pitfalls
+
+- {H} **Metformin** causes intense **diffuse bowel (especially colonic) FDG uptake** that can obscure or mimic tumor — consider withholding it before scanning or use delayed/comparison imaging when the pattern is confounding.
+- **Recent chemotherapy transiently lowers FDG avidity**, producing false negatives; respect an adequate post-treatment interval before calling response or excluding residual disease.
+- **Small-volume peritoneal carcinomatosis** is under-detected (partial-volume effect), a limitation compounded when the histology is mucinous.
+- **Colostomy/ileostomy stoma** sites show physiologic uptake that can be mistaken for peristomal recurrence — correlate with the stoma location on CT.
+
 ## Self-Check (Board-Style)
 
 <details><summary><strong>Q1.</strong> A colon-cancer survivor has a steadily rising CEA but negative CT and colonoscopy. What is the best next imaging test?</summary>

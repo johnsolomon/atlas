@@ -3,7 +3,7 @@ type: protocol
 title: Renal Scintigraphy
 chapter: genitourinary
 order: 10
-subtitle: Dynamic (MAG3) and cortical (DMSA) renography — function, drainage, and split function
+subtitle: Dynamic (MAG3) and cortical (DMSA) renography, function, drainage, and split function
 aliases: [renal scintigraphy, renography, MAG3, DMSA, DTPA, diuretic renogram, Lasix renogram, F+20, split function, differential function, obstruction, captopril renography, transplant, pyelonephritis]
 isotope_label: "⁹⁹ᵐTc-MAG3 · ⁹⁹ᵐTc-DMSA · ⁹⁹ᵐTc-DTPA"
 modality: [Planar, SPECT]
@@ -51,6 +51,8 @@ A dynamic (MAG3) study yields a **time–activity (renogram) curve** with three 
 3. **Excretory/drainage** — washout; drainage **half-time (T½)** and response to furosemide.
 
 **Split function** = each kidney's share of parenchymal uptake (normal ~50:50). Curve **patterns** (normal, obstructive-rising, non-obstructive dilated, poorly-functioning-flat) integrate with the numbers.
+
+Interactive: **[Renogram Explorer](#/tool-renogram)** — drag either kidney's curve to see the phases, washout T½, output efficiency, NORA, split function, diuretic response, and O'Reilly pattern decoded live.
 
 ## Diuretic Renography (the Obstruction Question)
 

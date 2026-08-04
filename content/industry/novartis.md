@@ -3,7 +3,7 @@ type: company
 title: Novartis (Radioligand Therapy)
 chapter: theranostics
 order: 150
-subtitle: Neutral factual profile — approved radioligand therapies and pipeline
+subtitle: Neutral factual profile, approved radioligand therapies and pipeline
 aliases: [Novartis, AAA, Advanced Accelerator Applications, Pluvicto, Lutathera, radioligand therapy company]
 review_status: physician-reviewed
 last_updated: 2026-07-27

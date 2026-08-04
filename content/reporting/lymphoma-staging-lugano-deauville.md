@@ -1,6 +1,6 @@
 ---
 type: reference
-title: Lymphoma Staging & Response — Lugano / Deauville
+title: "Lymphoma Staging & Response: Lugano / Deauville"
 chapter: reporting
 order: 30
 subtitle: The FDG-PET staging and 5-point response framework for lymphoma

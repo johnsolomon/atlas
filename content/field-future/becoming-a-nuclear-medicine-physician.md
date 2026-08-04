@@ -3,7 +3,7 @@ type: reference
 title: Becoming a Nuclear Medicine Physician
 chapter: field-future
 order: 20
-subtitle: The training pathways to board certification — including the routes that run through diagnostic radiology
+subtitle: The training pathways to board certification, including the routes that run through diagnostic radiology
 aliases: [nuclear medicine training, how to become nuclear medicine physician, ABNM certification, nuclear radiology pathway, ABR nuclear radiology, nuclear medicine residency, combined radiology nuclear medicine, molecular imaging therapy pathway, training pathways]
 review_status: physician-reviewed
 last_updated: 2026-07-28

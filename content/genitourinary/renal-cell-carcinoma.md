@@ -136,6 +136,13 @@ Localized RCC is often curable by surgery/ablation. Metastatic prognosis follows
 - A **CAIX theranostic** loop (⁸⁹Zr-girentuximab image → ¹⁷⁷Lu-girentuximab treat).
 - An **RCC metastatic-site** whole-body plate (including unusual sites).
 
+## Common Pitfalls
+
+- {H} **Low-grade / well-differentiated clear-cell RCC is frequently FDG-non-avid** — a negative FDG-PET does not exclude viable tumor or metastasis, so avidity is prognostic but insensitive for indolent disease.
+- Intense **urinary excretion** can obscure a post-nephrectomy renal-bed recurrence or mimic a hilar/perinephric lesion — use hydration, a diuretic, and delayed imaging.
+- **Papillary and chromophobe RCC are often CAIX-negative**, so a negative ⁸⁹Zr-girentuximab study does not exclude non-clear-cell RCC; the agent is validated for characterizing indeterminate solid masses as **ccRCC**, not for excluding cancer.
+- **RCC brain metastases are poorly FDG-avid** against high cortical background — do not rely on FDG-PET for intracranial disease; use dedicated brain MRI.
+
 ## Self-Check (Board-Style)
 
 <details><summary><strong>Q1.</strong> Why is FDG-PET limited for the RCC primary tumor?</summary>

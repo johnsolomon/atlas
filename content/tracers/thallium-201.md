@@ -4,7 +4,7 @@ title: Thallium-201
 chapter: cardiac
 order: 160
 isotope_label: "²⁰¹Tl-chloride"
-subtitle: A potassium analog with redistribution — legacy cardiac, viability, and tumor agent
+subtitle: A potassium analog with redistribution, legacy cardiac, viability, and tumor agent
 aliases: [thallium, Tl-201, thallous chloride, redistribution, reinjection, viability thallium, reverse redistribution, lung uptake, parathyroid thallium]
 isotope: Thallium-201
 half_life: "73 hours"

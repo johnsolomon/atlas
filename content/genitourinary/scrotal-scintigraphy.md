@@ -3,7 +3,7 @@ type: protocol
 title: Scrotal Scintigraphy
 chapter: genitourinary
 order: 80
-subtitle: Perfusion imaging for acute scrotal pain — torsion vs epididymitis
+subtitle: Perfusion imaging for acute scrotal pain, torsion vs epididymitis
 aliases: [scrotal scintigraphy, testicular torsion, acute scrotum, epididymitis, testicular perfusion, pertechnetate scrotal, nubbin sign]
 isotope_label: "⁹⁹ᵐTc-pertechnetate"
 modality: [Planar]

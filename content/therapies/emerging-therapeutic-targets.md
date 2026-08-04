@@ -3,7 +3,7 @@ type: practice
 title: Emerging Therapeutic Targets & Isotopes in RPT
 chapter: theranostics
 order: 160
-subtitle: FAP, GRPR, CXCR4, SSTR antagonists, and the alpha pipeline — where radioligand therapy is going next
+subtitle: FAP, GRPR, CXCR4, SSTR antagonists, and the alpha pipeline, where radioligand therapy is going next
 aliases: [emerging RPT targets, FAP therapy, FAP-2286, GRPR therapy, RM2 bombesin, CXCR4 pentixather, SSTR antagonist satoreotide, targeted alpha pipeline, Pb-212, Ac-225 supply, next generation theranostics]
 isotope_label: "¹⁷⁷Lu · ²²⁵Ac · ²¹²Pb"
 modality: [PET]

@@ -3,7 +3,7 @@ type: trial
 title: TheraP
 chapter: landmark-trials
 order: 40
-subtitle: ¹⁷⁷Lu-PSMA-617 versus cabazitaxel — and the dual PSMA/FDG selection that defined it
+subtitle: ¹⁷⁷Lu-PSMA-617 versus cabazitaxel, and the dual PSMA/FDG selection that defined it
 aliases: [TheraP trial, Lu-177 PSMA vs cabazitaxel, ANZUP TheraP, Hofman TheraP, dual tracer selection trial]
 review_status: physician-reviewed
 last_updated: 2026-07-28

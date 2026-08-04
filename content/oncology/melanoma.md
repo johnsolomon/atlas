@@ -141,6 +141,13 @@ Prognosis is governed by **Breslow thickness, ulceration, mitotic rate, nodal st
 - **Unusual metastatic sites** whole-body plate (bowel, subcutaneous, myocardium, spleen).
 - An **immunotherapy response vs irAE** comparison (true progression vs sarcoid-like nodal inflammation).
 
+## Common Pitfalls
+
+- {H} On lymphoscintigraphy, intense **injection-site "shine-through"** can obscure an adjacent sentinel node (especially head/neck and axillary primaries near the drainage basin) — use **SPECT/CT** and source shielding.
+- Small **in-transit, subcutaneous, or micrometastatic nodal** deposits fall below PET spatial resolution, so a negative PET does **not** exclude low-volume disease (reinforcing why PET cannot clear cN0 nodes).
+- **Reactive draining nodes** after recent excisional biopsy of the primary can be FDG-avid and mimic nodal metastasis — correlate with the biopsy timing and site.
+- **Dermal radiotracer contamination** during lymphoscintigraphy injection can create a spurious focus mistaken for a node.
+
 ## Self-Check (Board-Style)
 
 <details><summary><strong>Q1.</strong> A patient with a 0.9-mm clinically node-negative melanoma needs nodal staging. PET or sentinel-node biopsy?</summary>

@@ -3,7 +3,7 @@ type: physics
 title: Molecular Imaging & the Theranostic Pair
 chapter: radiopharmacy
 order: 20
-subtitle: Target biology, receptor density, and the diagnostic–therapeutic pairing concept
+subtitle: Target biology, receptor density, and the diagnostic/therapeutic pairing concept
 aliases: [molecular imaging, theranostic pair, target biology, receptor density, companion diagnostic, see it treat it, radiotheranostics, dual tracer, FAP, DLL3]
 review_status: physician-reviewed
 last_updated: 2026-07-27

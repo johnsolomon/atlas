@@ -1,6 +1,6 @@
 ---
 type: tracer
-title: Radioiodine (I-123 / I-131) — Thyroid
+title: "Radioiodine (I-123 / I-131): Thyroid"
 chapter: endocrine
 order: 10
 isotope_label: "¹²³I · ¹³¹I"

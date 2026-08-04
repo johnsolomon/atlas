@@ -3,7 +3,7 @@ type: reference
 title: Patient Preparation & Study Confounders
 chapter: boards
 order: 20
-subtitle: What makes a study non-diagnostic or misleading — and why
+subtitle: What makes a study non-diagnostic or misleading, and why
 aliases: [patient preparation, confounders, blocking, interfering drugs, caffeine, thyroid blockade, glucose, suppression, low iodine diet, amino acid infusion, cimetidine, metformin, brown fat]
 review_status: physician-reviewed
 last_updated: 2026-07-27

@@ -1,6 +1,6 @@
 ---
 type: reference
-title: Melanoma Staging — AJCC / Breslow
+title: "Melanoma Staging: AJCC / Breslow"
 chapter: reporting
 order: 40
 subtitle: Thickness, ulceration, nodal burden, and M-substage that drive melanoma imaging

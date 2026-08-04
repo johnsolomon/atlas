@@ -3,7 +3,7 @@ type: physics
 title: Quantitative Bone SPECT/CT (QBSPECT)
 chapter: musculoskeletal
 order: 20
-subtitle: SUV-based quantification in bone scintigraphy — calibration, thresholds, and applications
+subtitle: SUV-based quantification in bone scintigraphy, calibration, thresholds, and applications
 aliases: [quantitative bone SPECT, QBSPECT, bone SUV, SPECT SUV, xSPECT Quant, attenuation-corrected SPECT, bone SPECT/CT quantification, SUVmax bone]
 review_status: physician-reviewed
 last_updated: 2026-07-27

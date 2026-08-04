@@ -1,6 +1,6 @@
 ---
 type: comparison
-title: Infection & Inflammation Imaging — Which Test When
+title: "Infection & Inflammation Imaging: Which Test When"
 chapter: test-selection
 order: 30
 subtitle: Choosing among labeled-leukocyte scintigraphy, FDG-PET/CT, ⁶⁷Ga, and bone/marrow imaging by clinical question

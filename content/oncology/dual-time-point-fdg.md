@@ -3,7 +3,7 @@ type: technique
 title: Dual-Time-Point & Delayed FDG Imaging
 chapter: oncology
 order: 32
-subtitle: The retention index, when malignant uptake keeps rising while inflammation washes out — and where the trick fails
+subtitle: The retention index, when malignant uptake keeps rising while inflammation washes out, and where the trick fails
 aliases: [dual time point, DTP FDG, delayed FDG imaging, retention index, delayed PET, dual-phase FDG, washout inflammation, delayed pelvic imaging]
 isotope_label: "¹⁸F-FDG"
 modality: [PET]

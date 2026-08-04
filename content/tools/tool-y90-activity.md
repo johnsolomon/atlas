@@ -3,7 +3,7 @@ type: tool
 title: Y-90 Radioembolization Activity Calculator
 chapter: tools
 order: 14
-subtitle: Prescribed activity by MIRD (glass), BSA (resin), or the partition model — with a lung-dose safety check
+subtitle: Prescribed activity by MIRD (glass), BSA (resin), or the partition model, with a lung-dose safety check
 aliases: [Y-90 activity, radioembolization dose, TARE dosimetry, SIRT activity, TheraSphere MIRD, SIR-Spheres BSA, partition model, lung dose Y90, hepatic radioembolization calculator]
 tags: [tool, therapy, oncology, hepatobiliary, theranostics]
 ---

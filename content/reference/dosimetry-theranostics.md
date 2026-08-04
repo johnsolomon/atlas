@@ -3,7 +3,7 @@ type: pitfall
 title: Dosimetry in Theranostics
 chapter: dosimetry-safety
 order: 20
-subtitle: How absorbed dose is estimated for radioligand therapy — MIRD, organs at risk, and post-therapy imaging
+subtitle: "How absorbed dose is estimated for radioligand therapy: MIRD, organs at risk, and post-therapy imaging"
 aliases: [dosimetry, MIRD, absorbed dose, organ at risk, tumor dosimetry, PRRT dosimetry, Lu-177 dosimetry]
 review_status: physician-reviewed
 last_updated: 2026-07-27

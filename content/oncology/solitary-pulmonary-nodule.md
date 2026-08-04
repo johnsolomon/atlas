@@ -1,9 +1,9 @@
 ---
 type: disease
-title: Solitary Pulmonary Nodule — FDG Characterization
+title: "Solitary Pulmonary Nodule: FDG Characterization"
 chapter: oncology
 order: 360
-subtitle: Estimating malignancy risk from FDG uptake — and the false positives and false negatives that define it
+subtitle: Estimating malignancy risk from FDG uptake, and the false positives and false negatives that define it
 aliases: [solitary pulmonary nodule, indeterminate pulmonary nodule, SPN FDG, SUV 2.5, lung nodule PET, granuloma false positive, carcinoid false negative, ground glass nodule]
 isotope: "Fluorine-18 (FDG)"
 review_status: physician-reviewed
@@ -44,6 +44,31 @@ For an **indeterminate solid pulmonary nodule** (roughly ≥8–10 mm), FDG-PET/
 - {H} A hot nodule in a granuloma-endemic area may be benign (infection/granuloma); a cold ground-glass/sub-cm nodule may be malignant.
 - SUVmax 2.5 is a heuristic, not a threshold to apply mechanically.
 - Interpret uptake with size, morphology, growth, and infection/granuloma risk.
+
+## Board Pearls
+
+- {K} FDG uptake **shifts malignancy probability** rather than diagnosing — a metabolically **negative solid nodule ≥1 cm** has a high negative predictive value supporting surveillance; higher uptake raises risk.
+- {H} The single biggest limitation is **granulomatous/infectious false positives**, which sharply lower specificity in endemic regions.
+- Classic **false negatives**: **typical carcinoid**, **lepidic/minimally invasive adenocarcinoma**, and **ground-glass, part-solid, or sub-centimetre** nodules.
+- A **hamartoma** may be mildly avid; look for **macroscopic fat and "popcorn" calcification** on CT to call it benign.
+- When malignancy is likely, PET simultaneously provides **nodal and distant staging** — but it is **not** the test for pure ground-glass lesions (follow by CT).
+
+## Differential Diagnosis
+
+- **Primary lung cancer** (adenocarcinoma, squamous) or a **solitary metastasis** — the malignant targets.
+- **Infectious granuloma** — tuberculosis, histoplasmosis, coccidioidomycosis, aspergilloma.
+- **Active infection/inflammation** — focal pneumonia, abscess, septic embolus.
+- **Inflammatory nodules** — organizing pneumonia, rheumatoid nodule, sarcoidosis.
+- **Benign neoplasm** — hamartoma (fat/popcorn calcification), rounded atelectasis.
+- Remember FDG-quiet malignancies (carcinoid, lepidic adenocarcinoma, ground-glass/sub-cm) are **not excluded by low uptake**.
+
+## Reporting Checklist
+
+- Report **SUVmax with nodule size and morphology** (spiculation, calcification pattern, growth vs priors) — never uptake alone.
+- Integrate **infection/granuloma risk** and endemic exposure into the probability estimate.
+- State that **cold ground-glass, part-solid, or sub-cm nodules are not cleared** — follow by CT (Fleischner) criteria.
+- Recommend **biopsy or resection** when suspicion persists despite low uptake.
+- Comment on **nodal and distant staging** when malignancy is likely.
 
 ## Self-Check
 

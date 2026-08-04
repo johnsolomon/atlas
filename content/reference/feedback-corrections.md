@@ -3,7 +3,7 @@ type: reference
 title: Feedback & Corrections
 chapter: boards
 order: 9
-subtitle: How to report an error, suggest an edit, or contribute — accuracy is a shared responsibility
+subtitle: How to report an error, suggest an edit, or contribute, accuracy is a shared responsibility
 aliases: [feedback, corrections, report an error, report an issue, suggest an edit, contact, errata, quality]
 review_status: physician-reviewed
 last_updated: 2026-07-29

@@ -3,7 +3,7 @@ type: therapy
 title: Radiosynovectomy
 chapter: theranostics
 order: 110
-subtitle: Intra-articular beta emitters for refractory inflammatory synovitis — sized to the joint
+subtitle: Intra-articular beta emitters for refractory inflammatory synovitis, sized to the joint
 aliases: [radiosynovectomy, radiosynoviorthesis, RSO, yttrium-90 synovectomy, rhenium-186, erbium-169, hemophilic arthropathy, rheumatoid synovitis, intra-articular]
 isotope: "Y-90 / Re-186 / Er-169"
 half_life: "Y-90: 64 h · Re-186: 90 h · Er-169: 9.4 d"

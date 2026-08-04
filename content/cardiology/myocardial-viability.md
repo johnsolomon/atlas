@@ -3,7 +3,7 @@ type: protocol
 title: Myocardial Viability (FDG PET)
 chapter: cardiac
 order: 70
-subtitle: Perfusion–metabolism imaging to identify hibernating, salvageable myocardium
+subtitle: Perfusion/metabolism imaging to identify hibernating, salvageable myocardium
 aliases: [viability, hibernating myocardium, stunned myocardium, FDG viability, perfusion metabolism mismatch, PET viability, STICH, glucose insulin clamp]
 isotope_label: "¹⁸F-FDG + perfusion tracer"
 modality: [PET]

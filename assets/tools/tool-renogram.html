@@ -1,0 +1,534 @@
+
+<style>
+/* ===== Interactive Renogram Explorer — scoped to .rgx, themed to the atlas ===== */
+.rgx{
+  --rg-card:var(--card); --rg-panel:var(--panel); --rg-line:var(--line);
+  --rg-ink:var(--ink); --rg-muted:var(--soft); --rg-faint:var(--faint);
+  --rg-accent:var(--ac);
+  --rg-plotbg:#ffffff; --rg-grid:#E4E7EB;
+  --rg-right:#B45309; --rg-left:#0F766E; --rg-refc:#1A5480;
+  --rg-good:#0B6B52; --rg-warn:#8A6009; --rg-bad:#B42318; --rg-info:#4A3A82;
+  --rg-oncolor:#ffffff; --rg-flagbad:#E7B7AE; --rg-flaggood:#AFD8C6;
+  color:var(--rg-ink);
+}
+[data-theme="dark"] .rgx{
+  --rg-plotbg:#0f151d; --rg-grid:#232c3a;
+  --rg-right:#ffd23f; --rg-left:#4fd6c9; --rg-refc:#3fb6ff;
+  --rg-good:#39d98a; --rg-warn:#ffb020; --rg-bad:#ff5c7a; --rg-info:#a896ec;
+  --rg-oncolor:#0d1117; --rg-flagbad:#5a2733; --rg-flaggood:#254b39;
+}
+.rgx *{box-sizing:border-box}
+.rgx .sechead{font-size:16px;margin:26px 0 4px;letter-spacing:-.2px;font-family:var(--s);font-weight:600}
+.rgx .secsub{color:var(--rg-muted);font-size:12.5px;margin:0 0 12px;line-height:1.5}
+.rgx .stage{display:grid;grid-template-columns:1.35fr 1fr;gap:16px;margin-top:6px}
+@media(max-width:920px){.rgx .stage{grid-template-columns:1fr}}
+.rgx .card{background:var(--rg-card);border:1px solid var(--rg-line);border-radius:12px}
+.rgx .plotCard{padding:12px 12px 8px}
+.rgx .plotHead{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:2px 4px 6px}
+.rgx .plotHead h2{font-size:14px;margin:0;font-weight:600}
+.rgx .hint{font-size:11.5px;color:var(--rg-faint)}
+.rgx svg.plot{width:100%;height:auto;display:block;touch-action:none;user-select:none}
+.rgx .handle{cursor:grab}
+.rgx .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:8px 4px 2px}
+.rgx button.btn{background:var(--rg-panel);color:var(--rg-ink);border:1px solid var(--rg-line);
+  padding:9px 12px;border-radius:9px;font:inherit;font-size:12.5px;cursor:pointer;transition:.12s;min-height:40px;touch-action:manipulation}
+.rgx button.btn:hover{border-color:var(--rg-accent)}
+.rgx button.btn.on{background:var(--ac-t);border-color:var(--rg-accent);color:var(--rg-accent)}
+.rgx .seg{display:inline-flex;border:1px solid var(--rg-line);border-radius:9px;overflow:hidden}
+.rgx .seg button{background:var(--rg-panel);border:0;color:var(--rg-muted);padding:9px 14px;font:inherit;font-size:12.5px;cursor:pointer;min-height:40px;touch-action:manipulation}
+.rgx .seg button.act{color:var(--rg-oncolor);font-weight:700}
+.rgx .seg button.actR{background:var(--rg-right)} .rgx .seg button.actL{background:var(--rg-left)}
+.rgx .spacer{flex:1}
+.rgx .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:11.5px;color:var(--rg-muted);padding:6px 6px 0}
+.rgx .legend span{display:inline-flex;align-items:center;gap:6px}
+.rgx .swatch{width:16px;height:3px;border-radius:2px;display:inline-block}
+.rgx .splitWrap{padding:10px 6px 2px}
+.rgx .splitLabels{display:flex;justify-content:space-between;font-size:11.5px;color:var(--rg-muted);margin-bottom:4px}
+.rgx .splitBar{display:flex;height:22px;border-radius:6px;overflow:hidden;border:1px solid var(--rg-line)}
+.rgx .splitBar .segR{background:var(--rg-right)} .rgx .splitBar .segL{background:var(--rg-left)}
+.rgx .splitBar b{color:var(--rg-oncolor);font-size:12px;display:flex;align-items:center;justify-content:center;font-weight:700}
+.rgx .splitFlag{font-size:11.5px;margin-top:5px}
+.rgx .interp{padding:14px 14px 16px;display:flex;flex-direction:column;gap:12px}
+.rgx .badge{display:flex;align-items:center;gap:10px}
+.rgx .dot{width:12px;height:12px;border-radius:50%;flex:none}
+.rgx .pname{font-size:16px;font-weight:700;letter-spacing:-.2px;line-height:1.2}
+.rgx .otype{font-size:11.5px;color:var(--rg-muted);margin-top:2px}
+.rgx .metrics{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.rgx .metric{background:var(--rg-panel);border:1px solid var(--rg-line);border-radius:10px;padding:9px 11px}
+.rgx .metric .k{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--rg-faint)}
+.rgx .metric .v{font-size:14.5px;font-weight:600;margin-top:2px}
+.rgx .metric .v small{font-size:10.5px;color:var(--rg-muted);font-weight:500}
+.rgx .metric.flagBad{border-color:var(--rg-flagbad)} .rgx .metric.flagGood{border-color:var(--rg-flaggood)}
+.rgx .read{font-size:13px;line-height:1.6;color:var(--rg-ink)}
+.rgx .read h3{font-size:10.5px;text-transform:uppercase;letter-spacing:.6px;color:var(--rg-faint);margin:2px 0 5px;font-weight:600}
+.rgx .read p{margin:0}
+.rgx .phase-line{display:flex;gap:8px;margin:0 0 6px;font-size:12.5px;line-height:1.5}
+.rgx .phase-line .pk{color:var(--rg-muted);flex:none;width:74px;font-weight:600}
+.rgx .ddx{background:var(--rg-panel);border:1px dashed var(--rg-line);border-radius:10px;padding:10px 12px;font-size:12.3px;line-height:1.55;color:var(--rg-ink)}
+.rgx .ddx b{color:var(--rg-ink)}
+.rgx .twowide{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:6px}
+@media(max-width:920px){.rgx .twowide{grid-template-columns:1fr}}
+.rgx .miniCard{padding:14px 16px 16px}
+.rgx .miniCard h2{font-size:14px;margin:0 0 2px}
+.rgx .miniCard .cap{font-size:12px;color:var(--rg-muted);line-height:1.5;margin:0 0 10px}
+.rgx .crit{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.rgx .critRow{display:flex;align-items:center;gap:9px;font-size:12.3px;background:var(--rg-panel);border:1px solid var(--rg-line);border-radius:8px;padding:7px 10px}
+.rgx .critRow .ic{width:16px;height:16px;border-radius:50%;flex:none;font-size:11px;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--rg-oncolor)}
+.rgx .verdict{margin-top:10px;padding:10px 12px;border-radius:9px;font-size:12.5px;font-weight:600;text-align:center}
+.rgx .verdict.good{background:color-mix(in srgb,var(--rg-good) 15%,transparent);color:var(--rg-good)}
+.rgx .verdict.warn{background:color-mix(in srgb,var(--rg-warn) 16%,transparent);color:var(--rg-warn)}
+.rgx .verdict.bad{background:color-mix(in srgb,var(--rg-bad) 15%,transparent);color:var(--rg-bad)}
+.rgx .slider{width:100%;margin:6px 0 2px;accent-color:var(--rg-accent);touch-action:manipulation}
+.rgx .sliderLab{display:flex;justify-content:space-between;font-size:11px;color:var(--rg-faint)}
+.rgx .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px}
+@media(max-width:920px){.rgx .grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.rgx .grid{grid-template-columns:1fr}}
+.rgx .gcard{background:var(--rg-card);border:1px solid var(--rg-line);border-radius:12px;padding:12px;cursor:pointer;transition:.14s;touch-action:manipulation}
+.rgx .gcard:hover{border-color:var(--rg-accent);transform:translateY(-2px)}
+.rgx .gcard svg{width:100%;height:auto;display:block;margin-bottom:8px}
+.rgx .gcard .gt{font-size:13px;font-weight:650;line-height:1.25}
+.rgx .gcard .go{font-size:10.5px;color:var(--rg-accent);margin:3px 0 5px}
+.rgx .gcard .gd{font-size:11.5px;color:var(--rg-muted);line-height:1.45}
+</style>
+
+<div class="rgx">
+  <!-- ============ BILATERAL PLAYGROUND ============ -->
+  <div class="stage">
+    <div class="card plotCard">
+      <div class="plotHead">
+        <h2>Bilateral renogram</h2>
+        <span class="hint">drag the ● handles on the selected kidney</span>
+      </div>
+      <svg class="plot" id="rg-plot" viewBox="0 0 720 430" role="img" aria-label="Bilateral renogram curves"></svg>
+      <div class="legend">
+        <span><i class="swatch" style="background:var(--rg-right)"></i> right kidney</span>
+        <span><i class="swatch" style="background:var(--rg-left)"></i> left kidney</span>
+        <span><i class="swatch" style="background:var(--rg-bad);height:10px;width:3px"></i> furosemide (F+20)</span>
+      </div>
+      <div class="splitWrap">
+        <div class="splitLabels"><span>Relative (split) function</span><span class="hint">uptake 1–2 min · normal 45–55%</span></div>
+        <div class="splitBar" id="rg-splitBar"></div>
+        <div class="splitFlag" id="rg-splitFlag"></div>
+      </div>
+      <div class="row">
+        <span class="seg" id="rg-kidSel">
+          <button data-k="R" class="act actR">Right kidney</button>
+          <button data-k="L">Left kidney</button>
+        </span>
+        <button class="btn" id="rg-lasixBtn">💧 Lasix / F+20: <b id="rg-lasixState">off</b></button>
+        <span class="spacer"></span>
+        <button class="btn" id="rg-resetBtn">↺ Reset both</button>
+      </div>
+    </div>
+
+    <div class="card interp" id="rg-interp">
+      <div class="badge">
+        <span class="dot" id="rg-pdot"></span>
+        <div>
+          <div class="pname" id="rg-pname">—</div>
+          <div class="otype" id="rg-otype">—</div>
+        </div>
+      </div>
+      <div class="metrics" id="rg-metrics"></div>
+      <div class="read"><h3>Phase-by-phase reading</h3><div id="rg-phases"></div></div>
+      <div class="read"><h3>Interpretation</h3><p id="rg-interpText">—</p></div>
+      <div class="ddx" id="rg-ddx">—</div>
+    </div>
+  </div>
+
+  <!-- ============ FLOW PHASE + CAPTOPRIL ============ -->
+  <h3 class="sechead">Two acquisitions, read together</h3>
+  <p class="secsub">The perfusion (flow) study and the dynamic renogram are separate acquisitions; renovascular disease is defined by the ACE-inhibitor change, not the resting curve.</p>
+  <div class="twowide">
+    <div class="card miniCard">
+      <h2>Perfusion / flow phase</h2>
+      <p class="cap">A <b>separate acquisition</b> — rapid 1–2 s/frame over the first ~60 s after a bolus, distinct from the 10–20 s/frame dynamic renogram above. Kidney first-pass tracks the aortic bolus; blunted or asymmetric flow is nonspecific, and <b>focally absent</b> perfusion is a vascular emergency (arterial/venous thrombosis; in transplants quantified by the Hilson perfusion index). Driven here by each kidney's perfusion handle.</p>
+      <svg class="plot" id="rg-flow" viewBox="0 0 720 220" role="img" aria-label="Perfusion flow phase"></svg>
+      <div class="legend">
+        <span><i class="swatch" style="background:var(--rg-muted)"></i> aorta</span>
+        <span><i class="swatch" style="background:var(--rg-right)"></i> right</span>
+        <span><i class="swatch" style="background:var(--rg-left)"></i> left</span>
+      </div>
+    </div>
+
+    <div class="card miniCard">
+      <h2>ACE-inhibitor (captopril) renography</h2>
+      <p class="cap">Baseline vs post-ACEI on the same kidney. A haemodynamically significant renal-artery stenosis relies on efferent (angiotensin-II) tone to hold GFR; the ACE-inhibitor removes it, so the post-ACEI curve <b>deteriorates</b> — that change, not the baseline, is the test.</p>
+      <svg class="plot" id="rg-capto" viewBox="0 0 720 210" role="img" aria-label="Captopril baseline vs post-ACEI"></svg>
+      <div class="sliderLab"><span>no stenosis</span><span>critical stenosis</span></div>
+      <input type="range" min="0" max="100" value="60" class="slider" id="rg-capSev">
+      <div class="crit" id="rg-capCrit"></div>
+      <div class="verdict" id="rg-capVerdict"></div>
+    </div>
+  </div>
+
+  <!-- ============ GALLERY ============ -->
+  <h3 class="sechead">Reference drainage patterns</h3>
+  <p class="secsub">Each mini-plot overlays the pattern (color) on a normal curve (dashed). Click to load it into the <b id="rg-selName">right</b> kidney above.</p>
+  <div class="grid" id="rg-grid"></div>
+</div>
+
+<script>(function(){
+/* ===================== geometry ===================== */
+const V={x0:56,y0:22,w:640,h:360,tMax:30,yMax:110};
+const X=t=>V.x0+(t/V.tMax)*V.w;
+const Y=v=>V.y0+(1-v/V.yMax)*V.h;
+const invX=px=>(px-V.x0)/V.w*V.tMax;
+const invY=py=>(1-(py-V.y0)/V.h)*V.yMax;
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const NS="http://www.w3.org/2000/svg";
+function el(tag,a){const e=document.createElementNS(NS,tag);for(const k in a)e.setAttribute(k,a[k]);return e;}
+
+/* ===================== curve model ===================== */
+function drainK(d){return d<=0.001?0:0.34*d;}
+function thalf(k){return k<=0.0001?Infinity:Math.log(2)/k;}
+function riseFrac(t,tmax){ if(t<=0)return 0; if(t>=tmax)return 1; return Math.sin(Math.PI/2*(t/tmax)); }
+function vascFrac(t){ return 1-Math.exp(-t/0.4); }
+const PW=0.22;
+function risingVal(t,s){ const w=PW*s.perf; return s.peak*100*( w*vascFrac(t) + (1-w)*riseFrac(t,s.tmax) ); }
+function curveVal(t,s){
+  const peakC=s.peak*100; let base;
+  if(s.dbl){
+    if(t<=s.tmax){ base=risingVal(t,s); }
+    else if(t<=20){ base=peakC*Math.exp(-0.11*(t-s.tmax)); }
+    else { const v20=peakC*Math.exp(-0.11*(20-s.tmax)); base=v20+(peakC*0.72-v20)*Math.min(1,(t-20)/9); }
+    return Math.max(0,base);
+  }
+  if(t<=s.tmax){ base=risingVal(t,s); }
+  else{
+    const k=drainK(s.drain), floor=peakC*(1-s.drain)*0.92;
+    let v=(peakC-floor)*Math.exp(-k*(t-s.tmax))+floor;
+    if(s.lasix&&t>20){
+      const v20=(peakC-floor)*Math.exp(-k*Math.max(0,20-s.tmax))+floor;
+      v=v20*Math.exp(-drainK(s.lasixResp)*(t-20));
+    }
+    base=v;
+  }
+  return Math.max(0,base);
+}
+function samplePath(s,step=0.15){
+  let d="";
+  for(let t=0;t<=V.tMax+1e-6;t+=step){ d+=(t===0?"M":"L")+X(t).toFixed(1)+" "+Y(clamp(curveVal(t,s),0,V.yMax)).toFixed(1)+" "; }
+  return d;
+}
+
+/* ===================== derived indices ===================== */
+function refUptake(s){ let sum=0,n=0; for(let t=1;t<=2;t+=0.1){ sum+=curveVal(t,s); n++; } return sum/n; }
+function derive(s){
+  const peakC=s.peak*100, end=curveVal(30,s);
+  const washout=peakC>1?clamp((peakC-end)/peakC,0,1):0;
+  const t12=thalf(drainK(s.drain));
+  const t12L=s.lasix?thalf(drainK(s.lasixResp)):null;
+  const effT12=s.lasix?t12L:t12;
+  const reportT=s.lasix?30:20;
+  const ref=Math.max(refUptake(s),1);
+  const nora=clamp(curveVal(reportT,s)/ref,0,9.9);
+  const noraCut=s.lasix?0.23:0.70;
+  const noraLabel=s.lasix?"post-F":"20 min";
+  const CI=peakC*(1-Math.exp(-30/3));
+  const oe=clamp(100*(CI-curveVal(30,s))/Math.max(CI,1),0,100);
+  return {peakC,end,washout,t12,t12L,effT12,nora,noraCut,noraLabel,oe};
+}
+function fmtT12(x){return x===Infinity?"∞ (no washout)":x.toFixed(x<10?1:0)+" min";}
+
+/* ===================== classifier ===================== */
+function classify(s){
+  const d=derive(s); const mk=(k,v,sub,flag)=>({k,v,sub,flag});
+  let name,otype,color,phases,text,ddx;
+  const funcLow=s.peak<0.18, perfLow=s.perf<0.30;
+  const trulyRising=d.washout<0.12||s.tmax>=20;
+  const drainedNow=d.effT12<10&&d.washout>0.55;
+  const equivocalWash=d.effT12>=10&&d.effT12<=20;
+  const rising=trulyRising;
+
+  if(s.dbl){
+    name="Homsy decompensation (double-peak)";
+    otype="Homsy sign · post-diuretic rise — NOT part of O'Reilly's scheme";color="var(--rg-warn)";
+    text="At resting flow the pelvis drains well after the peak, but once furosemide sharply raises flow the pelvi-ureteric junction can no longer keep up and functionally self-obstructs — so the curve, having washed out, paradoxically <i>rises again</i>. This wash-out-then-rise is Homsy's sign (the “double peak”). Described in children (Homsy, J Urol 1988) as flow-dependent intermittent PUJ obstruction, it is an addition to — not one of — O'Reilly's original curve types.";
+    ddx="<b>Think:</b> intermittent / volume-dependent PUJ obstruction that only declares under diuresis. <b>Do:</b> F−15 protocol, upright and post-micturition images, correlate with pain during diuresis. <b>Note:</b> some texts loosely call this “Type 4,” but it is not in O'Reilly's classification.";
+  }
+  else if(funcLow){
+    name="Poor / non-functioning kidney";otype="Flat, low-amplitude curve";color="var(--rg-bad)";
+    text="Uptake barely rises above background and there is no organized excretory limb — the tracer is not being extracted. Relative function falls well under 45–55%, often below 35%. Distinguish a truly non-functioning kidney from one that is simply small or scarred using renal size and cortical thickness on the images.";
+    ddx="<b>Think:</b> end-stage/atrophic kidney, high-grade chronic obstruction, or renal vein/artery catastrophe. <b>Do:</b> report relative function; compare with priors and cross-sectional imaging.";
+  }
+  else if(perfLow&&!trulyRising&&s.peak>0.25){
+    name="Reduced first-phase perfusion";otype="Nonspecific — NOT specific for renal artery stenosis";color="var(--rg-info)";
+    text="The vascular first phase is blunted while cortical uptake still occurs. Reduced first-phase flow is <i>sensitive but nonspecific</i> — rejection, severe ATN, renal-artery stenosis/thrombosis, or a small chronically-diseased kidney can all cause it. A focally <b>absent</b> perfusion should prompt concern for a vascular catastrophe. Blunted resting flow is <b>not</b> the hallmark of renovascular disease — that rests on the ACE-inhibitor change (see the captopril module).";
+    ddx="<b>Think:</b> nonspecific — rejection, severe ATN, renovascular disease, vascular compromise. <b>For suspected RAS:</b> ACE-inhibitor renography — positivity is the post-ACEI worsening, not the baseline flow.";
+  }
+  else if(!perfLow&&s.tmax>=2&&s.tmax<=5.5&&drainedNow&&!trulyRising){
+    name="Normal renogram";otype="O'Reilly Type 1 · normal three-phase curve";color="var(--rg-good)";
+    text="A crisp vascular upstroke, a cortical peak at "+s.tmax.toFixed(1)+" min (normal ≤ 5 min), then prompt washout (T½ "+fmtT12(d.effT12)+"; OE "+Math.round(d.oe)+"%, NORA "+d.nora.toFixed(2)+"). The textbook three-phase curve with no pelvic hold-up. Confirm with a normal split function (≈45–55%).";
+    ddx="<b>Think:</b> normal drainage and function. <b>Note:</b> the curve is one axis only — always pair it with relative function and the images.";
+  }
+  else if(s.lasix&&drainedNow){
+    name="Dilated system, non-obstructed";otype="O'Reilly Type 3a · brisk diuretic washout";color="var(--rg-good)";
+    text="At rest the dilated pelvis held tracer, but furosemide flushes it out — post-diuretic T½ "+fmtT12(d.t12L)+", OE "+Math.round(d.oe)+"%, NORA(post-F) "+d.nora.toFixed(2)+" (≤0.23 normal). A capacious but non-obstructed system that just needed a diuretic push.";
+    ddx="<b>Think:</b> baggy, non-obstructed system (e.g. post-pyeloplasty, congenital dilatation). <b>Do:</b> report good drainage; no obstruction on this study.";
+  }
+  else if(s.lasix&&trulyRising){
+    name="Obstructed — no diuretic response";otype="O'Reilly Type 2 · rises despite furosemide";color="var(--rg-bad)";
+    text="The curve keeps climbing even after furosemide — no washout (NORA(post-F) "+d.nora.toFixed(2)+", OE "+Math.round(d.oe)+"%). A dilated system that will not empty against a brisk diuretic load is the obstructed pattern. Confirm with the drainage-limb shape and gravity-assisted images, and check function/hydration.";
+    ddx="<b>Think:</b> mechanical PUJ / ureteric obstruction. <b>Caveats:</b> poor function, dehydration, a very large reservoir, bladder backpressure or an under-dosed/late diuretic can all blunt the response — verify these and use upright/post-void imaging.";
+  }
+  else if(s.lasix){
+    name="Equivocal / indeterminate response";otype="O'Reilly Type 3b · neither brisk washout nor continued rise";color="var(--rg-warn)";
+    text="After furosemide the curve neither washes out promptly nor keeps rising — post-diuretic T½ "+fmtT12(d.t12L)+" sits in the 10–20 min grey zone (NORA "+d.nora.toFixed(2)+", OE "+Math.round(d.oe)+"%). This is genuinely <b>equivocal</b> (Type 3b) and should not be reported as “obstructed.”";
+    ddx="<b>Do:</b> optimize and repeat — hydration, empty bladder (catheter if needed), upright / post-void images, consider F−15; lean on quantitative drainage (OE, NORA) rather than the raw T½.";
+  }
+  else if(!s.lasix&&trulyRising){
+    name="Rising curve at rest — indeterminate";otype="Nondiagnostic without a diuretic";color="var(--rg-warn)";
+    text="Activity accumulates and the curve does not turn over — but at <i>resting</i> flow this is nondiagnostic (NORA₂₀ "+d.nora.toFixed(2)+", well above 0.70). A rising resting curve only shows the system is a capacious reservoir; it cannot separate a baggy non-obstructed pelvis from true obstruction. That is what the diuretic is for.";
+    ddx="<b>Do:</b> give furosemide and reassess — brisk washout → Type 3a; continued rise → Type 2; flat/partial → Type 3b.";
+  }
+  else if(!perfLow&&!funcLow&&s.tmax>=5&&s.tmax<18&&d.washout<0.55){
+    name="Parenchymal / cortical retention";otype="Preserved flow · delayed cortical transit";color="var(--rg-warn)";
+    text="The curve peaks then holds — perfusion and extraction are maintained but tracer lingers in the <i>parenchyma</i> (delayed cortical transit), not pooling in a dilated pelvis (NORA "+d.nora.toFixed(2)+", OE "+Math.round(d.oe)+"%). This morphology is shared and cannot be read off the curve alone: in a transplant it is the acute-tubular-necrosis pattern; after an ACE-inhibitor it is the renovascular response; natively it can be early/partial obstruction or dehydration.";
+    ddx="<b>Transplant:</b> ATN (flow preserved) vs. rejection (flow + function down) vs. calcineurin-inhibitor toxicity — scintigraphy <b>cannot definitively separate these; biopsy is gold standard.</b> <b>Renovascular:</b> cortical retention worsening after ACE-inhibitor supports RAS. <b>Native:</b> give Lasix to exclude obstruction.";
+  }
+  else if(equivocalWash){
+    name="Equivocal drainage";otype="Indeterminate washout (T½ 10–20 min)";color="var(--rg-warn)";
+    text="The excretory limb falls slowly — washout T½ lands in the 10–20 min grey zone (NORA "+d.nora.toFixed(2)+", OE "+Math.round(d.oe)+"%). A prolonged T½ is <b>not</b> diagnostic of obstruction on its own. Optimize technique and repeat rather than forcing a binary call.";
+    ddx="<b>Do:</b> ensure hydration and an empty bladder, add upright / post-void images, consider F−15; correlate with split function and symptoms.";
+  }
+  else{
+    name="Delayed but draining";otype="Prolonged transit, adequate washout";color="var(--rg-info)";
+    text="Time-to-peak is prolonged ("+s.tmax.toFixed(1)+" min) yet the curve turns over and drains (T½ "+fmtT12(d.effT12)+", OE "+Math.round(d.oe)+"%). A mild delay — modestly reduced function, a slightly dilated system, or suboptimal hydration rather than obstruction.";
+    ddx="<b>Do:</b> correlate with relative function and hydration; consider repeat with optimized technique if indicated.";
+  }
+
+  const perfTxt=perfLow?"Blunted — low vascular upstroke (nonspecific reduced first-phase inflow).":s.perf<0.55?"Slightly reduced but present.":"Brisk, sharp vascular upstroke in the first ~30–60 s.";
+  const upTxt=funcLow?"Almost no cortical accumulation — extraction/function is poor.":s.tmax>6.5?"Prolonged — Tmax at "+s.tmax.toFixed(1)+" min: delayed cortical transit.":"Cortical uptake peaks at "+s.tmax.toFixed(1)+" min (normal ≤ 5 min).";
+  const exTxt=rising?(s.lasix?"Fails to wash out even after Lasix — T½ "+fmtT12(d.t12L)+".":"No washout — activity keeps rising (T½ "+fmtT12(d.t12)+"). Add Lasix to characterize."):d.washout<0.5?"Sluggish — only "+Math.round(d.washout*100)+"% cleared by 30 min (T½ "+fmtT12(d.effT12)+").":"Prompt washout — "+Math.round(d.washout*100)+"% cleared (T½ "+fmtT12(d.effT12)+").";
+  phases=[["Perfusion",perfTxt],["Uptake",upTxt],["Excretion",exTxt]];
+
+  const oeFlag=d.oe>=78?"flagGood":d.oe<60?"flagBad":"";
+  const noraFlag=d.nora<=d.noraCut?"flagGood":d.nora>2*d.noraCut?"flagBad":"";
+  const metrics=[
+    mk("Time to peak",funcLow?"—":s.tmax.toFixed(1)+" min","normal ≤ 5"),
+    mk(s.lasix?"Post-diuretic T½":"Washout T½",funcLow?"—":fmtT12(d.effT12),"<10 · 10–20 · >20"),
+    mk("Output efficiency",Math.round(d.oe)+"%",">78% non-obstr",oeFlag),
+    mk("NORA ("+d.noraLabel+")",d.nora.toFixed(2),"≤"+d.noraCut.toFixed(2)+" normal",noraFlag),
+  ];
+  return {name,otype,color,phases,text,ddx,metrics};
+}
+
+/* ===================== bilateral state ===================== */
+const NORMAL={perf:0.8,tmax:4,peak:0.85,drain:0.82,lasix:false,lasixResp:0.9,dbl:false};
+const kid={R:{...NORMAL},L:{...NORMAL}};
+let sel='R';
+
+/* ===================== main plot ===================== */
+const plot=document.getElementById('rg-plot');
+let staticLayer,dynLayer,handleLayer;
+function buildStatic(){
+  staticLayer=el('g',{});
+  staticLayer.appendChild(el('rect',{x:V.x0,y:V.y0,width:V.w,height:V.h,fill:'var(--rg-plotbg)',stroke:'var(--rg-line)',rx:6}));
+  for(let t=0;t<=30;t+=5){const x=X(t);
+    staticLayer.appendChild(el('line',{x1:x,y1:V.y0,x2:x,y2:V.y0+V.h,stroke:'var(--rg-grid)','stroke-width':1}));
+    const l=el('text',{x:x,y:V.y0+V.h+22,fill:'var(--rg-faint)','font-size':12,'text-anchor':'middle'});l.textContent=t;staticLayer.appendChild(l);}
+  const xl=el('text',{x:V.x0+V.w/2,y:V.y0+V.h+40,fill:'var(--rg-muted)','font-size':12.5,'text-anchor':'middle'});xl.textContent='minutes after injection';staticLayer.appendChild(xl);
+  for(let v=0;v<=100;v+=25){const y=Y(v);staticLayer.appendChild(el('line',{x1:V.x0,y1:y,x2:V.x0+V.w,y2:y,stroke:'var(--rg-grid)','stroke-width':1}));}
+  const yl=el('text',{x:16,y:V.y0+V.h/2,fill:'var(--rg-muted)','font-size':12.5,'text-anchor':'middle',transform:`rotate(-90 16 ${V.y0+V.h/2})`});yl.textContent='relative counts';staticLayer.appendChild(yl);
+  plot.appendChild(staticLayer);
+  dynLayer=el('g',{});plot.appendChild(dynLayer);
+  handleLayer=el('g',{});plot.appendChild(handleLayer);
+}
+function phaseBands(s){
+  const bands=[[0,1,'rgba(124,140,255,.10)','perfusion'],[1,s.tmax,'rgba(87,194,255,.06)','uptake'],[s.tmax,30,'rgba(57,217,138,.05)','excretion']];
+  const g=el('g',{});
+  bands.forEach(([a,b,f,lab])=>{const x1=X(a),x2=X(b);g.appendChild(el('rect',{x:x1,y:V.y0,width:Math.max(0,x2-x1),height:V.h,fill:f}));
+    if(x2-x1>36){const tx=el('text',{x:(x1+x2)/2,y:V.y0+14,fill:'var(--rg-faint)','font-size':10.5,'text-anchor':'middle'});tx.textContent=lab.toUpperCase();g.appendChild(tx);}});
+  return g;
+}
+function draw(){
+  dynLayer.innerHTML='';handleLayer.innerHTML='';
+  dynLayer.appendChild(phaseBands(kid[sel]));
+  if(kid[sel].lasix){const xl=X(20);
+    dynLayer.appendChild(el('line',{x1:xl,y1:V.y0,x2:xl,y2:V.y0+V.h,stroke:'var(--rg-bad)','stroke-width':2,'stroke-dasharray':'2 4',opacity:.8}));
+    const t=el('text',{x:xl+4,y:V.y0+V.h-6,fill:'var(--rg-bad)','font-size':11,'font-weight':600});t.textContent='F (Lasix)';dynLayer.appendChild(t);}
+  const other=sel==='R'?'L':'R';
+  dynLayer.appendChild(el('path',{d:samplePath(kid[other]),fill:'none',stroke:other==='R'?'var(--rg-right)':'var(--rg-left)','stroke-width':2,opacity:.34,'stroke-linejoin':'round'}));
+  dynLayer.appendChild(el('path',{d:samplePath(kid[sel]),fill:'none',stroke:sel==='R'?'var(--rg-right)':'var(--rg-left)','stroke-width':3.2,'stroke-linejoin':'round','stroke-linecap':'round'}));
+  drawHandles();
+  renderInterp(classify(kid[sel]));
+  renderSplit();
+  drawFlow();
+}
+function handleDefs(){
+  const s=kid[sel], col=sel==='R'?'var(--rg-right)':'var(--rg-left)';
+  const perfV=clamp(curveVal(0.6,s),0,V.yMax);
+  return [
+    {id:'perf',x:X(0.6),y:Y(perfV),color:'var(--rg-info)',label:'perfusion'},
+    {id:'peak',x:X(s.tmax),y:Y(clamp(s.peak*100,0,V.yMax)),color:col,label:'Tmax / uptake',moveX:true},
+    {id:'tail',x:X(30),y:Y(clamp(curveVal(30,s),0,V.yMax)),color:s.lasix?'var(--rg-bad)':'var(--rg-good)',label:s.lasix?'Lasix response':'drainage'},
+  ];
+}
+function drawHandles(){
+  handleDefs().forEach(h=>{
+    if(h.moveX)handleLayer.appendChild(el('circle',{cx:h.x,cy:h.y,r:14,fill:'none',stroke:h.color,'stroke-width':1,opacity:.35,style:'pointer-events:none'}));
+    handleLayer.appendChild(el('circle',{cx:h.x,cy:h.y,r:8.5,fill:h.color,stroke:'var(--rg-plotbg)','stroke-width':2.5,style:'pointer-events:none'}));
+    const lb=el('text',{x:h.x,y:h.y-16,fill:h.color,'font-size':10.5,'text-anchor':'middle','font-weight':600,style:'pointer-events:none'});lb.textContent=h.label;handleLayer.appendChild(lb);
+    const hit=el('circle',{cx:h.x,cy:h.y,r:19,fill:'transparent',class:'handle'});hit.dataset.id=h.id;handleLayer.appendChild(hit);
+  });
+}
+/* drag */
+let active=null,lastPt=null,rafQ=false;
+function svgPoint(evt){const pt=plot.createSVGPoint();pt.x=evt.clientX;pt.y=evt.clientY;return pt.matrixTransform(plot.getScreenCTM().inverse());}
+function applyDrag(){
+  rafQ=false; if(!active||!lastPt)return;
+  const s=kid[sel]; const t=clamp(invX(lastPt.x),0,30),v=clamp(invY(lastPt.y),0,V.yMax);
+  if(active==='perf'){const a=vascFrac(0.6),b=riseFrac(0.6,s.tmax),pc=Math.max(s.peak*100,8);s.perf=clamp((v/pc-b)/(PW*(a-b)),0.02,1);}
+  else if(active==='peak'){s.tmax=clamp(t,2,28);s.peak=clamp(v/100,0.03,1);}
+  else if(active==='tail'){const retained=clamp(v/Math.max(s.peak*100,8),0,1); if(s.lasix)s.lasixResp=clamp(1-retained,0.02,1); else s.drain=clamp(1-retained,0,1);}
+  draw();
+}
+function onDown(e){const id=e.target.dataset&&e.target.dataset.id;if(!id)return;active=id;lastPt=svgPoint(e);try{plot.setPointerCapture(e.pointerId);}catch(_){}e.preventDefault();applyDrag();}
+function onMove(e){if(!active)return;e.preventDefault();lastPt=svgPoint(e);if(!rafQ){rafQ=true;requestAnimationFrame(applyDrag);}}
+function onUp(e){if(!active)return;active=null;try{plot.releasePointerCapture(e.pointerId);}catch(_){}}
+plot.addEventListener('pointerdown',onDown);plot.addEventListener('pointermove',onMove);
+plot.addEventListener('pointerup',onUp);plot.addEventListener('pointercancel',onUp);
+
+/* interpretation + split */
+function renderInterp(c){
+  document.getElementById('rg-pdot').style.background=c.color;
+  const pn=document.getElementById('rg-pname');pn.textContent=(sel==='R'?'Right · ':'Left · ')+c.name;pn.style.color=c.color;
+  document.getElementById('rg-otype').textContent=c.otype;
+  const m=document.getElementById('rg-metrics');m.innerHTML='';
+  c.metrics.forEach(x=>{const d=document.createElement('div');d.className='metric '+(x.flag||'');d.innerHTML=`<div class="k">${x.k}</div><div class="v">${x.v} <small>${x.sub||''}</small></div>`;m.appendChild(d);});
+  const ph=document.getElementById('rg-phases');ph.innerHTML='';
+  c.phases.forEach(([k,v])=>{const d=document.createElement('div');d.className='phase-line';d.innerHTML=`<span class="pk">${k}</span><span>${v}</span>`;ph.appendChild(d);});
+  document.getElementById('rg-interpText').innerHTML=c.text;
+  document.getElementById('rg-ddx').innerHTML=c.ddx;
+}
+function renderSplit(){
+  const fR=kid.R.peak, fL=kid.L.peak, tot=fR+fL||1;
+  const rR=Math.round(100*fR/tot), rL=100-rR;
+  const bar=document.getElementById('rg-splitBar');
+  bar.innerHTML=`<b class="segR" style="width:${rR}%">R ${rR}%</b><b class="segL" style="width:${rL}%">L ${rL}%</b>`;
+  const flag=document.getElementById('rg-splitFlag');
+  const lo=Math.min(rR,rL);
+  if(lo>=45){flag.style.color='var(--rg-good)';flag.textContent='Symmetric (within 45–55%) — no significant asymmetry.';}
+  else if(lo>=40){flag.style.color='var(--rg-warn)';flag.textContent='Mild asymmetry — the '+(rR<rL?'right':'left')+' kidney is contributing less than the ~45% lower limit.';}
+  else{flag.style.color='var(--rg-bad)';flag.textContent='Significant asymmetry — the '+(rR<rL?'right':'left')+' kidney contributes only '+lo+'% (split-function reduced'+(lo<35?', markedly':'')+').';}
+}
+
+/* controls */
+const lasixBtn=document.getElementById('rg-lasixBtn');
+lasixBtn.addEventListener('click',()=>{const on=!kid.R.lasix;kid.R.lasix=on;kid.L.lasix=on;lasixBtn.classList.toggle('on',on);document.getElementById('rg-lasixState').textContent=on?'on':'off';draw();});
+document.getElementById('rg-resetBtn').addEventListener('click',()=>{kid.R={...NORMAL};kid.L={...NORMAL};lasixBtn.classList.remove('on');document.getElementById('rg-lasixState').textContent='off';draw();});
+document.getElementById('rg-kidSel').addEventListener('click',e=>{const k=e.target.dataset&&e.target.dataset.k;if(!k)return;sel=k;
+  [...document.querySelectorAll('#rg-kidSel button')].forEach(b=>{b.classList.remove('act','actR','actL');if(b.dataset.k===k)b.classList.add('act',k==='R'?'actR':'actL');});
+  document.getElementById('rg-selName').textContent=k==='R'?'right':'left';draw();});
+
+/* ===================== flow phase ===================== */
+const flow=document.getElementById('rg-flow');
+const FV={x0:44,y0:14,w:660,h:150,tMax:60,yMax:110};
+function fX(t){return FV.x0+(t/FV.tMax)*FV.w;} function fY(v){return FV.y0+(1-v/FV.yMax)*FV.h;}
+function flowCurve(kind,perf){
+  let d="";
+  for(let t=0;t<=60;t+=0.4){
+    let v;
+    if(kind==='ao'){ v=95*Math.exp(-Math.pow((t-13)/4.5,2)) + 14*Math.exp(-Math.pow((t-30)/22,2)); }
+    else { const amp=perf; v=amp*(78*Math.exp(-Math.pow((t-17)/5.5,2)) + 30*(1-Math.exp(-Math.max(0,t-14)/10))); }
+    d+=(t===0?"M":"L")+fX(t).toFixed(1)+" "+fY(clamp(v,0,FV.yMax)).toFixed(1)+" ";
+  }
+  return d;
+}
+function drawFlow(){
+  flow.innerHTML='';
+  flow.appendChild(el('rect',{x:FV.x0,y:FV.y0,width:FV.w,height:FV.h,fill:'var(--rg-plotbg)',stroke:'var(--rg-line)',rx:6}));
+  for(let t=0;t<=60;t+=15){const x=fX(t);flow.appendChild(el('line',{x1:x,y1:FV.y0,x2:x,y2:FV.y0+FV.h,stroke:'var(--rg-grid)','stroke-width':1}));
+    const l=el('text',{x:x,y:FV.y0+FV.h+16,fill:'var(--rg-faint)','font-size':11,'text-anchor':'middle'});l.textContent=t+'s';flow.appendChild(l);}
+  flow.appendChild(el('path',{d:flowCurve('ao'),fill:'none',stroke:'var(--rg-muted)','stroke-width':2,'stroke-dasharray':'4 4',opacity:.8}));
+  flow.appendChild(el('path',{d:flowCurve('k',kid.R.perf),fill:'none',stroke:'var(--rg-right)','stroke-width':2.6,'stroke-linejoin':'round'}));
+  flow.appendChild(el('path',{d:flowCurve('k',kid.L.perf),fill:'none',stroke:'var(--rg-left)','stroke-width':2.6,'stroke-linejoin':'round'}));
+  const diff=Math.abs(kid.R.perf-kid.L.perf);
+  const msg=el('text',{x:FV.x0+FV.w-6,y:FV.y0+16,fill:diff>0.25?'var(--rg-bad)':'var(--rg-muted)','font-size':11,'text-anchor':'end','font-weight':600});
+  msg.textContent = diff>0.25 ? 'asymmetric first-pass' : (Math.min(kid.R.perf,kid.L.perf)<0.3?'reduced first-pass':'symmetric first-pass');
+  flow.appendChild(msg);
+}
+
+/* ===================== captopril module ===================== */
+const capto=document.getElementById('rg-capto');
+const CV={x0:44,y0:12,w:660,h:140,tMax:20,yMax:110};
+function cX(t){return CV.x0+(t/CV.tMax)*CV.w;} function cY(v){return CV.y0+(1-v/CV.yMax)*CV.h;}
+function renoCurve(tmax,retain){
+  let d="";
+  for(let t=0;t<=20;t+=0.25){
+    let v; if(t<=tmax) v=Math.sin(Math.PI/2*(t/tmax))*100;
+    else { const k=0.25*(1-retain); const floor=100*retain*0.95; v=(100-floor)*Math.exp(-k*(t-tmax))+floor; }
+    d+=(t===0?"M":"L")+cX(t).toFixed(1)+" "+cY(clamp(v,0,CV.yMax)).toFixed(1)+" ";
+  }
+  return d;
+}
+function renoVal(t,tmax,retain){let v;if(t<=tmax)v=Math.sin(Math.PI/2*(t/tmax))*100;else{const k=0.25*(1-retain);const floor=100*retain*0.95;v=(100-floor)*Math.exp(-k*(t-tmax))+floor;}return v;}
+function drawCapto(sev){
+  const baseT=4, baseRet=0.12;
+  const postT=baseT+sev*11;
+  const postRet=Math.min(0.95,baseRet+sev*0.8);
+  capto.innerHTML='';
+  capto.appendChild(el('rect',{x:CV.x0,y:CV.y0,width:CV.w,height:CV.h,fill:'var(--rg-plotbg)',stroke:'var(--rg-line)',rx:6}));
+  for(let t=0;t<=20;t+=5){const x=cX(t);capto.appendChild(el('line',{x1:x,y1:CV.y0,x2:x,y2:CV.y0+CV.h,stroke:'var(--rg-grid)','stroke-width':1}));
+    const l=el('text',{x:x,y:CV.y0+CV.h+15,fill:'var(--rg-faint)','font-size':10.5,'text-anchor':'middle'});l.textContent=t;capto.appendChild(l);}
+  capto.appendChild(el('path',{d:renoCurve(baseT,baseRet),fill:'none',stroke:'var(--rg-refc)','stroke-width':2.2,'stroke-dasharray':'5 4',opacity:.75}));
+  capto.appendChild(el('path',{d:renoCurve(postT,postRet),fill:'none',stroke:'var(--rg-warn)','stroke-width':3}));
+  const lb1=el('text',{x:cX(20)-4,y:cY(renoVal(20,baseT,baseRet))-6,fill:'var(--rg-refc)','font-size':10.5,'text-anchor':'end'});lb1.textContent='baseline';capto.appendChild(lb1);
+  const lb2=el('text',{x:cX(20)-4,y:cY(renoVal(20,postT,postRet))-6,fill:'var(--rg-warn)','font-size':10.5,'text-anchor':'end','font-weight':600});lb2.textContent='post-ACEI';capto.appendChild(lb2);
+
+  const dTmax=postT-baseT, dTmaxPct=100*dTmax/baseT;
+  const ratioBase=renoVal(20,baseT,baseRet)/100, ratioPost=renoVal(20,postT,postRet)/100;
+  const dRatio=ratioPost-ratioBase;
+  const dUptake=Math.round(sev*18);
+  const crit=[
+    ['Tmax increase ≥ 2 min or ≥ 40%', (dTmax>=2||dTmaxPct>=40), '+'+dTmax.toFixed(1)+' min ('+Math.round(dTmaxPct)+'%)'],
+    ['20-min/peak ratio increase ≥ 0.15', (dRatio>=0.15), '+'+dRatio.toFixed(2)],
+    ['Relative-uptake fall ≥ 10%', (dUptake>=10), '−'+dUptake+'%'],
+  ];
+  const box=document.getElementById('rg-capCrit');box.innerHTML='';
+  let met=0;
+  crit.forEach(([lab,ok,val])=>{if(ok)met++;const r=document.createElement('div');r.className='critRow';
+    r.innerHTML=`<span class="ic" style="background:${ok?'var(--rg-bad)':'var(--rg-good)'}">${ok?'!':'✓'}</span><span style="flex:1">${lab}</span><b style="color:${ok?'var(--rg-warn)':'var(--rg-muted)'}">${val}</b>`;box.appendChild(r);});
+  const vd=document.getElementById('rg-capVerdict');
+  if(met>=2){vd.className='verdict bad';vd.textContent='High probability of renovascular hypertension — ACEI-induced deterioration (grade change ≥ 2 equivalent).';}
+  else if(met===1||sev>=0.25){vd.className='verdict warn';vd.textContent='Intermediate — some ACEI-induced change; correlate and consider repeat / imaging.';}
+  else{vd.className='verdict good';vd.textContent='Low probability — post-ACEI study essentially unchanged from baseline.';}
+}
+document.getElementById('rg-capSev').addEventListener('input',e=>drawCapto(e.target.value/100));
+
+/* ===================== gallery ===================== */
+const PRESETS=[
+  {t:'Normal',o:"O'Reilly Type 1",color:'var(--rg-good)',d:'Sharp uptake, peak ≤5 min, prompt washout.',s:{perf:.8,tmax:4,peak:.85,drain:.82,lasix:false,lasixResp:.9,dbl:false}},
+  {t:'Obstructed — no diuretic response',o:"O'Reilly Type 2",color:'var(--rg-bad)',d:'Keeps rising despite furosemide.',s:{perf:.72,tmax:20,peak:.8,drain:.03,lasix:true,lasixResp:.03,dbl:false}},
+  {t:'Dilated, non-obstructed',o:"O'Reilly Type 3a",color:'var(--rg-good)',d:'Held at rest; furosemide flushes it out.',s:{perf:.72,tmax:12,peak:.82,drain:.1,lasix:true,lasixResp:.92,dbl:false}},
+  {t:'Dilated, equivocal',o:"O'Reilly Type 3b",color:'var(--rg-warn)',d:'Partial, indeterminate response — not “obstructed”.',s:{perf:.72,tmax:16,peak:.8,drain:.08,lasix:true,lasixResp:.14,dbl:false}},
+  {t:'Homsy decompensation',o:"Homsy sign (not O'Reilly)",color:'var(--rg-warn)',d:'Good early washout, then paradoxical rise after F.',s:{perf:.75,tmax:4,peak:.85,drain:.5,lasix:true,lasixResp:.5,dbl:true}},
+  {t:'Poor / non-functioning',o:"Flat curve",color:'var(--rg-bad)',d:'Barely rises above background; low split function.',s:{perf:.2,tmax:10,peak:.12,drain:.3,lasix:false,lasixResp:.5,dbl:false}},
+  {t:'Reduced first-phase perfusion',o:"Nonspecific",color:'var(--rg-info)',d:'Blunted flow — nonspecific, NOT specific for RAS.',s:{perf:.24,tmax:7,peak:.5,drain:.45,lasix:false,lasixResp:.5,dbl:false}},
+  {t:'Parenchymal / cortical retention',o:"ATN · post-ACEI · obstruction",color:'var(--rg-warn)',d:'Preserved flow, delayed cortical washout.',s:{perf:.82,tmax:9,peak:.75,drain:.26,lasix:false,lasixResp:.5,dbl:false}},
+];
+function miniPath(st,W,H){const mx=6,my=6,w=W-2*mx,h=H-2*my;const px=t=>mx+(t/30)*w,py=v=>my+(1-clamp(v,0,V.yMax)/V.yMax)*h;let d="";for(let t=0;t<=30;t+=0.4)d+=(t===0?"M":"L")+px(t).toFixed(1)+" "+py(curveVal(t,st)).toFixed(1)+" ";return d;}
+function buildGallery(){
+  const grid=document.getElementById('rg-grid');const GW=250,GH=112;
+  PRESETS.forEach(p=>{
+    const card=document.createElement('div');card.className='gcard';
+    const fx=6+(20/30)*(GW-12);
+    const svg=`<svg viewBox="0 0 ${GW} ${GH}" preserveAspectRatio="none"><rect x="0" y="0" width="${GW}" height="${GH}" fill="var(--rg-plotbg)" rx="8"/>
+      ${p.s.lasix?`<line x1="${fx}" y1="6" x2="${fx}" y2="${GH-6}" stroke="var(--rg-bad)" stroke-width="1.5" stroke-dasharray="2 3" opacity=".7"/>`:''}
+      <path d="${miniPath(NORMAL,GW,GH)}" fill="none" stroke="var(--rg-refc)" stroke-width="1.6" stroke-dasharray="4 4" opacity=".5"/>
+      <path d="${miniPath(p.s,GW,GH)}" fill="none" stroke="${p.color}" stroke-width="2.4" stroke-linejoin="round"/></svg>`;
+    card.innerHTML=svg+`<div class="gt">${p.t}</div><div class="go">${p.o}</div><div class="gd">${p.d}</div>`;
+    card.addEventListener('click',()=>{
+      kid[sel]={...p.s};
+      const on=p.s.lasix; kid.R.lasix=on;kid.L.lasix=on;
+      lasixBtn.classList.toggle('on',on);document.getElementById('rg-lasixState').textContent=on?'on':'off';
+      draw();plot.scrollIntoView({behavior:'smooth',block:'center'});
+    });
+    grid.appendChild(card);
+  });
+}
+
+/* ===================== init ===================== */
+buildStatic();buildGallery();draw();drawCapto(0.6);
+})();</script>

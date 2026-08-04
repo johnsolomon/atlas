@@ -154,6 +154,13 @@ Neurodegenerative dementias are progressive; rate varies by subtype and comorbid
 - The **A/T/(N)** biomarker schematic mapping amyloid/tau/neurodegeneration to PET/CSF/plasma readouts.
 - An **amyloid-PET positive vs negative** teaching pair (loss of gray–white distinction vs preserved).
 
+## Common Pitfalls
+
+- {H} **Tau-PET (flortaucipir) off-target binding** — choroid plexus, basal ganglia/striatum, and MAO-B–related uptake — can be misread as neurofibrillary tau; know the physiologic pattern.
+- **Crossed cerebellar diaschisis**, remote infarct, or a subacute seizure can produce hypometabolism distant from the true dementing process — a localization trap.
+- The **DLB occipital pattern can be mimicked by inadequate visual stimulation** (eyes closed) during the uptake phase — standardize scanning conditions.
+- After **anti-amyloid antibody therapy**, amyloid-PET signal can fall — a post-treatment "negative" scan does not exclude underlying Alzheimer pathology.
+
 ## Self-Check (Board-Style)
 
 <details><summary><strong>Q1.</strong> An FDG-PET shows occipital and parietal hypometabolism with relative sparing of the posterior cingulate. What sign is this and what does it favor?</summary>

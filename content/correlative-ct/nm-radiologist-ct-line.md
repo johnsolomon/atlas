@@ -1,9 +1,9 @@
 ---
 type: reference
-title: The Nuclear Medicine–Radiologist Line on CT
+title: The Nuclear Medicine/Radiologist Line on CT
 chapter: correlative-ct
 order: 5
-subtitle: What the nuclear medicine physician owns on the localization CT, what belongs to the radiologist, and why the goal is correlation plus a safety-net — not comprehensive diagnosis
+subtitle: What the nuclear medicine physician owns on the localization CT, what belongs to the radiologist, and why the goal is correlation plus a safety-net, not comprehensive diagnosis
 aliases: [nuclear medicine vs radiologist CT, scope of CT interpretation nuclear medicine, who reads the CT PET/CT, correlative CT responsibility, safety net read, nuc med CT line, radiologist diagnostic read]
 review_status: physician-reviewed
 last_updated: 2026-07-28

@@ -148,6 +148,13 @@ Stage (FIGO) dominates outcome across all three. **Cervical** cancer is curable 
 - The **endometrial TCGA molecular classes** and their prognosis.
 - A **pelvic physiologic-uptake** plate (cyclical endometrium/ovary, bowel, ureter/bladder).
 
+## Common Pitfalls
+
+- {H} **Ovarian FDG uptake in a postmenopausal woman is abnormal** — the quiescent postmenopausal ovary should not be avid, so do not dismiss it as physiologic (unlike cyclical premenopausal uptake).
+- **FDG-low histologies** — **mucinous** and **low-grade serous** ovarian carcinomas, and **clear-cell** tumors — can be falsely negative; a normal SUV does not exclude disease.
+- **Benign FDG-avid mimics** — endometriosis, tubo-ovarian abscess, dermoid, and cellular/degenerating fibroids — can produce false-positive pelvic uptake.
+- **Post-radiation/brachytherapy inflammation** in the cervix and reactive pelvic nodes causes false positives — respect an adequate interval after treatment.
+
 ## Self-Check (Board-Style)
 
 <details><summary><strong>Q1.</strong> Staging FDG-PET in locally advanced cervical cancer shows an avid para-aortic node. Why does this matter?</summary>

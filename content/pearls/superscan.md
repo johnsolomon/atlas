@@ -3,7 +3,7 @@ type: pattern
 title: Superscan
 chapter: pearls
 order: 20
-subtitle: Diffuse intense skeletal uptake with faint or absent kidneys — a whole-body pattern, not a lesion
+subtitle: Diffuse intense skeletal uptake with faint or absent kidneys, a whole-body pattern, not a lesion
 aliases: [superscan, super scan, beautiful bone scan, absent kidney sign, diffuse skeletal uptake, metabolic superscan]
 review_status: physician-reviewed
 last_updated: 2026-07-28

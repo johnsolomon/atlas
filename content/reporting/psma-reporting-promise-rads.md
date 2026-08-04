@@ -1,6 +1,6 @@
 ---
 type: reference
-title: PSMA-PET Reporting — PROMISE & PSMA-RADS
+title: "PSMA-PET Reporting: PROMISE & PSMA-RADS"
 chapter: reporting
 order: 20
 subtitle: Standardized frameworks for interpreting and communicating PSMA-PET

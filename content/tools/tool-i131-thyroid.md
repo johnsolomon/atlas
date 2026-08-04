@@ -3,7 +3,7 @@ type: tool
 title: I-131 Hyperthyroidism Dose Calculator
 chapter: tools
 order: 18
-subtitle: Calculated (dosimetric) ¹³¹I activity from target dose per gram, gland mass, and 24-hour uptake — with the fixed-activity reference
+subtitle: Calculated (dosimetric) ¹³¹I activity from target dose per gram, gland mass, and 24-hour uptake, with the fixed-activity reference
 aliases: [I-131 dose, radioiodine dose, RAI dose, hyperthyroidism therapy, Graves dose, toxic nodular, RAIU, gland mass, marinelli, thyroid ablation activity]
 tags: [tool, endocrine, therapy, thyroid, i-131]
 ---

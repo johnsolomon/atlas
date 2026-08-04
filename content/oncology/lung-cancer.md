@@ -144,6 +144,13 @@ Stage is the dominant determinant (TNM 8th edition). Early, resectable NSCLC has
 - **TNM 8th-edition** nodal-station map with the "confirm N2/N3 pathologically" rule annotated.
 - Dual-tracer **NSCLC (FDG) vs carcinoid (DOTATATE)** comparison plate.
 
+## Common Pitfalls
+
+- {H} **Talc pleurodesis** produces intense, often nodular pleural FDG uptake that persists for years and mimics **malignant pleural disease** — correlate with the CT (high-attenuation talc deposits) and pleurodesis history.
+- **Brown fat and muscle** uptake in the neck and supraclavicular fossae can simulate **N3 nodal disease** — check the fused CT for a nodal correlate.
+- **Hyperglycemia and recent insulin** shift FDG into muscle and degrade tumor conspicuity, risking a **false-negative** read of an otherwise avid tumor.
+- A small **FDG-avid adrenal nodule** is not automatically a metastasis (adenomas can be mildly avid) — characterize with CT washout or MRI before upstaging to M1.
+
 ## Self-Check (Board-Style)
 
 <details><summary><strong>Q1.</strong> An 8-mm solid nodule shows no FDG uptake. Can malignancy be excluded?</summary>

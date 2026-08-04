@@ -3,7 +3,7 @@ type: disease
 title: Thymic Epithelial Tumors & the Anterior Mediastinal Mass
 chapter: oncology
 order: 350
-subtitle: FDG in thymoma vs thymic carcinoma — and separating tumor from thymic hyperplasia and rebound
+subtitle: FDG in thymoma vs thymic carcinoma, and separating tumor from thymic hyperplasia and rebound
 aliases: [thymoma, thymic carcinoma, thymic epithelial tumor, anterior mediastinal mass, thymic hyperplasia, thymic rebound, mediastinal mass FDG]
 isotope: "Fluorine-18 (FDG)"
 review_status: physician-reviewed
@@ -45,6 +45,22 @@ FDG uptake in thymic epithelial tumors **rises with aggressiveness**: low-risk *
 - {H} Distinguish **thymic hyperplasia/rebound** (mild, symmetric, physiologic shape) from tumour and from lymphoma relapse.
 - FDG stratifies risk but does not replace biopsy for thymic epithelial tumors.
 - Remember thymoma's **paraneoplastic associations** (myasthenia gravis) and **pleural drop metastases**.
+
+## Board Pearls
+
+- {K} FDG **discriminates thymic carcinoma (high SUVmax) from thymoma** more reliably than it separates the individual **thymoma WHO subtypes**, where uptake overlaps.
+- **Masaoka-Koga** staging (capsular, pleural, nodal, and distant spread) is the principal staging system; **complete (R0) resection** is the dominant prognostic factor.
+- Thymoma paraneoplastic associations extend **beyond myasthenia gravis** to **pure red cell aplasia** and **hypogammaglobulinemia (Good syndrome)**.
+- A **markedly avid, bulky** anterior mediastinal mass in a **young** patient should prompt **biopsy to exclude lymphoma before thymectomy**.
+- **Thymic carcinoma** tends toward **nodal and distant** metastases, whereas **thymoma** characteristically spreads as **pleural drop deposits**.
+
+## Reporting Checklist
+
+- Describe the mass **location, size, morphology** (lobulation, capsule) and **SUVmax**.
+- Comment on **local invasion** of mediastinal fat, great vessels, and pericardium (with CT/MRI correlation).
+- Assess **pleural/pericardial drop deposits** and **nodal/distant** disease for staging.
+- State whether the appearance favors **thymoma vs thymic carcinoma vs lymphoma vs hyperplasia/rebound**, integrating clinical context (myasthenia gravis, recent chemotherapy, age).
+- Recommend **biopsy** when lymphoma is in the differential, and note that FDG **stratifies risk but does not replace histology**.
 
 ## Self-Check
 

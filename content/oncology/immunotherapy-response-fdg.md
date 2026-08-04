@@ -59,6 +59,32 @@ Integrate **timing since therapy start, trajectory across scans, clinical status
 - **Sarcoid-like nodal reaction** misread as nodal metastasis.
 - **irAE uptake** (thyroid, bowel, lung) mistaken for new malignancy — or missed when it is actually a treatable toxicity.
 
+## Board Pearls
+
+- {K} **Activated immune cells are FDG-avid** — the single mechanism behind both **pseudoprogression** and **immune-related adverse-event** uptake.
+- Under immune-adapted criteria, **new lesions do not automatically equal progression** and apparent progression must be **confirmed on a follow-up scan** before therapy is abandoned.
+- **irAEs are often visible on PET before symptoms** and are **actionable** (may need steroids or drug interruption) — actively look for them.
+- A **sarcoid-like reaction** produces new symmetric hilar/mediastinal nodes; when biopsied it shows **non-caseating granulomas, not tumor**.
+- **Hyperprogression** (a minority, worse outcome) is distinguished from pseudoprogression by **continued worsening with clinical decline**, not later regression.
+
+## Differential Diagnosis
+
+- **New mediastinal/hilar nodal uptake:** immune-mediated **sarcoid-like reaction** versus nodal metastasis.
+- **New diffuse thyroid uptake:** immune **thyroiditis** versus (rarely) malignancy.
+- **Bowel-wall uptake:** immune **colitis** versus physiologic bowel activity versus metastasis.
+- **Pituitary enlargement/uptake:** **hypophysitis** versus pituitary metastasis.
+- **Diffuse marrow/splenic uptake:** cytokine/immune activation (or G-CSF effect) versus marrow disease.
+- **Growing/more-avid lesion early on:** **pseudoprogression** versus true progression versus **hyperprogression** — resolved by trajectory and confirmation.
+
+## Reporting Checklist
+
+- State the **interval since immunotherapy start** and reference **prior scans** for trajectory.
+- Score using an **immune-adapted framework** (iRECIST / PET-specific) and label apparent progression as **unconfirmed** pending follow-up.
+- Enumerate suspected **irAEs by organ** and flag them as **actionable**.
+- Distinguish a **sarcoid-like nodal reaction** from metastatic nodes; recommend biopsy or follow-up when uncertain.
+- Note any **dissociated (mixed) response** across lesions.
+- Give an explicit **confirmatory-imaging recommendation and timing** when progression is equivocal.
+
 ## Self-Check
 
 <details><summary><strong>Q1.</strong> What causes pseudoprogression on FDG-PET after checkpoint-inhibitor therapy, and how is it managed?</summary>

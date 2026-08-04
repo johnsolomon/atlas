@@ -1,6 +1,6 @@
 ---
 type: protocol
-title: Liver–Spleen & Hemangioma Imaging
+title: Liver/Spleen & Hemangioma Imaging
 chapter: gastrointestinal
 order: 30
 subtitle: Sulfur-colloid reticuloendothelial imaging and Tc-99m-RBC for hepatic hemangioma

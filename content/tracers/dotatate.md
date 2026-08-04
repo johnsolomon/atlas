@@ -4,7 +4,7 @@ title: DOTATATE PET agents
 chapter: endocrine
 order: 150
 isotope_label: "⁶⁸Ga-DOTATATE · ⁶⁴Cu-DOTATATE"
-subtitle: Somatostatin-receptor imaging — the companion diagnostic for peptide receptor radionuclide therapy
+subtitle: Somatostatin-receptor imaging, the companion diagnostic for peptide receptor radionuclide therapy
 aliases: [DOTATATE, Ga-68 DOTATATE, NETSPOT, gallium dotatate, Cu-64 DOTATATE, Detectnet, DOTATOC, DOTANOC, somatostatin receptor PET, SSTR PET, octreotide scan, Krenning score, uncinate process, PRRT companion]
 isotope: "Gallium-68 / Copper-64"
 half_life: "Ga-68: 68 min · Cu-64: 12.7 h"

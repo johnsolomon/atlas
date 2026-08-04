@@ -3,7 +3,7 @@ type: disease
 title: Osteomyelitis & the Diabetic Foot
 chapter: infection
 order: 40
-subtitle: Three-phase bone scan, labeled-WBC + marrow, FDG — and the Charcot problem
+subtitle: Three-phase bone scan, labeled-WBC + marrow, FDG, and the Charcot problem
 aliases: [osteomyelitis, diabetic foot, Charcot, neuroarthropathy, three phase bone scan, labeled WBC, sulfur colloid marrow, spondylodiscitis, probe to bone, diabetic foot infection]
 review_status: physician-reviewed
 last_updated: 2026-07-27
@@ -119,6 +119,14 @@ Depends on **infection control, vascular status, and glycemic control**; diabeti
 - A **WBC + marrow congruence/incongruence** decision plate (infection vs Charcot/marrow).
 - An **osteomyelitis vs Charcot** distribution map (forefoot ulcer vs midfoot deformity).
 - A **three-phase** osteomyelitis-vs-cellulitis schematic.
+
+## Common Pitfalls
+
+- {K} Interpreting **labeled-WBC uptake alone as infection** in violated bone — reactive marrow and Charcot take up leukocytes, so a paired **marrow (sulfur-colloid)** scan is mandatory before calling osteomyelitis.
+- **Spatial mismatch** between separately acquired WBC and marrow images can create artifactual "incongruence" — co-register (SPECT/CT) and compare identical planes.
+- A **three-phase bone scan is nonspecific in violated bone** — recent fracture, surgery, neuropathic joint, and Charcot are all positive on all three phases and cannot be called infection.
+- **False-negative WBC** studies occur in chronic, walled-off, or low-grade infection (few migrating neutrophils) and in small foot foci lost on planar imaging — add SPECT/CT.
+- **FDG false positives** from Charcot, recent surgery, and neuropathic remodeling, plus reduced FDG sensitivity with **hyperglycemia**, complicate the diabetic foot.
 
 ## Self-Check (Board-Style)
 

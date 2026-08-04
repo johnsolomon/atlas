@@ -160,6 +160,13 @@ Prognosis is driven by **grade (Ki-67), differentiation, stage, and primary site
 - **Krenning 0–4** reference plate against liver/spleen.
 - A **dual-tracer** teaching case (SSTR-avid vs FDG-avid discordant lesions).
 
+## Common Pitfalls
+
+- {H} A recent **long-acting somatostatin-analog injection** can competitively block SSTR2 and lower DOTATATE uptake — coordinate scan timing with the SSA cycle so a falsely low **Krenning score** does not exclude an otherwise PRRT-eligible patient.
+- **Degenerative/vertebral bone, healing fractures, and inflammatory/reactive nodes** can show SSTR uptake and be over-called as metastases without CT correlation.
+- Relying on **SSTR-PET alone in G2/G3 disease** and missing dedifferentiated **FDG-positive/SSTR-negative** clones — undergrading aggressiveness and overestimating PRRT benefit.
+- **SUV and Krenning values are not interchangeable across agents** (DOTATATE vs DOTATOC vs DOTANOC) or scanners — anchor to reference organs (liver/spleen) and keep the agent constant on serial studies.
+
 ## Self-Check (Board-Style)
 
 <details><summary><strong>Q1.</strong> A grade-2 small-bowel NET has DOTATATE uptake greater than liver at all sites and a negative FDG-PET. Is PRRT appropriate?</summary>

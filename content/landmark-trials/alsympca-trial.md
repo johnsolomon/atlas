@@ -3,7 +3,7 @@ type: trial
 title: ALSYMPCA
 chapter: landmark-trials
 order: 30
-subtitle: Radium-223 was the first alpha-emitter to improve survival — the trial behind Xofigo
+subtitle: Radium-223 was the first alpha-emitter to improve survival, the trial behind Xofigo
 aliases: [ALSYMPCA trial, radium-223 trial, Xofigo trial, Parker ALSYMPCA, alpha therapy prostate trial, Ra-223 survival]
 review_status: physician-reviewed
 last_updated: 2026-07-28

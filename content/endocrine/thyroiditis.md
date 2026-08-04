@@ -3,7 +3,7 @@ type: disease
 title: Thyroiditis
 chapter: endocrine
 order: 30
-subtitle: The low-uptake thyrotoxicosis — distinguishing it from Graves disease
+subtitle: The low-uptake thyrotoxicosis, distinguishing it from Graves disease
 aliases: [thyroiditis, subacute, painless, postpartum, de Quervain, low uptake thyrotoxicosis, silent thyroiditis, triphasic, amiodarone thyroiditis]
 review_status: physician-reviewed
 last_updated: 2026-07-27

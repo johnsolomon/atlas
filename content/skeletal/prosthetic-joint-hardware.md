@@ -1,6 +1,6 @@
 ---
 type: disease
-title: Painful Prosthesis — Loosening vs Infection
+title: "Painful Prosthesis: Loosening vs Infection"
 chapter: musculoskeletal
 order: 70
 subtitle: Bone scan, labeled-WBC + marrow imaging, and FDG for the painful hip/knee arthroplasty
@@ -58,6 +58,23 @@ The painful joint arthroplasty asks one central question: **aseptic loosening vs
 ## Related Pages
 
 - Protocol: **Bone scintigraphy**, **Infection imaging**; disease: **Prosthetic joint infection**.
+
+## Differential Diagnosis
+
+- **Aseptic loosening** — bone-scan **focal uptake at the stem tip and lesser trochanter** (hip) or the tibial component (knee), **without** WBC/marrow incongruence.
+- **Periprosthetic infection** — labeled-WBC uptake **spatially incongruent** with the sulfur-colloid marrow map (WBC without matching marrow).
+- **Particle (wear-debris) disease** — periprosthetic uptake with **osteolysis/lucencies** on radiographs; no WBC/marrow mismatch, but can mimic both loosening and infection.
+- **Heterotopic ossification** — increased uptake in **periarticular soft tissue**; serial bone-scan activity gauges maturity before any resection.
+- **Normal postoperative remodeling** (< ~12 months, longer for cementless components) — diffuse periprosthetic uptake that is expected, not pathologic.
+- **Periprosthetic fracture / stress reaction** — focal uptake localizing to the fracture site.
+
+## Reporting Checklist
+
+- State the **time since arthroplasty** and **component type (cemented vs cementless)**, which define the expected remodeling window.
+- Describe the bone-scan **uptake pattern and location** (stem tip, lesser trochanter, tibial component, or diffuse).
+- For WBC + marrow imaging, explicitly report **congruent vs incongruent** — call infection **only** on spatial incongruence.
+- Correlate with radiographs for **osteolysis/particle disease** and component position.
+- Give a clear conclusion — **loosening vs infection vs indeterminate** — and recommend correlation (joint aspiration, CRP/ESR) as appropriate.
 
 ## Self-Check
 

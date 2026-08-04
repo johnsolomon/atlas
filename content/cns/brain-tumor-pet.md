@@ -3,7 +3,7 @@ type: disease
 title: Brain Tumor PET (Gliomas)
 chapter: neuro
 order: 20
-subtitle: Amino-acid PET for gliomas — grading, delineation, and recurrence vs radiation necrosis
+subtitle: Amino-acid PET for gliomas, grading, delineation, and recurrence vs radiation necrosis
 aliases: [brain tumor PET, glioma, glioblastoma, astrocytoma, oligodendroglioma, IDH, 1p19q, MGMT, amino acid PET, FET, FDOPA, MET, methionine, radiation necrosis, pseudoprogression, PET-RANO]
 review_status: physician-reviewed
 last_updated: 2026-07-27
@@ -133,6 +133,13 @@ Prognosis is driven by the **integrated molecular diagnosis**: **IDH-mutant** gl
 - **FDG vs amino-acid PET** side-by-side over a glioma (cortical background vs low-background contrast).
 - A **recurrence vs radiation-necrosis** decision schematic (uptake high vs low; dynamic curve).
 - **WHO 2021 integrated-diagnosis** flow (IDH → 1p/19q → astrocytoma/oligodendroglioma/GBM).
+
+## Common Pitfalls
+
+- {H} **FDOPA physiologic striatal uptake** can mask a deep/basal-ganglia tumor or be mistaken for tumor — know the normal biodistribution (FET has lower physiologic background).
+- **Imaging too soon after surgery or radiation** captures reactive inflammation and can falsely suggest residual/recurrent tumor — respect the post-treatment interval.
+- **Non-neoplastic avid mimics** — abscess, tumefactive demyelination, and subacute infarct/hematoma — can show amino-acid uptake.
+- **Tumor-to-brain ratio thresholds and normal ranges differ by tracer** (FET vs FDOPA vs MET) — do not apply one tracer's cutoff to another.
 
 ## Self-Check (Board-Style)
 

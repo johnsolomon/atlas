@@ -3,7 +3,7 @@ type: disease
 title: Large-Vessel Vasculitis (GCA & Takayasu)
 chapter: infection
 order: 60
-subtitle: FDG-PET/CT for aortic wall inflammation — image before or early in steroids
+subtitle: FDG-PET/CT for aortic wall inflammation, image before or early in steroids
 aliases: [large vessel vasculitis, giant cell arteritis, GCA, temporal arteritis, Takayasu arteritis, aortitis, polymyalgia rheumatica, PMR, vascular wall uptake, halo sign]
 review_status: physician-reviewed
 last_updated: 2026-07-27
@@ -123,6 +123,14 @@ GCA carries a real risk of **irreversible vision loss** if untreated, and both d
 - A **smooth-circumferential vs patchy-calcified** uptake comparison (vasculitis vs atherosclerosis).
 - A **large-vessel distribution** map (aorta + subclavian/carotid/iliofemoral).
 - A **steroid-timing** graphic (uptake suppressed after steroids — image early).
+
+## Common Pitfalls
+
+- {K} Reading a **negative PET obtained on corticosteroids** as excluding vasculitis — steroids blunt vascular-wall uptake within days, so a suppressed study is non-diagnostic, not negative.
+- **Cranial/temporal-artery GCA is not assessed by whole-body PET** (small caliber, adjacent brain uptake) — a normal cephalic PET does not exclude cranial disease; use ultrasound/biopsy.
+- Mistaking **focal calcified atheroma** for vasculitis in older patients, where atherosclerosis and vasculitis frequently coexist — attend to the smooth-circumferential vs patchy-calcified pattern.
+- Overcalling **relapse** from persistent low-grade wall uptake, which can reflect vascular remodeling/repair rather than active inflammation — interpret against baseline and clinical/laboratory activity.
+- Degraded wall-to-blood contrast from **hyperglycemia, short uptake time, or high blood-pool activity** can both mimic and mask disease — confirm adequate preparation before grading.
 
 ## Self-Check (Board-Style)
 

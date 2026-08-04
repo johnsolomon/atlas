@@ -3,7 +3,7 @@ type: reference
 title: Nuclear Medicine in 90 Minutes
 chapter: learning-paths
 order: 10
-subtitle: A guided first look for medical students — the see-and-treat idea, the workhorse scans, and why this field is the future
+subtitle: A guided first look for medical students, the core ideas, the workhorse scans, and where the field is heading
 aliases: [medical student nuclear medicine, intro nuclear medicine, nuclear medicine overview students, first look, getting started nuclear medicine, lightbulb]
 review_status: physician-reviewed
 last_updated: 2026-07-29
@@ -13,11 +13,11 @@ tags: [learning-path, students, orientation]
 
 ## Start here
 
-{K} This is a **guided tour**, not a textbook chapter. Read these seven pages in order and you'll understand what nuclear medicine actually is, why it's different from radiology, and why it may be the most exciting specialty in imaging right now. Each link opens the page in the atlas — follow them top to bottom, then come back here for the next step.
+{K} This is a **guided tour**, not a textbook chapter. Read these seven pages in order and you'll understand what nuclear medicine actually is, how it reads the body's biology and acts on it, and why the field is growing quickly right now. Each link opens the page in the atlas — follow them top to bottom, then come back here for the next step.
 
 ## The path
 
-**1 · [Why Nuclear Medicine — The Future of Imaging](#/why-nuclear-medicine)** — the one idea that defines the field: see a disease at the molecular level, then treat that same target. Start here for the "why."
+**1 · [Why Nuclear Medicine](#/why-nuclear-medicine)**: what the field does, and why it is growing quickly. Start here for the "why."
 
 **2 · [Molecular Imaging & the Theranostic Pair](#/molecular-imaging)** — how one molecule can carry either a *diagnostic* or a *therapeutic* isotope. This is the concept everything else builds on.
 

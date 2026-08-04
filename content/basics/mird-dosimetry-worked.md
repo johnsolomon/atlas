@@ -1,6 +1,6 @@
 ---
 type: physics
-title: MIRD Dosimetry — Framework & Worked Examples
+title: "MIRD Dosimetry: Framework & Worked Examples"
 chapter: dosimetry-safety
 order: 10
 subtitle: Cumulated activity, S-values, and organ-dose calculation, step by step
@@ -22,11 +22,11 @@ The **MIRD schema** computes absorbed dose as **D = Ã × S**: the **cumulated (
 
 ## The Core Equation
 
-**D (target ← source) = Ã(source) × S(target ← source)**
+$$ D_{\text{target} \leftarrow \text{source}} = \tilde{A}_{\text{source}} \times S_{\text{target} \leftarrow \text{source}} $$
 
 Summed over all source regions:
 
-**D(target) = Σ_source Ã(source) × S(target ← source)**
+$$ D_{\text{target}} = \sum_{\text{source}} \tilde{A}_{\text{source}} \times S_{\text{target} \leftarrow \text{source}} $$
 
 - **Ã** = cumulated activity = ∫ A(t) dt (units: MBq·h or µCi·h) — the **total number of decays** in the source region.
 - **S** = dose per unit cumulated activity (mGy/MBq·h) — encodes emission energy, geometry (absorbed fraction), and target mass.
@@ -35,17 +35,19 @@ Summed over all source regions:
 
 For a region that takes up a fraction and clears **mono-exponentially**:
 
-**Ã = 1.443 × T_eff × A₀(region)**
+$$ \tilde{A} = 1.443 \times T_{\text{eff}} \times A_0 \quad\text{where}\quad 1.443 = \tfrac{1}{\ln 2} $$
 
 - **1.443 = 1/ln2** (the mean lifetime factor).
-- **T_eff** from **1/T_eff = 1/T_physical + 1/T_biological**.
+- **T_eff** combines the physical and biological half-lives:
+
+$$ \frac{1}{T_{\text{eff}}} = \frac{1}{T_{\text{physical}}} + \frac{1}{T_{\text{biological}}} $$
 - **Residence time τ = Ã / A₀** (hours) — a normalized way to tabulate uptake.
 
 Real kinetics are measured from **serial imaging/blood sampling** (multi-time-point SPECT/CT for Lu-177), fitting the time–activity curve and integrating it — the labor-intensive heart of patient-specific dosimetry.
 
 ## The S-Value
 
-**S(target ← source) = (Σᵢ Δᵢ φᵢ) / m_target**
+$$ S_{\text{target} \leftarrow \text{source}} = \dfrac{\sum_i \Delta_i\, \varphi_i}{m_{\text{target}}} $$
 
 - **Δᵢ** = mean energy emitted per decay for emission *i*.
 - **φᵢ** = absorbed fraction (fraction of energy *i* deposited in the target).

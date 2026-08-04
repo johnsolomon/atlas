@@ -3,7 +3,7 @@ type: physics
 title: PET & SPECT Performance & Reconstruction
 chapter: instrumentation
 order: 30
-subtitle: Resolution limits, coincidence physics, NECR, and iterative reconstruction — the working layer
+subtitle: Resolution limits, coincidence physics, NECR, and iterative reconstruction, the working layer
 aliases: [spatial resolution, FWHM, positron range, noncollinearity, coincidence, true scatter random, NECR, sensitivity, TOF, time of flight, iterative reconstruction, OSEM, PSF, resolution recovery, attenuation correction, scatter correction, partial volume, recovery coefficient, NEMA]
 review_status: physician-reviewed
 last_updated: 2026-07-27

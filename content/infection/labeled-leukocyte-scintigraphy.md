@@ -3,7 +3,7 @@ type: protocol
 title: Labeled Leukocyte (WBC) Scintigraphy
 chapter: infection
 order: 20
-subtitle: In-111-oxine and Tc-99m-HMPAO white-cell imaging — with marrow subtraction for osteomyelitis
+subtitle: In-111-oxine and Tc-99m-HMPAO white-cell imaging, with marrow subtraction for osteomyelitis
 aliases: [labeled WBC, leukocyte scintigraphy, In-111 oxine WBC, Tc-99m HMPAO WBC, white cell scan, marrow subtraction, dual-time WBC, prosthesis infection, osteomyelitis WBC]
 isotope_label: "¹¹¹In-oxine · ⁹⁹ᵐTc-HMPAO (autologous WBC)"
 modality: [Planar, SPECT]

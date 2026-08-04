@@ -3,7 +3,7 @@ type: practice
 title: Sequencing, Retreatment & Combinations in RPT
 chapter: theranostics
 order: 135
-subtitle: Where radioligand therapy sits among the lines — and when to re-treat, combine, or switch emitter
+subtitle: Where radioligand therapy sits among the lines, and when to re-treat, combine, or switch emitter
 aliases: [RPT sequencing, theranostics sequencing, Lu-PSMA rechallenge, PRRT retreatment, salvage PRRT, combination radioligand therapy, alpha after beta, treatment line mCRPC, sequencing NET therapy]
 isotope_label: "¹⁷⁷Lu · ²²⁵Ac"
 modality: [PET]

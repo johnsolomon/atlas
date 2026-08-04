@@ -3,7 +3,7 @@ type: practice
 title: Building & Running a Theranostics Program
 chapter: theranostics
 order: 12
-subtitle: The facility, license, team, and workflow behind a radioligand-therapy service — the part no textbook covers
+subtitle: The facility, license, team, and workflow behind a radioligand-therapy service, the part no textbook covers
 aliases: [theranostics program, RPT clinic, radioligand therapy setup, hot lab, authorized user, radiation safety officer, theranostics workflow, buy and bill radiopharmaceutical, theranostics tumor board]
 isotope_label: "¹⁷⁷Lu · ²²⁵Ac · ¹³¹I"
 modality: [PET]

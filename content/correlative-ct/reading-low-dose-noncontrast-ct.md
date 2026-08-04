@@ -3,7 +3,7 @@ type: reference
 title: Reading the Low-Dose Non-Contrast CT
 chapter: correlative-ct
 order: 20
-subtitle: A systematic organ-by-organ approach to the localization CT — what you can and cannot say without contrast
+subtitle: A systematic organ-by-organ approach to the localization CT, what you can and cannot say without contrast
 aliases: [reading low-dose CT, non-contrast CT interpretation, systematic CT review, CT search pattern, lung nodule low-dose, coronary calcium PET CT, adrenal HU adenoma, non-contrast liver, incidental CT nuclear medicine, how to read CT]
 review_status: physician-reviewed
 last_updated: 2026-07-28

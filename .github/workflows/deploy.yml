@@ -1,0 +1,55 @@
+name: Build & deploy atlas to GitHub Pages
+
+# OPTIONAL auto-deploy. Use this only if you set Settings → Pages → Source = "GitHub Actions".
+# If you instead serve straight from the branch (Source = "Deploy from a branch" → main → /root),
+# you do not need this file — index.html at the repo root is served as-is.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install build dependencies
+        run: pip install markdown pyyaml latex2mathml
+      - name: Build the atlas from source
+        run: python build_site.py
+      - name: Validate (hard invariants must pass)
+        run: python validate.py
+      - name: Assemble the published site
+        run: |
+          mkdir -p _site
+          cp nuclear-medicine-atlas.html _site/index.html
+          cp robots.txt _site/ 2>/dev/null || true
+          cp sitemap.xml _site/ 2>/dev/null || true
+          cp 404.html _site/ 2>/dev/null || true
+          touch _site/.nojekyll
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -176,8 +176,10 @@ const PACTIONS=[
  {t:'Open Radiopharmaceutical Compendium',k:'tracers matrix agents',run:function(){go('radiopharmaceutical-compendium');}},
  {t:'Open Unit Converter',k:'convert mci mbq gy rad',run:function(){go('tool-unit-converter');}},
  {t:'Toggle high-yield mode',k:'cram key points',run:function(){toggleHY();}},
+ {t:'Random page',k:'random surprise shuffle jump explore',run:function(){randomPage();}},
  {t:'Show keyboard shortcuts',k:'help keys',run:function(){toggleHelp();}},
 ];
+function randomPage(){var pool=(ORDER||[]).filter(function(id){return id&&id!=='home';});if(!pool.length)return;go(pool[Math.floor(Math.random()*pool.length)]);}
 let PSEL=0, PITEMS=[];
 function togglePalette(){const p=document.getElementById('palette');if(!p)return;p.classList.contains('on')?closePalette():openPalette();}
 function openPalette(){const p=document.getElementById('palette');if(!p)return;p.classList.add('on');document.body.style.overflow='hidden';const q=document.getElementById('pal-q');q.value='';renderPalette('');setTimeout(function(){q.focus();},20);}
@@ -305,13 +307,13 @@ function toggleCh(ch){
 function filterBy(q){const inp=document.getElementById('q');if(inp)inp.value=q;search(q);}
 /* Theme chips → a full, grouped list of matching topics (not just the search box) */
 function themeBrowse(label,q){
- const terms=(q||'').toLowerCase().split(/\s+/).filter(Boolean);
- const hits=IDX.filter(function(x){
-  if(x.id==='home')return false;
-  if(q==='tool')return x.id.indexOf('tool-')===0;
-  var hay=(x.title+' '+x.sub).toLowerCase();
-  return terms.some(function(t){return hay.indexOf(t)>=0;});
- }).sort(function(a,b){return a.title.toLowerCase()<b.title.toLowerCase()?-1:1;});
+ q=q||'';
+ var hits;
+ if(q.indexOf('ch:')===0){var chs=q.slice(3).split(',');hits=IDX.filter(function(x){return x.id!=='home'&&chs.indexOf(x.chapter)>=0;});}
+ else if(q.indexOf('part:')===0){var pt=q.slice(5);hits=IDX.filter(function(x){return x.id!=='home'&&x.part===pt;});}
+ else if(q==='tool'){hits=IDX.filter(function(x){return x.id.indexOf('tool-')===0;});}
+ else{var terms=q.toLowerCase().split(/\s+/).filter(Boolean);hits=IDX.filter(function(x){if(x.id==='home')return false;var hay=(x.title+' '+x.sub).toLowerCase();return terms.some(function(t){return hay.indexOf(t)>=0;});});}
+ hits=hits.sort(function(a,b){return a.title.toLowerCase()<b.title.toLowerCase()?-1:1;});
  const groups={};hits.forEach(function(x){(groups[x.group]=groups[x.group]||[]).push(x);});
  const order=Object.keys(groups).sort();
  const html=order.map(function(g){return '<div class="idx-sec"><div class="idx-letter">'+g+'</div>'+
@@ -324,19 +326,83 @@ function themeBrowse(label,q){
  const c=document.getElementById('idx-count');if(c)c.textContent=hits.length+' topic'+(hits.length===1?'':'s');
  const lst=document.getElementById('idx-list');if(lst)lst.innerHTML=html||'<p class="ma-empty">No matches for '+label+'.</p>';
 }
+/* ---- shared search matcher: synonym/acronym expansion + typo-tolerant fallback ---- */
+var SYN={
+ net:['neuroendocrine','somatostatin'],nets:['neuroendocrine'],
+ mcrpc:['castration-resistant','prostate cancer'],crpc:['castration-resistant','prostate'],
+ attr:['amyloid','transthyretin','pyp'],amyloidosis:['amyloid','attr','pyp'],amyloid:['attr','transthyretin'],
+ dlbcl:['diffuse large b-cell','lymphoma'],rcc:['renal cell'],gist:['gastrointestinal stromal'],
+ hcc:['hepatocellular'],hnscc:['head and neck'],cup:['carcinoma of unknown primary'],
+ dotatate:['neuroendocrine','somatostatin','net'],psma:['prostate'],
+ fdg:['pet','fluorodeoxyglucose'],pet:['fdg'],pyp:['amyloid','attr','pyrophosphate'],
+ mibg:['neuroblastoma','pheochromocytoma','catecholamine'],datscan:['ioflupane','parkinson'],dat:['ioflupane','datscan'],
+ muga:['ejection fraction','radionuclide angiography'],raiu:['radioiodine uptake'],
+ vq:['ventilation perfusion','pulmonary embolism'],pe:['pulmonary embolism'],
+ sstr:['somatostatin','dotatate','neuroendocrine'],prrt:['dotatate','peptide receptor'],rlt:['radioligand therapy','psma'],
+ ras:['renal artery stenosis','captopril'],let:['linear energy transfer']
+};
+function _norm(s){return s.replace(/[^a-z0-9]/g,'');}
+function _expand(tm){var out=[tm];var s=SYN[_norm(tm)];if(s)out=out.concat(s);return out;}
+function _lev(a,b){var m=a.length,n=b.length;if(Math.abs(m-n)>2)return 3;var p=[],c=[],i,j;for(j=0;j<=n;j++)p[j]=j;
+ for(i=1;i<=m;i++){c[0]=i;var best=i;for(j=1;j<=n;j++){var cost=a.charCodeAt(i-1)===b.charCodeAt(j-1)?0:1;c[j]=Math.min(p[j]+1,c[j-1]+1,p[j-1]+cost);if(c[j]<best)best=c[j];}if(best>2)return 3;var t=p;p=c;c=t;}return p[n];}
+function _fuzzyTerm(tm,x){
+ if(x.s.indexOf(tm)>=0)return true;
+ if(tm.length<4)return false;
+ var words=(x.title+' '+x.sub).toLowerCase().split(/[^a-z0-9]+/),thr=tm.length>=6?2:1;
+ for(var i=0;i<words.length;i++){var w=words[i];if(w.length>=3&&_lev(tm,w)<=thr)return true;}
+ return false;
+}
+var _reCache={};
+function _match(hay,e){ // word-bounded for short alphanumeric tokens (so "net"≠"netter"), substring otherwise
+ if(e.length<=4&&/^[a-z0-9]+$/.test(e)){var r=_reCache[e]||(_reCache[e]=new RegExp('\\b'+e+'\\b'));return r.test(hay);}
+ return hay.indexOf(e)>=0;
+}
+function _score(x,terms){
+ var title=x.title.toLowerCase(),sub=(x.sub||'').toLowerCase(),s=x.s,sc=0;
+ for(var k=0;k<terms.length;k++){
+  var exps=_expand(terms[k]),best=0;
+  for(var i=0;i<exps.length;i++){
+   var e=exps[i],w=i===0?1:0.5,v=0;
+   if(title===e)v=150;else if(_match(title,e))v=100;else if(_match(sub,e))v=45;else if(_match(s,e))v=8;
+   v*=w; if(v>best)best=v;
+  }
+  sc+=best;
+ }
+ return sc-Math.min(18,title.length*0.05);
+}
+function _searchHits(t){
+ var terms=t.split(/\s+/).filter(Boolean);
+ var cand=IDX.filter(function(x){return x.id!=='home'&&terms.every(function(tm){return _expand(tm).some(function(e){return x.s.indexOf(e)>=0;});});});
+ if(!cand.length)cand=IDX.filter(function(x){return x.id!=='home'&&terms.every(function(tm){return _fuzzyTerm(tm,x);});});
+ return cand.map(function(x){return {x:x,sc:_score(x,terms)};})
+            .sort(function(a,b){return b.sc-a.sc;})
+            .slice(0,14).map(function(o){return o.x;});
+}
+function _sri(h,term){
+ var inTitle=(h.title+' '+h.sub).toLowerCase().indexOf(term)>=0,snip=inTitle?'':snippet(h.s,term);
+ return '<div class="sri" role="option" data-id="'+h.id+'" onmousedown="goHL(\''+h.id+'\')"><div class="g">'+h.group+'</div><div class="t">'+h.title+'</div><div class="s">'+h.sub+'</div>'+(snip?'<div class="snip">'+snip+'</div>':'')+'</div>';
+}
 function search(v){
- const t=(v||'').trim().toLowerCase(), box=document.getElementById('sr');
- if(!t){box.classList.remove('open');return}
- const terms=t.split(/\s+/).filter(Boolean); LASTQ=t; SEL=-1;
- const hits=IDX.filter(x=>terms.every(tm=>x.s.includes(tm))).slice(0,14);
- box.innerHTML = hits.length? hits.map(h=>{
-   const inTitle=(h.title+' '+h.sub).toLowerCase().includes(terms[0]);
-   const snip=inTitle?'':snippet(h.s,terms[0]);
-   return `<div class="sri" role="option" data-id="${h.id}" onmousedown="goHL('${h.id}')"><div class="g">${h.group}</div><div class="t">${h.title}</div><div class="s">${h.sub}</div>${snip?`<div class="snip">${snip}</div>`:''}</div>`;
- }).join('')
-  : `<div class="sri"><div class="s">No results for “${esc(v)}”.</div></div>`;
+ var t=(v||'').trim().toLowerCase(), box=document.getElementById('sr');
+ if(!t){box.classList.remove('open');return;}
+ var terms=t.split(/\s+/).filter(Boolean); LASTQ=t; SEL=-1;
+ var hits=_searchHits(t);
+ box.innerHTML = hits.length? hits.map(function(h){return _sri(h,terms[0]);}).join('')
+  : '<div class="sri"><div class="s">No results for &ldquo;'+esc(v)+'&rdquo;.</div></div>';
  box.classList.add('open');
 }
+/* Homepage hero search: same matcher, results rendered inline below the big input */
+function homeSearch(v){
+ var box=document.getElementById('hsr');if(!box)return;
+ var t=(v||'').trim().toLowerCase();
+ if(!t){box.classList.remove('on');box.innerHTML='';return;}
+ var hits=_searchHits(t);
+ box.innerHTML=hits.length
+  ? hits.map(function(h){return '<a class="hsr-item" onclick="go(\''+h.id+'\')"><span class="hsr-g">'+h.group+'</span><span class="hsr-t">'+h.title+'</span><span class="hsr-s">'+h.sub+'</span></a>';}).join('')
+  : '<div class="hsr-empty">No results for &ldquo;'+esc(v)+'&rdquo;. Try a tracer, disease, organ, abbreviation, or therapy.</div>';
+ box.classList.add('on');
+}
+function homeSearchKey(e){if(e.key==='Enter'){var f=document.querySelector('#hsr .hsr-item');if(f){e.preventDefault();f.click();}}}
 function moveSel(d){const items=[...document.querySelectorAll('#sr .sri[data-id]')];if(!items.length)return;
  SEL=(SEL+d+items.length)%items.length;
  items.forEach((it,i)=>it.classList.toggle('sel',i===SEL));

@@ -48,6 +48,31 @@ FDG-PET/CT contributes to radiation therapy in three ways: it **upstages disease
 - Do not image for post-radiation response too early (inflammation → false positives).
 - Ensure PET is acquired in treatment position and correctly co-registered.
 
+## Board Pearls
+
+- FDG-PET refines the contour in **both directions**: it adds normal-sized but avid nodes and excludes enlarged, non-avid reactive nodes.
+- **Respiratory motion** blurs thoracic and upper-abdominal lesions — **4D/gated acquisition** improves target-volume accuracy.
+- Whole-body FDG-PET can reveal **synchronous second primaries and incidental findings** that change the plan or intent.
+- {H} A **negative post-chemoradiation FDG-PET (~12 weeks)** in head-and-neck cancer has high **negative predictive value**, supporting neck-dissection-sparing surveillance.
+- **Biological dose-painting** (boosting FDG-avid or hypoxic subvolumes) remains **investigational**, not standard of care.
+
+## Differential Diagnosis
+
+- **Post-radiation inflammation** (pneumonitis, esophagitis, mucositis) versus **residual/recurrent tumor** — the dominant source of false positives if imaging is too early.
+- **Atelectasis / post-obstructive consolidation** versus active tumor — FDG separates the two and typically shrinks the target.
+- **Reactive/inflammatory nodes** versus **metastatic nodes** — avidity, not size, drives the call.
+- **Radiation fibrosis / organizing pneumonia** versus recurrence on late follow-up scans.
+- **Physiologic/benign uptake** (brown fat, muscle, bowel, granuloma) that must not be contoured into a target.
+
+## Reporting Checklist
+
+- Confirm the scan was **acquired in the treatment position** and state the **co-registration** quality with the planning CT.
+- Define metabolic tumor extent, explicitly **distinguishing tumor from atelectasis/inflammation**.
+- Report **avid nodal stations** (including normal-sized nodes) and any **distant metastasis** that changes treatment intent.
+- State that the **GTV is a reader-integrated PET/CT contour**, not a single SUV-threshold segmentation; give reference-region uptake.
+- For response, state the **interval since radiotherapy**, caution about inflammation, and note NPV where relevant.
+- Flag **physiologic/benign uptake** not to be included in the target.
+
 ## Self-Check
 
 <details><summary><strong>Q1.</strong> What is the single largest way FDG-PET changes a radiation plan?</summary>

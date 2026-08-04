@@ -3,7 +3,7 @@ type: disease
 title: Medullary Thyroid Carcinoma
 chapter: endocrine
 order: 70
-subtitle: A non-iodine-avid C-cell tumor — imaging by DOTATATE, FDOPA, and FDG
+subtitle: A non-iodine-avid C-cell tumor, imaging by DOTATATE, FDOPA, and FDG
 aliases: [medullary thyroid cancer, MTC, C cell, calcitonin, CEA, RET, FDOPA, DOTATATE, selpercatinib, non iodine avid, doubling time, MEN2]
 review_status: physician-reviewed
 last_updated: 2026-07-27

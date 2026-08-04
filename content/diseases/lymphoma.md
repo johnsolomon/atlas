@@ -177,6 +177,14 @@ Prognosis depends on subtype, stage, and indices such as the **IPI** (age, stage
 - An **interim-PET response-adapted** decision flow (positive → escalate; negative → de-escalate).
 - The **transformation** concept: indolent (low FDG) developing a focally intense aggressive clone.
 
+## Common Pitfalls
+
+- Imaging **too soon after chemotherapy** (within ~2 weeks) or radiotherapy: treatment-related inflammation causes false-positive uptake — allow an adequate interval before response scoring.
+- **Uncontrolled hyperglycemia or recent insulin** degrades tumor FDG uptake and shifts tracer into skeletal muscle, risking false-negative reads and unreliable Deauville comparisons.
+- Reading **diffusely increased splenic uptake** as splenic involvement when it is reactive/cytokine-driven; **focal** splenic lesions are the more reliable sign of disease.
+- Low sensitivity at physiologically avid sites — **brain/CNS, gastric wall, and bowel** — can mask disease (a reason MALT and CNS lymphoma are underdetected).
+- {H} Applying the stricter **interim de-escalation cutoff (only Deauville 1–2 negative)** at the end of treatment, where **1–3** generally denotes complete metabolic response — mismatched thresholds misclassify response.
+
 ## Self-Check (Board-Style)
 
 <details><summary><strong>Q1.</strong> At end of treatment, a Hodgkin patient has a residual mediastinal mass with uptake moderately above liver. What Deauville score is this, and what does it indicate?</summary>

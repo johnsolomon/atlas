@@ -3,7 +3,7 @@ type: disease
 title: Germ Cell & Testicular Tumors
 chapter: oncology
 order: 170
-subtitle: FDG-PET for post-chemotherapy residual seminoma — and why not for NSGCT
+subtitle: FDG-PET for post-chemotherapy residual seminoma, and why not for NSGCT
 aliases: [germ cell tumor, GCT, testicular cancer, seminoma, non-seminomatous, NSGCT, teratoma, embryonal carcinoma, yolk sac, choriocarcinoma, AFP, beta-hCG, SEMPET, residual mass, IGCCCG]
 review_status: physician-reviewed
 last_updated: 2026-07-27
@@ -129,6 +129,13 @@ GCT is among the most curable solid cancers, even when metastatic, stratified by
 - A **residual-mass decision** flow: seminoma (FDG helps) vs NSGCT (resect — teratoma FDG-negative).
 - A **marker map** (AFP/β-hCG/LDH → histology implications).
 - A **retroperitoneal nodal spread** schematic.
+
+## Common Pitfalls
+
+- {H} **Growing teratoma syndrome** — an **enlarging** post-chemotherapy mass with **normalizing/normal markers** and **no FDG uptake** is teratoma requiring resection, not chemotherapy failure; do not mistake growth for progressive malignancy.
+- FDG is **unreliable for small residual masses (< 3 cm)** — microscopic viable tumor and partial-volume effect make a negative scan uninformative below the size threshold.
+- **Post-chemotherapy thymic rebound** and **sarcoid-like granulomatous nodal reactions** are common in these young patients and are FDG-avid — a classic false-positive mimicking relapse; correlate with markers and morphology.
+- A **negative FDG scan does not clear rising markers** — marker-positive relapse can be FDG-occult (teratoma or small-volume disease), so marker kinetics still drive management.
 
 ## Self-Check (Board-Style)
 

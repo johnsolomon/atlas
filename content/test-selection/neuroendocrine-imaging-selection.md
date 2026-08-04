@@ -1,6 +1,6 @@
 ---
 type: comparison
-title: Neuroendocrine Tumor Imaging — Which Test When
+title: "Neuroendocrine Tumor Imaging: Which Test When"
 chapter: test-selection
 order: 20
 subtitle: Choosing among ⁶⁸Ga-DOTATATE, FDG, ¹²³I-MIBG, and ¹⁸F-FDOPA across neuroendocrine phenotypes

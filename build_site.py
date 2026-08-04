@@ -15,7 +15,7 @@ BASE = os.path.join(_HERE, "content")
 OUT = os.path.join(_HERE, "nuclear-medicine-atlas.html")
 
 import datetime as _dt
-VERSION = "1.67"                                   # bump on substantive releases
+VERSION = "1.76"                                   # bump on substantive releases
 BUILD_DATE = _dt.date.today().isoformat()          # stamped at build time (provenance)
 _ROOT = os.path.dirname(BASE)
 
@@ -81,6 +81,7 @@ PART_LABEL = {
  "T": "Utilities",
 }
 CH_LABEL = {k: lbl for k, lbl, _ in CHAPTERS}
+CH_PART = {k: pt for k, _, pt in CHAPTERS}
 CH_ORDER_LIST = [k for k, _, _ in CHAPTERS]
 
 # PAGE_CHAPTER and CH_ORDER are DERIVED from each page's frontmatter
@@ -479,6 +480,10 @@ EVIDENCE = {
   ["B","<b>Deauville 5-point scale</b> — Barrington SF, et al. <i>J Clin Oncol</i> 2014; Lugano classification (Cheson 2014)."]],
  "tool-gastric-retention": [
   ["B","<b>Consensus gastric-emptying protocol</b> — Abell TL, et al. (ANMS/SNMMI): 4-hour normal values and severity grading."]],
+ "radionuclides-tracers-comparison": [
+  ["B","<b>Half-lives, emissions, and decay data</b> follow the ICRP/DDEP reference values and standard nuclear-medicine physics texts (e.g. Cherry, Sorenson &amp; Phelps, <i>Physics in Nuclear Medicine</i>); production routes reflect standard cyclotron/reactor/generator sources."],
+  ["B","<b>Clinical roles and matched theranostic pairs</b> reflect current SNMMI/EANM practice — e.g. the ¹⁷⁷Lu / ⁶⁸Ga PSMA and DOTATATE pairs, and ²²³Ra for bone-dominant mCRPC."],
+  ["I","<b>This is an orientation table, not a dosing reference</b> — activities, protocols, and eligibility live on each agent's own page and in the written directive for the individual patient."]],
  "tool-i131-thyroid": [
   ["B","<b>SNMMI procedure standard / EANM guideline — therapy of benign thyroid disease</b>: the calculated (dosimetric) and fixed-activity ¹³¹I methods, and target absorbed dose per gram of thyroid tissue."],
   ["B","<b>Calculated vs fixed activity</b> — comparable cure rates in benign hyperthyroidism; the target dose per gram and choice of method are institution- and physician-specific."],
@@ -487,6 +492,13 @@ EVIDENCE = {
   ["A","<b>Prognostic value of coronary flow reserve</b> — Murthy VL, et al. <i>Circulation</i> 2011;124:2215–2224: impaired global CFR independently predicted cardiac mortality (lowest tertile, CFR &lt;1.5, ~5.6&#215; higher cardiac death) across the spectrum of relative perfusion.", "https://doi.org/10.1161/CIRCULATIONAHA.111.050427"],
   ["B","<b>ASNC/SNMMI quantitative PET MPI</b> — absolute MBF and MFR methodology; global MFR &lt;2.0 flags impaired flow and &lt;1.5 high risk (tracer- and lab-dependent)."],
   ["I","<b>Rest MBF is workload-dependent</b> — RPP normalization uses a lab-convention reference value, and thresholds vary by lab and tracer; interpret with relative perfusion and clinical context."]],
+ "tool-renogram": [
+  ["B","<b>SNMMI/EANM diuretic renal scintigraphy guideline</b> — Taylor AT, et al. 2018: MAG3/DTPA technique, diuretic protocols, split function, and drainage assessment.", "https://pmc.ncbi.nlm.nih.gov/articles/PMC6020824/"],
+  ["C","<b>O'Reilly diuresis-renography classification</b> — O'Reilly PH, et al. <i>Br J Urol</i> 1978: Types 1 (normal), 2 (obstructed), 3a (dilated non-obstructed) and 3b (equivocal).", "https://pubmed.ncbi.nlm.nih.gov/423326/"],
+  ["B","<b>NORA (normalized residual activity)</b> — Piepsz A, et al. <i>J Nucl Med</i> 2002;43:33: a quantitative drainage index less confounded than the raw washout T½.", "https://jnm.snmjournals.org/content/jnumed/43/1/33.full.pdf"],
+  ["B","<b>ACE-inhibitor renography consensus</b> — Taylor A, Nally JV, et al. <i>J Nucl Med</i> 1996: a positive study is the post-ACEI deterioration (grade change ≥ 2 / new retention), not the baseline.", "https://jnm.snmjournals.org/content/jnumed/37/11/1876.full.pdf"],
+  ["C","<b>Homsy sign (post-diuretic double peak)</b> — Homsy YL, et al. <i>J Urol</i> 1988: flow-dependent intermittent PUJ obstruction — an addition to, not one of, O'Reilly's types.", "https://pubmed.ncbi.nlm.nih.gov/3054162/"],
+  ["I","<b>Curves are idealized teaching models</b> — indices are modeled to move correctly, not to reproduce a specific patient; always read real studies with counts, images, split function, hydration, and clinical context."]],
  # ---- batch: further oncology & neuro-oncology ----
  "multiple-myeloma": [
   ["B","<b>IMWG imaging recommendations</b> — FDG-PET/CT for bone disease detection, prognosis, and response in multiple myeloma."],
@@ -964,13 +976,95 @@ def parse(path):
     fm = yaml.safe_load(m.group(1))
     body = m.group(2)
     body = re.split(r"\n##\s+References\s*\n", body)[0].rstrip() + "\n"
+    # Pull out $$...$$ display-equation blocks before markdown so it can't mangle the
+    # LaTeX; they are rendered to MathML and reinserted as centered equation graphics.
+    body, _eqs = _extract_equations(body)
     html = markdown.markdown(body, extensions=["tables", "fenced_code", "sane_lists"])
     # Wrap every content table in a horizontal-scroll container so wide tables scroll
     # within themselves on narrow screens (iPhone) instead of overflowing the page.
     html = re.sub(r"<table>", '<div class="tbl-wrap"><table>', html)
     html = html.replace("</table>", "</table></div>")
     html = apply_yield(html)
+    html = style_sections(html)
+    html = _restore_equations(html, _eqs)
     return fm, html
+
+# ---- Standardized educational-section identity -------------------------------
+# Every content page draws from one shared vocabulary of teaching sections
+# (review items 7-13). Rather than rewrite 250+ files, the renderer recognises
+# each canonical section by its heading — folding label variants
+# ("Common Pitfalls" == "Common Pitfalls / Cautions", "Self-Check" ==
+# "Self-Check (Board-Style)") into one family — and gives it a consistent,
+# colour-coded icon so the scaffolding reads the same on every page.
+_SEC_ICONS = {
+    # key: 24x24 stroke path(s) (feather-style, fill:none, currentColor)
+    "quick":   ["M13 2 4 14h6l-1 8 9-12h-6z"],                                              # bolt
+    "why":     ["M12 3 2 8.5 12 14l10-5.5z", "M6 11v4.2c0 1.3 2.7 2.3 6 2.3s6-1 6-2.3V11"],# grad cap
+    "pearls":  ["M12 3l2.6 5.6 6 .7-4.5 4.2 1.2 6L12 16.9 6.7 19.5l1.2-6L3.4 9.3l6-.7z"],   # star
+    "pitfall": ["M12 3 2 20h20z", "M12 9v5", "M12 17.2v.05"],                               # warning
+    "ddx":     ["M9 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10z", "M15 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"], # venn
+    "report":  ["M9 4h6v3H9z", "M7 5.5H5V20h14V5.5h-2", "M8.5 11h7", "M8.5 15h5"],          # clipboard
+    "check":   ["M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z", "M9.5 9.3a2.6 2.6 0 0 1 4.6 1.6c0 1.7-2.1 2.1-2.1 3.6", "M12 17.2v.05"], # ? in circle
+    "refs":    ["M4 4h8a2 2 0 0 1 2 2v14a2 2 0 0 0-2-2H4z", "M20 4h-4a2 2 0 0 0-2 2v14a2 2 0 0 1 2-2h4z"], # book
+    "related": ["M9 12a3 3 0 0 0 3 3l2 2a4 4 0 0 0 6-6l-2-2a4 4 0 0 0-5 0", "M15 12a3 3 0 0 0-3-3l-2-2a4 4 0 0 0-6 6l2 2a4 4 0 0 0 5 0"], # link
+}
+# Ordered matchers: (predicate on normalised heading) -> family key.
+def _sec_key(norm):
+    def has(*subs): return any(s in norm for s in subs)
+    if has("quick answer"):                                   return "quick"
+    if has("why it matters", "why this matters", "clinical importance", "why nuclear"): return "why"
+    if has("board pearl", "high-yield pearl", "high yield pearl", "board fact", "key takeaway"): return "pearls"
+    if has("pitfall", "common mistake", "caution"):           return "pitfall"
+    if has("differential"):                                   return "ddx"
+    if norm.startswith("reporting"):                          return "report"
+    if has("self-check", "self check"):                       return "check"
+    if norm.endswith("reference") or norm.endswith("references") or "evidence" in norm: return "refs"
+    if has("related page", "related topic", "see also"):      return "related"
+    return None
+
+def _sec_norm(text):
+    t = re.sub(r"<[^>]+>", "", text)                 # strip any inline tags
+    t = t.replace("&amp;", "&").lower().strip()
+    t = re.sub(r"\s*\([^)]*\)\s*$", "", t)           # drop trailing "(Board-Style)" etc.
+    return t.strip(" .:")
+
+def style_sections(html):
+    def repl(m):
+        raw = m.group(1)
+        key = _sec_key(_sec_norm(raw))
+        if not key:
+            return m.group(0)
+        paths = "".join(f'<path d="{d}"/>' for d in _SEC_ICONS[key])
+        ic = (f'<svg class="sec-ic" viewBox="0 0 24 24" fill="none" '
+              f'stroke="currentColor" stroke-width="1.8" stroke-linecap="round" '
+              f'stroke-linejoin="round" aria-hidden="true">{paths}</svg>')
+        return f'<h2 class="sec sec-{key}">{ic}<span>{raw}</span></h2>'
+    return re.sub(r"<h2>(.*?)</h2>", repl, html, flags=re.S)
+
+# ---- Display equations: $$ LaTeX $$ → centered MathML block (typeset, offline, no runtime dep) ----
+def _extract_equations(body):
+    eqs = []
+    def repl(m):
+        eqs.append(m.group(1).strip())
+        return f"\n\nEQNBLOCK{len(eqs)-1}ENDEQN\n\n"
+    body = re.sub(r"\$\$(.+?)\$\$", repl, body, flags=re.S)
+    return body, eqs
+
+def _render_equation(latex):
+    try:
+        from latex2mathml.converter import convert
+        ml = convert(latex).replace('display="inline"', 'display="block"')
+    except Exception:
+        # Fallback: show the LaTeX source in a mono span rather than break the build.
+        ml = '<code>' + latex.replace('<', '&lt;').replace('>', '&gt;') + '</code>'
+    return f'<div class="equation" role="math">{ml}</div>'
+
+def _restore_equations(html, eqs):
+    for i, latex in enumerate(eqs):
+        blk = _render_equation(latex)
+        tok = f"EQNBLOCK{i}ENDEQN"
+        html = html.replace(f"<p>{tok}</p>", blk).replace(tok, blk)
+    return html
 
 def apply_yield(html):
     """4-level emphasis hierarchy.
@@ -1811,6 +1905,20 @@ def dat_scan_fig():
 # Every figure here is drawn in-house (public-domain by construction — no attribution
 # or reuse restrictions). Photographic/CT images are added per-page via `figures:`
 # front-matter from openly-licensed sources; slots stay blank until a good one exists.
+def placeholder_fig(label="Illustration to come"):
+    """A clearly-marked reserved slot for a diagram not yet drawn/sourced. Drawn on the
+    light figure backing (atlas palette); swap for a real figure when one exists."""
+    return (
+    "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 240'>"
+    "<rect x='6' y='6' width='628' height='228' rx='16' fill='#F6F7F9' stroke='#C4BADF' stroke-width='2' stroke-dasharray='10 8'/>"
+    "<g transform='translate(320,92)' fill='none' stroke='#4A3A82' stroke-width='3' stroke-linejoin='round' stroke-linecap='round'>"
+    "<rect x='-36' y='-28' width='72' height='56' rx='7'/>"
+    "<circle cx='-15' cy='-7' r='6.5' fill='#4A3A82' stroke='none'/>"
+    "<path d='M-36 22 L-9 -3 L7 13 L19 3 L36 20'/></g>"
+    "<text x='320' y='158' text-anchor='middle' font-family=\"'JetBrains Mono',ui-monospace,monospace\" font-size='12' letter-spacing='2.5' fill='#8D949C'>DIAGRAM PLACEHOLDER</text>"
+    "<text x='320' y='182' text-anchor='middle' font-family=\"'Inter',system-ui,sans-serif\" font-size='13' fill='#565E68'>" + label + "</text>"
+    "</svg>")
+
 FIGURES = {
  "seventeen-segment-model": [(bullseye(),
    "The 17-segment model mapped to coronary territories (LAD · LCx · RCA); the apex is segment 17.")],
@@ -1843,7 +1951,9 @@ FIGURES = {
  "instrumentation-detection": [(gamma_camera_fig(),
    "The gamma (Anger) camera: collimator → NaI(Tl) crystal → PMT array → position logic; the collimator sets spatial resolution.")],
  "physics-nuclear-medicine": [(decay_curve_fig(),
-   "Radioactive decay: activity halves each half-life (100 → 50 → 25 → 12.5%).")],
+   "Radioactive decay: activity halves each half-life (100 → 50 → 25 → 12.5%)."),
+  (placeholder_fig("one DOTA ligand, two radiometals"),
+   "Placeholder — theranostic pairing: a single DOTA-conjugated targeting ligand carrying <b>Ga-68 to image</b> or <b>Lu-177 to treat</b>, the chemical basis of one element serving both ends of the pair.")],
  "mird-dosimetry-worked": [(eff_half_life_fig(),
    "Effective half-life combines physical and biological clearance (1/Tₑ = 1/Tₚ + 1/T_b) and is always the shortest of the three.")],
  "cholescintigraphy-hida": [(hida_ef_fig(),
@@ -1881,9 +1991,27 @@ def fig_html(p):
             f'<figcaption><b>Fig&nbsp;{n}.</b> {f.get("caption", "")}{credit}</figcaption></figure>')
     return "".join(out)
 
+# Persistent, consistent colours for the major radiotracers/agents wherever they appear as a tag.
+TRACER_COLORS = {
+    "fdg": "#C99700", "psma": "#7B4BC4", "dotatate": "#0E8C6A", "pyp": "#C24B6E",
+    "mibg": "#C2410C", "mag3": "#2563A6", "dmsa": "#1E7A8C", "dtpa": "#3F72AF",
+    "mdp": "#5B6470", "naf": "#5B6470", "hida": "#B0740A", "sestamibi": "#B03030",
+    "mibi": "#B03030", "maa": "#0E7490", "ioflupane": "#7A5C1E", "datscan": "#7A5C1E",
+    "gallium": "#556B2F", "ga67": "#556B2F", "thallium": "#8A6D3B", "rubidium": "#A83232",
+    "fdopa": "#2E7D32", "fes": "#B03A78", "fluciclovine": "#3B6EA5", "choline": "#3B6EA5",
+    "fapi": "#8A5A2B", "pertechnetate": "#4A6FA5", "sulfurcolloid": "#6B7280",
+    "octreotide": "#0E8C6A", "radioiodine": "#B03030", "i131": "#B03030", "i123": "#B03030",
+    "lu177": "#0E8C6A", "y90": "#8A5A2B", "ra223": "#7B4BC4", "n13": "#0E7490",
+}
+def _tag_html(t):
+    key = re.sub(r"[^a-z0-9]", "", t.lower())
+    c = TRACER_COLORS.get(key)
+    return (f'<span class="tag tracer" style="--tc:{c}">#{t}</span>' if c
+            else f'<span class="tag">#{t}</span>')
+
 def page_html(p):
     iso = f'<span class="iso">{p["iso"]}</span>' if p["iso"] else ""
-    tags = "".join(f'<span class="tag">#{t}</span>' for t in p["tags"])
+    tags = "".join(_tag_html(t) for t in p["tags"])
     rev = (p.get("_review") or "").replace("-", " ").replace("ai ", "AI-").strip()
     rev_lbl = {"AI-drafted": "AI-drafted", "physician reviewed": "Physician-reviewed"}.get(rev, rev.capitalize())
     upd = p.get("_updated")
@@ -1910,7 +2038,7 @@ def page_html(p):
                 + AUTHOR_FOOT_HTML.get(p['id'], ''))
     return f'''<article class="page" id="page-{p['id']}" data-search="{(p['title']+' '+p['subtitle']+' '+p['aliases']).lower()}">
   <button class="bm" id="bm-{p['id']}" onclick="toggleBM('{p['id']}')" title="Bookmark this page">☆</button>
-  <div class="kick">{CH_LABEL[p['chapter']]}</div>
+  <nav class="crumbs" aria-label="Breadcrumb"><a class="crumb-home" onclick="go('home')" role="link" tabindex="0">Home</a><span class="csep">›</span><span class="crumb-part">{PART_LABEL.get(CH_PART[p['chapter']], '')}</span><span class="csep">›</span><span class="crumb-ch">{CH_LABEL[p['chapter']]}</span></nav>
   <h1 class="ptitle">{p['title']}{iso}</h1>
   <p class="psub">{p['subtitle']}</p>
   <div class="meta">{grade_summary(p['id'])}{tags}{prov}</div>
@@ -1952,14 +2080,19 @@ CH_DESC = {
  "contributors": "The physicians & scientists whose work shapes the atlas",
  "tools": "Calculators & decision aids",
 }
+# Browse axes reflect how nuclear-medicine physicians actually navigate — by organ system,
+# therapy, probe/target, indication, reporting, pitfalls, modality — mapped to real chapters/parts.
 THEMES = [
+    ("Organ systems", "part:III"),
+    ("Therapy", "ch:theranostics"),
+    ("Probes & targets", "part:II"),
+    ("Physics", "part:I"),
+    ("Test selection", "ch:test-selection"),
+    ("Reporting", "ch:reporting"),
+    ("Pitfalls & variants", "ch:pearls"),
+    ("Landmark trials", "ch:landmark-trials"),
     ("PET", "pet"),
     ("SPECT", "spect scintigraph"),
-    ("Therapy", "therapy theranostic radioligand radioembolization prrt palliation"),
-    ("Cardiac", "cardiac cardiology myocard coronary mpi muga amyloidosis"),
-    ("Oncology", "oncolog cancer tumor tumour carcinoma lymphoma sarcoma melanoma metasta myeloma"),
-    ("Neuro", "brain neuro dementia parkinson epilepsy seizure meningioma glioma daTscan"),
-    ("Pediatric", "pediatric paediatric neuroblastoma"),
     ("Tools", "tool"),
 ]
 
@@ -2004,14 +2137,18 @@ def home_html():
     cards += '</div>'
     chips = "".join(f'<div class="chip" onclick="themeBrowse(\'{lbl}\',\'{q}\')">{lbl}</div>' for lbl, q in THEMES)
     return (f'<article class="page" id="page-home" data-search="home">'
-            f'<div class="hero"><div class="kick">Clinical Reference · Six-Domain framework</div>'
+            f'<div class="hero"><div class="kick">Clinical Reference</div>'
             f'<h1 class="home-title">Nuclear Medicine Atlas</h1>'
-            f'<p class="home-sub">An evidence-graded reference across every tracer, protocol, disease, and therapy in nuclear medicine — organized by the causal arc of a study, searchable across all text, with interactive decision tools.</p>'
+            f'<p class="home-sub">A fast, searchable clinical reference for nuclear medicine: every tracer, disease, organ system, protocol, and therapy in one place, graded by evidence.</p>'
+            f'<div class="home-search"><svg class="hs-mag" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg>'
+            f'<input id="hq" class="hs-input" type="search" autocomplete="off" aria-label="Search the atlas" placeholder="Search a disease, tracer, organ, abbreviation, or therapy&hellip;" oninput="homeSearch(this.value)" onkeydown="homeSearchKey(event)">'
+            f'<div id="hsr" class="hsr" role="listbox"></div></div>'
+            f'<div class="home-browse"><span class="browse-lbl">Browse by area</span><div class="chips">{chips}</div></div>'
             f'<div class="home-stats"><span><b>{total}</b> pages</span><span><b>{len(CH_LABEL)}</b> chapters</span>'
             f'<span><b>{ntools}</b> tools</span><span><b>graded</b> A · B · C evidence</span>'
             f'<span><b>v{VERSION}</b> · {BUILD_DATE}</span></div>'
-            f'<div class="home-browse"><span class="browse-lbl">Browse by theme</span><div class="chips">{chips}</div></div>'
             f'</div>'
+            f'{cards}'
             f'<div class="home-guide">'
             f'<div class="hg-col"><div class="hg-h">How to read the atlas</div>'
             f'<div class="hg-item"><span class="lg-k">KEY POINT</span> &nbsp;the single must-know takeaway on each page</div>'
@@ -2024,7 +2161,6 @@ def home_html():
             f'<div class="hg-item">Each page is labelled <b>physician-reviewed</b> or <b>ai-drafted</b> (pending review)</div>'
             f'<div class="hg-item">A four-level <b>yield hierarchy</b> keeps board-critical points visually dominant</div></div>'
             f'</div>'
-            f'{cards}'
             f'<div class="home-disclaimer"><b>Educational use only.</b> This atlas is a study and reference aid — '
             f'it is <b>not medical advice</b> and not a substitute for clinical judgement. Verify all activities, doses, '
             f'thresholds, timings, and protocols against current society guidelines, product labelling, and local/regulatory '
@@ -2044,6 +2180,7 @@ def _plain_text(h):
 
 search_index = json.dumps([{"id": p["id"], "title": p["title"], "sub": p["subtitle"],
                             "group": CH_LABEL[p["chapter"]],
+                            "chapter": p["chapter"], "part": CH_PART[p["chapter"]],
                             "s": (p["title"] + " " + p["subtitle"] + " " + p["aliases"] + " "
                                   + _plain_text(p["html"])).lower()} for p in pages])
 page_order = json.dumps(["home"] + [p["id"] for p in pages])
@@ -2258,7 +2395,7 @@ glossary_json = json.dumps(GLOSSARY)
 TEMPLATE = '''<!DOCTYPE html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Nuclear Medicine Atlas</title>
-<meta name="description" content="An evidence-graded, physician-reviewed nuclear medicine reference — every major tracer, protocol, disease, and therapy, organized on an original six-domain framework, with interactive decision tools and a study mode.">
+<meta name="description" content="An evidence-graded, physician-reviewed nuclear medicine reference — every major tracer, protocol, disease, and therapy, organized by the causal arc of a study, with interactive decision tools and a study mode.">
 <meta name="author" content="Nuclear Medicine Atlas">
 <meta name="theme-color" content="#4A3A82">
 __HEADEXTRA__
@@ -2282,7 +2419,7 @@ __CSS__</style></head><body>
 <a href="#main" class="skip-link">Skip to content</a>
 <div class="app">
  <nav class="rail" aria-label="Atlas navigation">
-  <div class="brand" onclick="go(FIRST)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();go(FIRST);}"><div class="k">Clinical Reference</div><h1>Nuclear Medicine Atlas</h1></div>
+  <div class="brand" onclick="go(FIRST)" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();go(FIRST);}"><svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="var(--ac)"/><ellipse cx="32" cy="32" rx="21" ry="10.5" fill="none" stroke="#fff" stroke-width="3.2" transform="rotate(-28 32 32)"/><circle cx="32" cy="32" r="6.5" fill="#fff"/><circle cx="50" cy="21.5" r="3.6" fill="var(--ac-l)"/></svg><div class="brand-txt"><div class="k">Clinical Reference</div><h1>Nuclear Medicine Atlas</h1></div></div>
   <div class="sb"><span class="mag" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></span>
    <input id="q" placeholder="Search all text…  ( / )" autocomplete="off" oninput="search(this.value)" onfocus="search(this.value)">
    <div class="sr" id="sr"></div></div>
@@ -2294,8 +2431,8 @@ __CSS__</style></head><body>
   __PAGES__
   <p class="legend" id="legend"><b>Evidence grades.</b> <span class="gr gA">A</span> randomized trial or meta-analysis of randomized trials. <span class="gr gB">B</span> large cohort (roughly &gt;400 patients) or a society guideline / procedure standard. <span class="gr gC">C</span> smaller or confounded cohort, or physiologic reasoning without outcome data. <span class="gr gI">INF</span> is not a grade — it marks a conclusion drawn by reasoning where no study addresses the question directly.<br><br>
   <b>Emphasis reflects yield.</b> <span style="color:var(--ac);font-weight:700">KEY POINT</span> callouts and <b>bold text</b> are the highest-yield must-knows; standard text is core detail; smaller grey text is deeper reference detail — so the essentials stay prominent as pages go deep.<br><br>
-  <b>Structure.</b> The atlas uses an original <b>Six-Domain framework</b> that follows the causal arc of a nuclear medicine study — <b>I Foundations</b> (how the signal is made), <b>II Probes &amp; Targets</b> (what carries it), <b>III Clinical Systems</b> (what it reveals), <b>IV Therapy &amp; Theranostics</b> (how it treats), <b>V Interpretation &amp; Reasoning</b> (how we read it), and <b>VI Dosimetry, Safety &amp; Evidence</b> (how we quantify, protect &amp; verify) — with the fastest-changing content quarantined in Domain VI so the stable core rarely moves. <b>Scope.</b> A reference compiled from public, primary literature and society guidelines in original prose; it supports but does not replace clinical judgement, local protocol, or a written directive.</p>
-  <div class="appfoot"><span>Nuclear Medicine Atlas &middot; <b>v__VERSION__</b> &middot; built __BUILD_DATE__</span><span>Six-Domain framework &middot; evidence-graded &middot; <a class="foot-link" onclick="toggleHelp()">&#9000; Shortcuts (?)</a></span></div>
+  <b>Structure.</b> The atlas is organized to follow the causal arc of a nuclear medicine study: <b>Foundations</b> (how the signal is made), <b>Probes &amp; Targets</b> (what carries it), <b>Clinical Systems</b> (what it reveals), <b>Therapy &amp; Theranostics</b> (how it treats), <b>Interpretation &amp; Reasoning</b> (how we read it), and <b>Dosimetry, Safety &amp; Evidence</b> (how we quantify, protect and verify), with the fastest-changing content grouped last so the stable core rarely moves. <b>Scope.</b> A reference compiled from public, primary literature and society guidelines in original prose; it supports but does not replace clinical judgement, local protocol, or a written directive.</p>
+  <div class="appfoot"><span>Nuclear Medicine Atlas &middot; <b>v__VERSION__</b> &middot; built __BUILD_DATE__</span><span>Evidence-graded &middot; <a class="foot-link" onclick="toggleHelp()">&#9000; Shortcuts (?)</a></span></div>
  </main>
 </div>
 <script>
@@ -2315,11 +2452,9 @@ __JS__
 _url = _url0
 _ICON_SVG = ("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>"
              "<rect width='64' height='64' rx='14' fill='#4A3A82'/>"
-             "<g fill='none' stroke='#fff' stroke-width='3'>"
-             "<ellipse cx='32' cy='32' rx='21' ry='9'/>"
-             "<ellipse cx='32' cy='32' rx='21' ry='9' transform='rotate(60 32 32)'/>"
-             "<ellipse cx='32' cy='32' rx='21' ry='9' transform='rotate(120 32 32)'/></g>"
-             "<circle cx='32' cy='32' r='5.5' fill='#fff'/></svg>")
+             "<ellipse cx='32' cy='32' rx='21' ry='10.5' fill='none' stroke='#fff' stroke-width='3.2' transform='rotate(-28 32 32)'/>"
+             "<circle cx='32' cy='32' r='6.5' fill='#fff'/>"
+             "<circle cx='50' cy='21.5' r='3.6' fill='#A896EC'/></svg>")
 _ICON_URI = "data:image/svg+xml," + _url.quote(_ICON_SVG)
 _MANIFEST = json.dumps({
     "name": "Nuclear Medicine Atlas", "short_name": "NM Atlas",

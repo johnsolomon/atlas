@@ -4,7 +4,7 @@ title: Tc-99m-Pertechnetate
 chapter: radiopharmacy
 order: 60
 isotope_label: "⁹⁹ᵐTcO₄⁻"
-subtitle: The unbound generator eluate — thyroid, Meckel, salivary, and more
+subtitle: The unbound generator eluate, thyroid, Meckel, salivary, and more
 aliases: [pertechnetate, Tc-99m pertechnetate, free technetium, thyroid scan, Meckel, salivary scintigraphy, dacryoscintigraphy, choroid plexus, perchlorate, first pass]
 isotope: Technetium-99m
 half_life: "6.0 hours"

@@ -58,6 +58,21 @@ The bone scan is **very sensitive and early** for stress-related bone injury —
 
 - Protocol: **Bone scintigraphy** (three-phase technique); imaging comparison: **Skeletal metastases**.
 
+## Differential Diagnosis
+
+- {K} **Metastasis / malignancy** — typically **focal, randomly distributed, marrow-based** foci, often multiple, without a loading-site pattern; a stress/insufficiency fracture is **linear/fusiform and cortical** at a characteristic mechanical site, and the sacral **Honda/H** pattern favors insufficiency over metastasis.
+- **Osteoid osteoma** — intense **focal** uptake with a **"double-density" sign** (hotter central nidus within a larger reactive area) and a lucent nidus with surrounding sclerosis on CT; night pain relieved by NSAIDs.
+- **Osteomyelitis** — focal uptake on all three phases but with soft-tissue hyperemia and a clinical infection picture; SPECT/CT and history separate it from cortical stress injury.
+- **Degenerative change / enthesopathy** and **bone island (enostosis)** — usually less avid and at joint/entheseal sites; correlate with CT.
+
+## Reporting Checklist
+
+- State the **site and pattern** (focal/fusiform cortical vs longitudinal) and **which phases** are positive (three-phase vs delayed-only).
+- Classify **fatigue vs insufficiency** from the clinical context and note risk factors (osteoporosis, prior radiation, chronic steroids, renal disease).
+- For the **sacrum/pelvis**, describe the **Honda/H** pattern and explicitly state it favors **insufficiency fracture over metastasis**.
+- Recommend or perform **SPECT/CT** for spinal (pars) and pelvic lesions to localize, **date** (active vs old), and exclude a malignant mimic.
+- Note that a **negative radiograph does not exclude** stress injury; correlate with MRI where uptake is equivocal.
+
 ## Self-Check
 
 <details><summary><strong>Q1.</strong> Distinguish a fatigue from an insufficiency fracture.</summary>

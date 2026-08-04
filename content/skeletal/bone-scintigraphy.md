@@ -3,7 +3,7 @@ type: protocol
 title: Bone Scintigraphy
 chapter: musculoskeletal
 order: 10
-subtitle: Whole-body, three-phase, and SPECT/CT skeletal imaging — patterns and pitfalls
+subtitle: Whole-body, three-phase, and SPECT/CT skeletal imaging, patterns and pitfalls
 aliases: [bone scan, skeletal scintigraphy, three phase, superscan, flare phenomenon, metastases, osteomyelitis, MDP, HDP, SPECT/CT bone]
 isotope_label: "⁹⁹ᵐTc-MDP / HDP"
 modality: [Planar, SPECT]

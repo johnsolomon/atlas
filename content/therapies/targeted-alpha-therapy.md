@@ -3,7 +3,7 @@ type: therapy
 title: Targeted Alpha Therapy (Ac-225, Pb-212)
 chapter: theranostics
 order: 80
-subtitle: High-LET alpha-emitting radioligands — the emerging frontier of theranostics
+subtitle: High-LET alpha-emitting radioligands, the emerging frontier of theranostics
 aliases: [TAT, targeted alpha therapy, actinium-225, Ac-225 PSMA, 225Ac, lead-212, Pb-212, alpha radioligand therapy]
 isotope: "Actinium-225 / Lead-212 (and others)"
 half_life: "Ac-225: 9.9 days; Pb-212: 10.6 hours"

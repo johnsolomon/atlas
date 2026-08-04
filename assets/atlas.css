@@ -58,7 +58,9 @@ a{color:var(--ac)}
 html:not(.js) .rail #nav{max-height:none;overflow:visible}
 .rail{background:var(--card);border-right:1px solid var(--line);padding:24px 18px 60px;position:sticky;top:0;height:100vh;overflow-y:auto}
 @media(max-width:1000px){.rail{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:14px 16px 12px}}
-.brand{padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:12px;cursor:pointer;padding-left:6px}
+.brand{display:flex;align-items:center;gap:10px;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:12px;cursor:pointer;padding-left:6px}
+.brand-mark{width:32px;height:32px;flex:none;border-radius:8px}
+.brand-txt{min-width:0}
 .brand .k{font-family:var(--m);font-size:9.5px;letter-spacing:.19em;text-transform:uppercase;color:var(--ac);font-weight:700}
 .brand h1{font-family:var(--s);font-size:22px;font-weight:600;letter-spacing:-.01em;margin-top:4px;line-height:1.15}
 .sb{position:relative;margin-bottom:8px;padding:0 6px}
@@ -178,6 +180,26 @@ a.hcard{text-decoration:none;color:inherit;display:block}
 .gA{background:var(--A-t);color:var(--A)} .gB{background:var(--B-t);color:var(--B)}
 .gC{background:var(--C-t);color:var(--C)} .gI{background:var(--ac-t);color:var(--ac)}
 .body h2{font-family:var(--m);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--faint);font-weight:700;margin:30px 0 11px}
+/* Standardized educational-section identity: a consistent colour-coded icon
+   marks each canonical teaching section (Quick Answer, Board Pearls, Pitfalls,
+   Differential, Reporting, Self-Check, References) across every page. */
+.body h2.sec{display:flex;align-items:center;gap:6px}
+.body h2.sec .sec-ic{width:14px;height:14px;flex:0 0 auto;color:var(--sc,var(--faint))}
+.body h2.sec-quick{--sc:var(--ac)}
+.body h2.sec-why{--sc:#0E8C6A}
+.body h2.sec-pearls{--sc:#C99700}
+.body h2.sec-pitfall{--sc:#C0392B}
+.body h2.sec-ddx{--sc:#7B4BC4}
+.body h2.sec-report{--sc:#2563A6}
+.body h2.sec-check{--sc:#2E8B57}
+.body h2.sec-refs{--sc:var(--faint)}
+.body h2.sec-related{--sc:var(--faint)}
+[data-theme="dark"] .body h2.sec-why{--sc:#24A98A}
+[data-theme="dark"] .body h2.sec-pearls{--sc:#E0B341}
+[data-theme="dark"] .body h2.sec-pitfall{--sc:#E8776B}
+[data-theme="dark"] .body h2.sec-ddx{--sc:#A896EC}
+[data-theme="dark"] .body h2.sec-report{--sc:#6AA0E0}
+[data-theme="dark"] .body h2.sec-check{--sc:#4FBE86}
 .body h3{font-family:var(--s);font-size:18px;font-weight:600;margin:22px 0 7px;letter-spacing:-.01em}
 .body p{margin:0 0 12px}
 .body ul,.body ol{margin:8px 0 15px;padding-left:4px;list-style:none}
@@ -200,6 +222,10 @@ a.hcard{text-decoration:none;color:inherit;display:block}
 .body li.y4::before{background:var(--faint);width:4px;height:4px;top:13px}
 .tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;margin:14px 0 18px}
 .body table{width:100%;border-collapse:collapse;margin:0;font-size:13px}
+/* Display equations ($$…$$ → MathML): centered, boxed graphic, theme-aware, mobile-scrollable */
+.equation{margin:20px auto;text-align:center;overflow-x:auto;-webkit-overflow-scrolling:touch;
+ padding:16px 18px;background:var(--panel);border:1px solid var(--line);border-radius:10px;max-width:100%}
+.equation math{font-size:1.35em;color:var(--ink)}
 .body th,.body td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line2);vertical-align:top}
 .body thead th{font-family:var(--m);font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);font-weight:700;border-bottom:1px solid var(--line)}
 .body tbody tr:hover td{background:var(--panel)}
@@ -489,9 +515,9 @@ mark.hl{background:var(--ac);color:var(--on-ac);border-radius:2px;padding:0 1px}
 
 /* ===== inline glossary tooltips (JS-positioned, viewport-clamped, never clipped) ===== */
 .gloss{border-bottom:1px dotted var(--ac-l);cursor:help}
-#gtip{position:fixed;z-index:200;max-width:280px;background:var(--ink);color:#F6F7F9;
+#gtip{position:fixed;z-index:200;max-width:280px;background:#1f242c;color:#F6F7F9;border:1px solid rgba(255,255,255,.14);
  font-size:11.5px;font-weight:400;line-height:1.5;padding:9px 12px;border-radius:9px;
- box-shadow:0 8px 26px rgba(20,23,27,.3);pointer-events:none;display:none;opacity:0;transition:opacity .12s}
+ box-shadow:0 8px 26px rgba(0,0,0,.4);pointer-events:none;display:none;opacity:0;transition:opacity .12s}
 #gtip.on{opacity:1}
 
 /* ===== command palette ===== */
@@ -542,3 +568,34 @@ mark.hl{background:var(--ac);color:var(--on-ac);border-radius:2px;padding:0 1px}
  .sb input,.t-in input,.t-in select,.cmp-search,.pal-in,textarea,select,
  input[type=number],input[type=text],input[type=search],input[type=email]{font-size:16px}
 }
+
+/* ================= Findability: hero search, breadcrumbs, card heights ================= */
+.home-search{position:relative;margin:18px 0 8px;max-width:660px}
+.hs-mag{position:absolute;left:16px;top:15px;color:var(--faint);pointer-events:none}
+.hs-input{width:100%;font:inherit;font-size:17px;padding:14px 16px 14px 46px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink)}
+.hs-input::placeholder{color:var(--faint)}
+.hs-input:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 3px var(--ac-t)}
+.hsr{display:none;margin-top:8px;border:1px solid var(--line);border-radius:12px;background:var(--card);overflow:hidden;max-width:660px;box-shadow:0 10px 34px rgba(20,23,27,.10);max-height:60vh;overflow-y:auto}
+.hsr.on{display:block}
+.hsr-item{display:block;padding:11px 15px;border-top:1px solid var(--line2);cursor:pointer;text-decoration:none;color:var(--ink)}
+.hsr-item:first-child{border-top:0}
+.hsr-item:hover{background:var(--ac-t)}
+.hsr-g{display:block;font-family:var(--m);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ac);font-weight:700}
+.hsr-t{display:block;font-weight:600;font-size:14px;margin-top:2px}
+.hsr-s{display:block;font-size:12px;color:var(--faint);line-height:1.4}
+.hsr-empty{padding:14px 15px;font-size:13px;color:var(--soft)}
+/* breadcrumbs on every content page */
+.crumbs{display:flex;align-items:center;flex-wrap:wrap;gap:7px;font-family:var(--m);font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;font-weight:700;margin-bottom:7px}
+.crumbs .crumb-home{color:var(--ac);cursor:pointer;text-decoration:none}
+.crumbs .crumb-home:hover{text-decoration:underline}
+.crumbs .csep{color:var(--faint);opacity:.55}
+.crumbs .crumb-part{color:var(--faint)}
+.crumbs .crumb-ch{color:var(--soft)}
+/* uniform browse-card heights even when titles wrap */
+.hcard{display:flex;flex-direction:column;min-height:106px}
+.hcard-n{margin-top:auto;padding-top:6px}
+
+/* Persistent tracer colour dots on tags (consistent per agent site-wide) */
+.tag.tracer::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--tc);margin-right:5px;vertical-align:middle}
+/* Inline tracer colour dot used in comparison tables */
+.tdot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--tc);margin-right:6px;vertical-align:middle;flex:0 0 auto}

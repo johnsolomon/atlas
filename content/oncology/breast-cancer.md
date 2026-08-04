@@ -150,6 +150,14 @@ Prognosis is driven by **stage, grade, and receptor subtype**: luminal A tends t
 - **FES mechanism** cartoon: ER binding, whole-body phenotyping, and the ER-blocker false-negative.
 - **Sentinel-node vs FDG-PET** decision by stage (early axilla vs advanced disease).
 
+## Common Pitfalls
+
+- {H} **Sclerotic/osteoblastic bone metastases may be FDG-non-avid**, while lytic marrow lesions are avid — FDG can under-call sclerotic-only osseous disease, so pair with bone scan/NaF-PET or CT.
+- On post-therapy scans, new/denser **sclerosis and transiently increased uptake can represent healing (flare)**, not progression — judge against later timepoints and CT morphology.
+- **Brown fat** in supraclavicular, axillary, and paraspinal regions mimics nodal disease — recognize the symmetric CT-fat correlate.
+- Physiologic **breast parenchymal and lactational uptake** is diffuse and often bilateral — do not mistake for malignancy.
+- **FDG brain uptake is physiologically high**, so PET is unreliable for cerebral metastases — dedicated brain MRI is required.
+
 ## Self-Check (Board-Style)
 
 <details><summary><strong>Q1.</strong> A clinically node-negative patient with a 1.5-cm ER-positive tumor needs axillary staging. Is FDG-PET appropriate?</summary>

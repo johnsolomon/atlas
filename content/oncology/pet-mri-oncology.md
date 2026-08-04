@@ -3,7 +3,7 @@ type: technique
 title: PET/MRI in Oncology
 chapter: oncology
 order: 36
-subtitle: Where simultaneous PET and MRI beats PET/CT — soft-tissue contrast, dose reduction, and the attenuation-correction caveats
+subtitle: Where simultaneous PET and MRI beats PET/CT, soft-tissue contrast, dose reduction, and the attenuation-correction caveats
 aliases: [PET/MRI, PET-MRI, hybrid PET MR, simultaneous PET MRI, MR attenuation correction, MRAC, whole body PET MRI, pediatric PET MRI]
 isotope_label: "¹⁸F-FDG · ⁶⁸Ga-tracers"
 modality: [PET]

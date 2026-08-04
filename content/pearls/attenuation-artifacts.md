@@ -3,7 +3,7 @@ type: pattern
 title: Attenuation & Misregistration Artifacts
 chapter: pearls
 order: 50
-subtitle: When the correction, the CT, or the patient — not the tracer — creates the finding
+subtitle: When the correction, the CT, or the patient, not the tracer, creates the finding
 aliases: [attenuation artifact, attenuation correction artifact, misregistration, halo artifact, truncation artifact, CT contrast artifact, breast attenuation, diaphragmatic attenuation, respiratory mismatch]
 review_status: physician-reviewed
 last_updated: 2026-07-28

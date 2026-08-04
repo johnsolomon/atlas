@@ -3,7 +3,7 @@ type: article
 title: "Dual-Tracer Selection for PSMA Radioligand Therapy"
 chapter: articles
 order: 10
-subtitle: A contributed review on why PSMA/FDG mismatch imaging changes who should receive ¹⁷⁷Lu-PSMA — and the atlas sections it updates
+subtitle: A contributed review on why PSMA/FDG mismatch imaging changes who should receive ¹⁷⁷Lu-PSMA, and the atlas sections it updates
 authors: [author-example-contributor]
 journal: "Nuclear Medicine Atlas · Contributed Reviews"
 pub_date: 2026-07-28

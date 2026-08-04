@@ -1,6 +1,6 @@
 ---
 type: reference
-title: Contribute to the Atlas — Author Guide
+title: "Contribute to the Atlas: Author Guide"
 chapter: articles
 order: 1
 subtitle: How to submit a contributed article, how authorship and provenance work, and the editorial standards every entry meets

@@ -3,7 +3,7 @@ type: trial
 title: VISION
 chapter: landmark-trials
 order: 10
-subtitle: ¹⁷⁷Lu-PSMA-617 improved survival in mCRPC — the trial behind Pluvicto
+subtitle: ¹⁷⁷Lu-PSMA-617 improved survival in mCRPC, the trial behind Pluvicto
 aliases: [VISION trial, Lu-177 PSMA VISION, Pluvicto trial, PSMA radioligand therapy trial, Sartor VISION]
 review_status: physician-reviewed
 last_updated: 2026-07-28

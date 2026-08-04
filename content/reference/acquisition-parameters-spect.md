@@ -1,6 +1,6 @@
 ---
 type: reference
-title: Acquisition Parameters — SPECT & Planar
+title: "Acquisition Parameters: SPECT & Planar"
 chapter: boards
 order: 40
 subtitle: Representative adult activity, collimator, energy window, matrix, and timing by study

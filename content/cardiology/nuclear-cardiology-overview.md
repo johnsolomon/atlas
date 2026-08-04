@@ -1,6 +1,6 @@
 ---
 type: disease
-title: Nuclear Cardiology — Overview
+title: "Nuclear Cardiology: Overview"
 chapter: cardiac
 order: 10
 subtitle: Myocardial perfusion, function, viability, and infiltrative disease imaging
@@ -97,6 +97,14 @@ A **normal stress MPI** carries a low annual hard-event rate (the "warranty peri
 - A **three-layer read** schematic (perfusion / cavity / function → integrated risk).
 - A **SPECT vs PET** capability matrix.
 - A **nuclear-cardiology scope** map (ischemia, viability, amyloid, sarcoid, flow).
+
+## Common Pitfalls
+
+- {H} **LBBB or ventricular-paced rhythm** produces a reversible septal defect unrelated to LAD disease — use **vasodilator (not exercise)** stress to reduce this artifact.
+- **Caffeine, methylxanthines, or theophylline/aminophylline** within ~12 hours blunt adenosine/regadenoson hyperemia, causing a false-negative vasodilator study.
+- **Submaximal exercise** (failure to reach target heart rate, without adjunctive vasodilator) undercalls ischemia — report stress adequacy.
+- **Subdiaphragmatic bowel/liver activity** adjacent to the inferior wall can create or mask inferior defects; patient **motion** produces artifactual defects.
+- **Arrhythmia or frequent ectopy** degrades gating and can spuriously lower the calculated LVEF.
 
 ## Self-Check (Board-Style)
 

@@ -3,7 +3,7 @@ type: disease
 title: Primary CNS Lymphoma vs Toxoplasmosis
 chapter: oncology
 order: 390
-subtitle: The classic ring-enhancing-lesion differential in immunocompromise — FDG/thallium-avid lymphoma vs non-avid infection
+subtitle: "The classic ring-enhancing-lesion differential in immunocompromise: FDG/thallium-avid lymphoma vs non-avid infection"
 aliases: [CNS lymphoma, primary CNS lymphoma, PCNSL, toxoplasmosis, ring enhancing lesion, thallium brain SPECT, HIV brain lesion, AIDS CNS lesion]
 isotope: "Fluorine-18 (FDG) / Thallium-201"
 review_status: physician-reviewed
@@ -36,6 +36,29 @@ In an **immunocompromised patient (classically AIDS) with a ring-enhancing brain
 - {H} **Steroids can mask lymphoma** (shrinking it and reducing uptake) — imaging after steroids may underestimate disease.
 - Necrotic/treated lesions and coexisting infection blur the pattern.
 - Interpret with MRI, serology, and response to empiric therapy — not uptake alone.
+
+## Board Pearls
+
+- {K} In AIDS the two dominant ring-enhancing lesions are **toxoplasmosis** (most common) and **PCNSL**; because MRI appearances overlap, functional imaging is the key noninvasive discriminator.
+- {H} Adding **CSF EBV DNA** to thallium/FDG avidity increases specificity for PCNSL in the immunocompromised.
+- **Thallium-201 delayed retention** characterizes lymphoma; thallium brain SPECT was the classic tool, now largely replaced by higher-resolution FDG-PET.
+- AIDS-related PCNSL is nearly always **EBV-driven diffuse large B-cell lymphoma**; whole-body FDG-PET screens for systemic lymphoma that would change management.
+
+## Differential Diagnosis
+
+- **Toxoplasmosis** — typically multiple lesions at the basal ganglia/corticomedullary junction with positive serology; non-avid.
+- **PCNSL** — often a single periventricular/subependymal avid lesion.
+- **Other opportunistic infections** — tuberculoma, cryptococcoma, and bacterial/fungal abscess (generally low uptake, though granulomas can be variably avid).
+- **Progressive multifocal leukoencephalopathy (PML)** — typically non-enhancing white-matter disease, a distinct pattern.
+- **Metastasis or other primary tumor** — considered when the clinical setting is not classic AIDS.
+
+## Reporting Checklist
+
+- State **lesion number and location** (periventricular/subependymal vs basal ganglia) and whether solitary or multiple.
+- Report **FDG/thallium uptake** relative to normal cortex/background and give a lymphoma-versus-toxoplasmosis probability, not a definitive call.
+- Note **steroid exposure and timing**, which may mask lymphoma.
+- Integrate **Toxoplasma serology, CD4 count, and CSF EBV** where available.
+- Recommend the **next step** — empiric anti-toxoplasma therapy with follow-up imaging versus biopsy.
 
 ## Self-Check
 

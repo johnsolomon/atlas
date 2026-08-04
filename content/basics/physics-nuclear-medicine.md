@@ -3,7 +3,7 @@ type: physics
 title: Physics of Nuclear Medicine
 chapter: physics
 order: 10
-subtitle: Decay modes, particle emissions, LET, and half-life — the basis of imaging and therapy
+subtitle: Decay modes, particle emissions, LET, and half-life, the basis of imaging and therapy
 aliases: [physics, radioactive decay, alpha, beta, positron, gamma, LET, linear energy transfer, half-life, decay modes, electron capture, effective half-life, secular equilibrium, positron range]
 review_status: physician-reviewed
 last_updated: 2026-07-27
@@ -68,7 +68,7 @@ A positron travels a short distance before annihilation — **positron range** b
 
 ## Choosing an Isotope — the Summary Logic
 
-Imaging needs **escaping photons** (γ for SPECT; positrons → 511 keV for PET); therapy needs **locally deposited particle energy** (β for mm-range crossfire, α for µm-range high-LET kill). Half-life sets logistics (generator vs cyclotron vs distribution) and, with biological clearance, dose to the patient and others. A single element can serve both ends of a **theranostic pair** when chemistry allows (Ga-68 image / Lu-177 treat on the same DOTA-conjugated ligand).
+Imaging needs **escaping photons** (γ for SPECT, e.g. 140 keV for Tc-99m; positrons → 511 keV for PET); therapy needs **locally deposited particle energy** (β for mm-range crossfire, α for µm-range high-LET kill). Half-life sets logistics (generator vs cyclotron vs distribution) and, with biological clearance, dose to the patient and others. A single element can serve both ends of a **theranostic pair** when chemistry allows (Ga-68 image / Lu-177 treat on the same DOTA-conjugated ligand).
 
 ## Board Pearls
 

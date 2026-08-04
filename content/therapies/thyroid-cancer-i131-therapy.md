@@ -1,9 +1,9 @@
 ---
 type: therapy
-title: Differentiated Thyroid Cancer — I-131 Therapy
+title: "Differentiated Thyroid Cancer: I-131 Therapy"
 chapter: theranostics
 order: 40
-subtitle: Risk-adapted radioiodine — remnant ablation, adjuvant treatment, and management of iodine-avid disease
+subtitle: Risk-adapted radioiodine, remnant ablation, adjuvant treatment, and management of iodine-avid disease
 aliases: [radioactive iodine, RAI, I-131 therapy thyroid cancer, remnant ablation, adjuvant RAI, risk-adapted, rhTSH, Thyrogen, thyroid hormone withdrawal, low-iodine diet, post-therapy whole-body scan, stunning, thyroglobulin, RAI-refractory, ESTIMABL, HiLo]
 isotope: Iodine-131
 half_life: "8.02 days"

@@ -3,7 +3,7 @@ type: practice
 title: Personalized vs Fixed-Activity Dosimetry
 chapter: dosimetry-safety
 order: 25
-subtitle: Why radioligand therapy is still dosed like chemotherapy — and how evidence and AI are changing that
+subtitle: Why radioligand therapy is still dosed like chemotherapy, and how evidence and AI are changing that
 aliases: [personalized dosimetry, fixed activity dosing, dosimetry guided therapy, single time point dosimetry, DOSISPHERE, dose response RPT, tumor absorbed dose, theranostic dosimetry personalization, AI dosimetry]
 isotope_label: "¹⁷⁷Lu · ⁹⁰Y"
 modality: [PET, SPECT]

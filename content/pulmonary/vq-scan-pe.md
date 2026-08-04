@@ -3,7 +3,7 @@ type: protocol
 title: V/Q Scan & Pulmonary Embolism
 chapter: pulmonary
 order: 10
-subtitle: Ventilation–perfusion imaging for PE, and quantitative perfusion before lung surgery
+subtitle: Ventilation/perfusion imaging for PE, and quantitative perfusion before lung surgery
 aliases: [VQ scan, ventilation perfusion, pulmonary embolism, PE, PISAPED, PIOPED, mismatch, MAA, Technegas, quantitative lung perfusion]
 isotope_label: "⁹⁹ᵐTc-MAA (Q) · ⁹⁹ᵐTc-Technegas / ¹³³Xe (V)"
 modality: [Planar, SPECT]

@@ -3,7 +3,7 @@ type: reference
 title: Normal Cross-Sectional CT Anatomy
 chapter: correlative-ct
 order: 15
-subtitle: What normal looks like at the key axial levels — the landmarks and measurements the nuclear reader checks on the localization CT
+subtitle: What normal looks like at the key axial levels, the landmarks and measurements the nuclear reader checks on the localization CT
 aliases: [normal CT anatomy, cross-sectional anatomy, axial CT levels, normal measurements CT, mediastinal levels, abdominal CT anatomy, normal lymph node size, normal aorta diameter, CT landmarks nuclear medicine]
 review_status: physician-reviewed
 last_updated: 2026-07-28

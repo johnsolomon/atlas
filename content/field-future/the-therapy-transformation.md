@@ -3,7 +3,7 @@ type: reference
 title: The Therapy Transformation
 chapter: field-future
 order: 30
-subtitle: How radiopharmaceutical therapy is reshaping nuclear medicine — the growth, the targets, and the workforce the field now needs
+subtitle: How radiopharmaceutical therapy is reshaping nuclear medicine, the growth, the targets, and the workforce the field now needs
 aliases: [therapy transformation, radiopharmaceutical therapy growth, RPT workforce, theranostics future, nuclear medicine transformation, alpha therapy, FAP DLL3 targets, RPT centers of excellence, workforce shortage nuclear medicine]
 review_status: physician-reviewed
 last_updated: 2026-07-28

@@ -3,7 +3,7 @@ type: trial
 title: ENZA-p
 chapter: landmark-trials
 order: 80
-subtitle: Combining ¹⁷⁷Lu-PSMA-617 with enzalutamide — and using PSMA PET to select and adapt
+subtitle: Combining ¹⁷⁷Lu-PSMA-617 with enzalutamide, and using PSMA PET to select and adapt
 aliases: [ENZA-p trial, Lu-PSMA plus enzalutamide, Emmett ENZA-p, ANZUP 1901, adaptive dosing PSMA PET, combination radioligand therapy prostate]
 review_status: physician-reviewed
 last_updated: 2026-07-28

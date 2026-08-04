@@ -149,6 +149,13 @@ The **Neck Imaging Reporting and Data System** assigns a suspicion category — 
 - **NI-RADS category → management** flow for primary site and neck.
 - Annotated **physiologic neck uptake** plate (tonsils, muscles, salivary, brown fat).
 
+## Common Pitfalls
+
+- {H} **Osteoradionecrosis of the mandible** (and chondroradionecrosis of the larynx) is FDG-avid and closely mimics recurrent tumor — correlate with the radiation field, morphology, and clinical exam.
+- **Vocal-cord uptake** from talking during the uptake phase, or **compensatory contralateral cord uptake** in unilateral cord paralysis, mimics a laryngeal lesion — enforce voice rest and check for asymmetry.
+- **Necrotic or cystic (often HPV-positive) nodes** may show only faint rim uptake; low central SUV underestimates nodal disease and should not be read as benign.
+- Benign **FDG-avid salivary lesions** — Warthin tumor and oncocytoma — are a classic false-positive in the parotid.
+
 ## Self-Check (Board-Style)
 
 <details><summary><strong>Q1.</strong> Six weeks after chemoradiation, a PET shows diffuse uptake at the primary site and in the neck. How should this be interpreted?</summary>

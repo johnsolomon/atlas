@@ -1,6 +1,6 @@
 ---
 type: comparison
-title: Parathyroid Imaging — Which Test When
+title: "Parathyroid Imaging: Which Test When"
 chapter: test-selection
 order: 10
 subtitle: Choosing among sestamibi SPECT/CT, 4D-CT, choline PET/CT, and ultrasound for primary hyperparathyroidism

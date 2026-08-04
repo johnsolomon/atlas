@@ -3,7 +3,7 @@ type: trial
 title: PARR-2
 chapter: landmark-trials
 order: 110
-subtitle: FDG-PET viability to guide revascularization — a pragmatic randomized management trial
+subtitle: FDG-PET viability to guide revascularization, a pragmatic randomized management trial
 aliases: [PARR-2 trial, FDG PET viability trial, Beanlands PARR-2, PET-guided revascularization, hibernating myocardium trial, Ottawa-FIVE]
 review_status: physician-reviewed
 last_updated: 2026-07-28

@@ -1,6 +1,6 @@
 ---
 type: comparison
-title: Dementia & Movement-Disorder Imaging — Which Test When
+title: "Dementia & Movement-Disorder Imaging: Which Test When"
 chapter: test-selection
 order: 40
 subtitle: Choosing among FDG-PET, amyloid PET, tau PET, and DAT-SPECT across the cognitive and parkinsonian differential

@@ -122,6 +122,13 @@ Uncomplicated Paget is **benign** and well controlled by bisphosphonates. Morbid
 - A **"whole-bone" bone-scan** teaching image (expanded avid segment).
 - A **transformation-warning** panel (new lysis + soft-tissue mass + FDG avidity).
 
+## Common Pitfalls
+
+- {H} Extensive **polyostotic** Paget can be mistaken for **widespread skeletal metastases** (and can mask coexisting metastases) — the whole-bone involvement, bone **expansion**, and cortical thickening distinguish it from discrete metastatic foci.
+- **Sarcomatous transformation** may appear as a **relatively photopenic or heterogeneous focus** within otherwise intensely avid Pagetic bone on the bone scan — uniform hot uptake does not exclude malignancy; look for new lysis, a soft-tissue mass, and FDG avidity.
+- The lytic **"blade-of-grass" advancing front** and **"cotton-wool" skull** sclerosis can be misread as aggressive lytic or blastic metastasis on radiographs/CT.
+- After **bisphosphonate therapy**, scintigraphic uptake and ALP fall — read a quieter follow-up scan as **treated disease**, not as a separate resolving process.
+
 ## Self-Check (Board-Style)
 
 <details><summary><strong>Q1.</strong> What is the characteristic bone-scan appearance of Paget disease, and what is the scan best used for?</summary>

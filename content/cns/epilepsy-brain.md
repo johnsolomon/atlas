@@ -1,6 +1,6 @@
 ---
 type: disease
-title: Epilepsy — Seizure Focus Localization
+title: "Epilepsy: Seizure Focus Localization"
 chapter: neuro
 order: 60
 subtitle: Interictal FDG-PET and ictal SPECT for pre-surgical localization
@@ -124,6 +124,13 @@ Well-localized, concordant **temporal-lobe epilepsy** has high post-surgical sei
 - An **opposite-directions** teaching pair (interictal FDG hypometabolism vs ictal SPECT hyperperfusion of the same focus).
 - A **SISCOM** workflow (ictal − interictal → coregister to MRI).
 - An **injection-timing** timeline (onset → seconds → propagation) showing why latency matters.
+
+## Common Pitfalls
+
+- {K} Ensure the FDG study is **truly interictal** — an unrecognized seizure near injection (peri-ictal) can normalize or even invert the expected focal hypometabolism; concurrent EEG confirms the state.
+- **Sedatives and antiseizure drugs** (benzodiazepines, barbiturates) globally depress cortical FDG, reducing focal contrast.
+- On ictal SPECT, **crossed cerebellar hyperperfusion** and basal-ganglia/thalamic activation are propagation phenomena — not the seizure-onset zone.
+- A **structural lesion** (tumor, prior resection, malformation) causes hypometabolism that is not itself the epileptogenic focus — correlate with MRI and EEG.
 
 ## Self-Check (Board-Style)
 

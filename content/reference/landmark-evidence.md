@@ -3,7 +3,7 @@ type: reference
 title: Landmark Evidence in Nuclear Medicine
 chapter: boards
 order: 30
-subtitle: The trials that define practice — what each changed, and where judgment remains
+subtitle: The trials that define practice, what each changed, and where judgment remains
 aliases: [landmark trials, evidence, VISION, NETTER, ALSYMPCA, proPSMA, ISCHEMIA, ATTR-ACT, RATHL, DOSISPHERE, ZIRCON, HiLo, ESTIMABL, DECISION, SELECT, PET-NECK, SEMPET, MSLT, TheraP, PSMAfore]
 review_status: physician-reviewed
 last_updated: 2026-07-27

@@ -3,7 +3,7 @@ type: disease
 title: PET in Pediatric Oncology
 chapter: oncology
 order: 340
-subtitle: FDG and MIBG in childhood lymphoma, sarcoma, neuroblastoma, and histiocytosis — with pediatric-specific pitfalls
+subtitle: FDG and MIBG in childhood lymphoma, sarcoma, neuroblastoma, and histiocytosis, with pediatric-specific pitfalls
 aliases: [pediatric oncology PET, childhood cancer imaging, pediatric lymphoma PET, neuroblastoma imaging, Curie score, SIOPEN, pediatric sarcoma FDG, LCH imaging, pediatric FDG]
 isotope: "Fluorine-18 (FDG) / Iodine-123 (MIBG)"
 review_status: physician-reviewed
@@ -45,6 +45,29 @@ Pediatric oncologic imaging pairs **FDG-PET/CT** (Hodgkin and non-Hodgkin lympho
 - {H} Thymic rebound, brown fat, and physeal uptake are the dominant false positives — know them cold.
 - MIBG-non-avid neuroblastoma (~10%) needs FDG; do not assume MIBG covers all cases.
 - Minimise and track cumulative radiation across serial pediatric studies.
+
+## Board Pearls
+
+- {K} **MIBG-avidity is fairly specific for neurogenic tumors** (neuroblastoma) — other pediatric small-round-blue-cell tumors (Ewing, rhabdomyosarcoma, lymphoma) are FDG-avid but MIBG-negative, so tracer choice follows tumor type.
+- **DOTATATE (SSTR) PET** is an emerging alternative in neuroblastoma and opens a **¹⁷⁷Lu-DOTATATE** theranostic route, particularly for MIBG-non-avid tumors.
+- **Diffuse marrow FDG uptake** from G-CSF or anemia can mask marrow disease — schedule PET before or well after growth-factor support and correlate with marrow biopsy.
+- **Preparation is pediatric-specific** — adequate fasting/glucose control, warming to suppress brown fat, and frequently **sedation/anesthesia** in young children to avoid motion.
+
+## Differential Diagnosis
+
+- **Reactive or infectious lymphadenopathy** — common FDG-avid nodes in children mimic lymphoma; weigh symmetry, size, and clinical context.
+- **Benign FDG-avid bone lesions** — non-ossifying fibroma, fibrous dysplasia, Langerhans-cell histiocytosis, and healing fractures can mimic sarcoma metastasis.
+- **Post-treatment inflammation** — surgical beds, radiation change, and marrow rebound simulate residual or recurrent tumor.
+- **Infection / granulomatous disease** versus metastasis, especially in immunosuppressed children.
+- For a neurogenic adrenal/abdominal mass, **neuroblastoma (MIBG-avid)** versus other small-round-cell tumors and benign adrenal lesions — MIBG confirms neurogenic origin.
+
+## Reporting Checklist
+
+- State the tracer, **weight/BSA-based activity (ALARA)**, and preparation (fasting/glucose, warming, sedation, thyroid blockade for MIBG).
+- Apply the correct scoring system — **Deauville** for lymphoma response, **Curie/SIOPEN** for neuroblastoma burden.
+- Explicitly classify equivocal foci as **physiologic** (thymus, physis, brown fat, marrow) versus disease.
+- Compare with priors and note **cumulative radiation dose** across serial studies.
+- Correlate with anatomic imaging (MRI for primary/CNS) and, where relevant, marrow sampling; for neuroblastoma, state **MIBG-avidity** to guide ¹³¹I-MIBG therapy.
 
 ## Self-Check
 

@@ -59,6 +59,22 @@ Fever of unknown origin (FUO) — recurrent fever without a diagnosis after an a
 
 - Overview: **Infection & inflammation imaging**; entities: **Large-vessel vasculitis**, **Endocarditis/device infection**, **Spondylodiscitis**; pitfalls: **Physiologic FDG mimics**.
 
+## Differential Diagnosis
+
+- {H} **Large-vessel vasculitis** (giant-cell arteritis, Takayasu, PMR) — smooth, linear uptake along the aorta and great-vessel walls.
+- **Endovascular / cardiac infection** — focal uptake at native or prosthetic valves, vascular grafts, or CIED leads (needs dedicated cardiac preparation).
+- **Occult malignancy** — lymphoma (often intensely avid) and other solid or hematologic tumors presenting as fever.
+- **Focal pyogenic infection** — abscess, spondylodiscitis/osteomyelitis, or an infected collection to localize for biopsy/culture.
+- **Non-infectious inflammatory disease** — adult-onset Still's, sarcoidosis, IgG4-related disease, inflammatory bowel disease.
+
+## Reporting Checklist
+
+- State **patient preparation and glucose**, and recent **antibiotics/steroids**, which affect sensitivity.
+- Report each **focus**: site, intensity, and whether it appears physiologic/benign or pathologic.
+- Specifically address **vascular-wall, valvular/perigraft, nodal, and splenic/marrow** uptake relevant to the FUO categories.
+- Recommend the **specific next step** (biopsy, culture, dedicated imaging) for the leading focus.
+- For a **negative** study, state the reduced likelihood of occult focal disease and the higher spontaneous-resolution rate.
+
 ## Self-Check
 
 <details><summary><strong>Q1.</strong> Why is FDG's nonspecificity an advantage in the FUO workup specifically?</summary>

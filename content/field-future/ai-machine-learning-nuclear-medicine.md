@@ -3,7 +3,7 @@ type: overview
 title: AI & Machine Learning in Nuclear Medicine
 chapter: field-future
 order: 15
-subtitle: Why AI may transform nuclear medicine faster and more deeply than any other imaging specialty — and the honest limits
+subtitle: Why AI may transform nuclear medicine faster and more deeply than any other imaging specialty, and the honest limits
 aliases: [artificial intelligence nuclear medicine, machine learning PET, deep learning SPECT, AI dosimetry, PET denoising, low count reconstruction, radiomics, AI attenuation correction, automated segmentation, AI in molecular imaging]
 isotope_label: "¹⁸F-FDG"
 modality: [PET]

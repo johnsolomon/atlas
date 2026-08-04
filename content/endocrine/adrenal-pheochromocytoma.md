@@ -140,6 +140,13 @@ Most PPGL are benign and cured by resection. **SDHB** mutation carries the highe
 - The **two theranostic pairs** (MIBG→I-131-MIBG; DOTATATE→Lu-177-DOTATATE) side by side.
 - **Preoperative blockade** sequence (α before β) safety graphic.
 
+## Common Pitfalls
+
+- {H} **Physiologic uncinate-process (pancreatic-head) DOTATATE uptake** is a classic mimic of a para-aortic paraganglioma — require a discrete CT correlate before calling it disease.
+- **Normal adrenal-medullary uptake** on MIBG/FDOPA/DOTATATE is mild and roughly symmetric; only **nodular, asymmetric, or intense** uptake is meaningful — bilateral faint uptake alone is not bilateral pheochromocytoma.
+- A **negative I-123-MIBG scan does not exclude PPGL** — both **interfering drugs** and intrinsically MIBG-poor **SDHx/dedifferentiated** tumors cause false negatives; escalate to DOTATATE or FDG rather than stopping.
+- **Urinary excretion** of DOTATATE/FDOPA in the collecting system and ureters can obscure or mimic a para-aortic focus — correlate with SPECT/CT or CT.
+
 ## Self-Check (Board-Style)
 
 <details><summary><strong>Q1.</strong> A patient with metastatic SDHB-related paraganglioma needs functional imaging. Which tracer is most sensitive, and why not rely on MIBG?</summary>

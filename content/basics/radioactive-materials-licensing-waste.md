@@ -1,6 +1,6 @@
 ---
 type: physics
-title: Radioactive Materials — Licensing, Waste & Handling
+title: "Radioactive Materials: Licensing, Waste & Handling"
 chapter: dosimetry-safety
 order: 90
 subtitle: NRC/Agreement-State framework, Authorized User & RSO, package receipt, transport, and decay-in-storage

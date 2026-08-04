@@ -131,6 +131,13 @@ PDAC has among the **poorest** solid-tumor prognoses, driven by late presentatio
 - A **resectability/occult-metastasis** decision flow ending at FDG-PET before surgery.
 - **PDAC vs autoimmune pancreatitis vs pancreatic NET** discriminator table (FDG vs steroids-response vs DOTATATE).
 
+## Common Pitfalls
+
+- {H} **Biliary stents, recent ERCP, or cholangitis** produce FDG-avid ductal/periductal inflammation that mimics tumor or nodal disease along the biliary tree.
+- **Small-volume peritoneal carcinomatosis** is frequently below PET resolution, so a negative study does **not** exclude peritoneal spread (an area where FAPI may add sensitivity).
+- **Post-operative (post-Whipple) inflammatory and anastomotic uptake** mimics recurrence — account for timing since surgery.
+- Physiologic **duodenal, bowel, and pancreatic** uptake can obscure a small pancreatic-head lesion — correlate carefully with contrast CT/MRCP.
+
 ## Self-Check (Board-Style)
 
 <details><summary><strong>Q1.</strong> What is the single most valuable role of FDG-PET/CT in resectable-appearing pancreatic cancer?</summary>

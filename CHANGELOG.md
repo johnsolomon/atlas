@@ -4,6 +4,157 @@ Versioning is explicit so readers always know which edition they are using.
 The build stamps the current version and date into the atlas (home page + footer)
 and into every page's citation line.
 
+## v1.76 — 2026-08-04 — every disease page fully scaffolded
+
+Completed the educational-section rollout begun in v1.75 (review items 7-13).
+
+- **All 62 disease pages now carry the full teaching scaffold** — Board Pearls,
+  Common Pitfalls, Differential Diagnosis, and a Reporting Checklist — in addition
+  to the Quick Answer and Self-Check every page already had. 48 previously "light"
+  pages were filled with board-level, guideline-consistent content (no fabricated
+  statistics or citations; the graded Evidence & sources layer remains the citation
+  source). Content was spot-checked for medical accuracy across oncology, cardiology,
+  CNS, infection, endocrine, GU, pulmonary, and skeletal pages.
+- **Fixed a duplicate-page collision**: two files shared the id
+  `bladder-urothelial-cancer` (a light oncology stray shadowing the full
+  genitourinary page); removed the stray so the complete page renders.
+- **Tightened the section-icon matcher** so summary headings like "… at a Glance",
+  "Reference organs", and "Immune-related adverse events" no longer pick up the wrong
+  icon; only true teaching sections are decorated.
+
+## v1.75 — 2026-08-03 — standardized educational-section identity
+
+Made the teaching scaffolding read the same on every page (review items 7-14).
+
+- **Canonical section framework.** The renderer now recognises each educational
+  section by its heading and gives it a consistent, colour-coded icon — a bolt for
+  Quick Answer, a star for Board Pearls, a warning triangle for Pitfalls, a Venn for
+  Differential Diagnosis, a clipboard for Reporting, a question-mark for Self-Check,
+  a book for References. Label variants are folded into one family, so "Common
+  Pitfalls" and "Common Pitfalls / Cautions" — and "Self-Check" and "Self-Check
+  (Board-Style)" — now look identical. Generic narrative headings stay icon-free so
+  the standardized teaching blocks stand out. This standardizes ~1,300 section
+  headings across the whole site without touching content, in both light and dark.
+- **Content-fill pilot.** Fully scaffolded the anal squamous cell carcinoma page with
+  Board Pearls, Differential Diagnosis, and a Reporting Checklist as the reference
+  pattern for filling the remaining light disease pages.
+
+## v1.74 — 2026-08-03 — radionuclide & tracer comparison tables
+
+Added a single at-a-glance reference page consolidating the physics and clinical
+identity of the field's workhorse agents (review items 74-75):
+
+- **New page: "Radionuclides & Tracers at a Glance"** (Radiopharmacy chapter). Two
+  verified comparison tables — radionuclides by emission type, half-life, production
+  route, and clinical role; and radiopharmaceuticals with colour-coded tracer dots,
+  parent isotope, half-life, molecular target, imaging modality, primary use, and the
+  matched therapy where a theranostic pair exists.
+- **Colour dots reuse the site-wide tracer palette** (`.tdot`), so a tracer reads the
+  same colour in the comparison table as it does on its own page tag.
+- A "How to read this" orientation box and three self-check questions round out the page.
+
+## v1.73 — 2026-08-03 — navigation axes, tracer colours, random page
+
+Continued the UX review with the self-contained, image-independent follow-ups:
+
+- **Browse by the axes physicians think in** (review item 4). The homepage "Browse by area" chips are now
+  Organ systems, Therapy, Probes & targets, Physics, Test selection, Reporting, Pitfalls & variants,
+  Landmark trials, PET, SPECT, and Tools — each mapped to the real chapter/part structure (the theme-browse
+  overlay now supports `ch:` and `part:` filters, not just free-text).
+- **Persistent tracer colour-coding** (items 17-18). Major agents (FDG, PSMA, DOTATATE, PYP, MIBG, MAG3,
+  DMSA, sestamibi, gallium, thallium, rubidium, and more) now carry a consistent colour dot wherever they
+  appear as a page tag, so a tracer reads the same colour across the site.
+- **Random page** (item 55) added to the command palette (Ctrl/Cmd-K → "Random page") for serendipitous review.
+
+## v1.72 — 2026-08-02 — findability: hero search, breadcrumbs, smarter matching
+
+Acted on the "Critical" cluster of a UX review — the homepage value proposition and search.
+
+- **Homepage now leads with search.** Added a large, dominant search box in the hero with inline ranked
+  results, a crisp one-line value proposition ("A fast, searchable clinical reference for nuclear medicine…"),
+  and reordered so search + browse cards come first and the onboarding guide moves below. (Review items 1-3.)
+- **Smarter search** (items 19-22): synonym/acronym expansion (NET→neuroendocrine, mCRPC→prostate, ATTR→
+  amyloidosis, DLBCL/RCC/GIST/HCC/HNSCC and more), relevance ranking (title ≫ subtitle ≫ body; original term
+  weighted above synonyms; word-boundary matching so "NET" ≠ "NETTER"), and a typo-tolerant fuzzy fallback.
+- **Breadcrumbs on every page** (items 5-6): Home › Part › Chapter, so location in the hierarchy is always clear.
+- **Uniform browse-card heights** even when titles wrap (item 15).
+
+The remaining ~70 review items are triaged in the delivery notes: several already exist (study/quiz/spaced-
+repetition, cross-links, a11y basics), several are quick follow-ups (tracer color-coding, comparison tables,
+multi-axis browse), and the large clusters (standardized educational sections across all pages; the case-page
+layout and full image viewer with window/level, cine, and linked PET/CT) depend on real scan images and are
+scoped as dedicated phases.
+
+## v1.71 — 2026-08-02 — logo, diagram placeholder, physics completeness
+
+- **New logo / favicon.** Replaced the generic three-orbit atom with a cleaner single-orbit mark (nucleus +
+  electron accent in the atlas purple) that stays legible down to 16 px. It's now the browser-tab icon, the
+  PWA/app icon, and appears in the sidebar brand. Standalone `brand/logo-lockup.svg` and `brand/logo-mark.svg`
+  delivered for reuse (social/OG, letterhead). Wordmark still reads "Nuclear Medicine Atlas" pending the
+  official name.
+- **Physics completeness.** Added the γ energy to the imaging line for parallelism with PET: "γ for SPECT,
+  e.g. 140 keV for Tc-99m; positrons → 511 keV for PET".
+- **Diagram placeholder.** Added a reusable `placeholder_fig()` and placed a clearly-marked diagram slot on
+  the Physics page for the theranostic-pairing concept (one DOTA-conjugated ligand carrying Ga-68 to image
+  or Lu-177 to treat) — a reserved slot to fill with a proper illustration later.
+
+## v1.70 — 2026-08-02 — dark-mode tooltip fix + typeset equations
+
+- **Fixed the glossary tooltip in dark mode.** Hovering a defined term (e.g. LET) produced a white-on-white
+  box because the tooltip used `background: var(--ink)` (which is light in dark mode) with hardcoded light
+  text. It now uses a fixed dark surface with light text and a subtle border, so it is legible in both themes.
+- **Formulas now render as centered, typeset equations** (the Wikipedia / Wolfram look). Authoring a formula
+  as a `$$ … $$` LaTeX block makes the build convert it to **MathML** — real typeset math (stacked fractions,
+  summations, sub/superscripts, Greek) — displayed in a centered, theme-aware boxed graphic. MathML renders
+  natively in-browser, so there is **no runtime dependency and it still works offline and on iPhone**.
+  - Build adds `latex2mathml` as a build-time dependency (output is static MathML; nothing loads at runtime).
+  - First page converted: **MIRD Dosimetry** (D = Ã × S, the summation form, Ã = 1.443 · T_eff · A₀,
+    1/T_eff = 1/T_phys + 1/T_biol, and the S-value). The mechanism now supports `$$…$$` on any page —
+    remaining quantitative pages (decay law, effective dose, output efficiency / NORA, GFR/Gates, counting
+    statistics, Qp:Qs) are queued for the same treatment.
+
+## v1.69 — 2026-08-02 — physician review: framing & copy pass
+
+Acted on a physician/site-build review of the atlas's framing and voice:
+
+- **Dropped the "Six-Domain framework" label** from all user-facing copy (home hero, meta description, footer,
+  and the About & Methodology page). The organizing principle — the causal arc of a study — is still
+  described; it is just no longer branded as a named framework.
+- **Cleaner titles and subtitles** — removed em/en-dash separators from every page title and subtitle (122
+  files), replacing them with colons or commas, and converted dash-compounds (e.g. "Ventilation–perfusion")
+  to slashes. Technical hyphens (Tc-99m, FDG-PET, I-131, 17-segment) are left intact.
+- **Rewrote the "Why Nuclear Medicine" framing** to be confident without overcompensating: removed the
+  "only specialty in all of medicine that sees and treats" claim and the radiology comparison. The
+  see-and-treat idea is now presented plainly as a real advantage that belongs to **theranostics**
+  specifically, rather than as the identity of the whole field.
+- **Reframed the physiology/anatomy point** around what nuclear medicine actually does: it produces an
+  **overlay** — a functional PET/SPECT image fused with anatomic CT — and draws conclusions from the two
+  read together, rather than positioning the field against radiology.
+
+Note: the atlas is still titled "Nuclear Medicine Atlas" pending the official name (to be supplied). 273 pages;
+all hard invariants pass.
+
+## v1.68 — 2026-07-31 — Interactive Renogram Explorer
+
+Integrated a new, in-depth interactive tool into the atlas: the **Interactive Renogram Explorer** (Interactive
+Tools chapter), a bilateral ⁹⁹ᵐTc-MAG3/DTPA diuretic-renogram teaching bench. Drag either kidney's curve
+(perfusion, T_max/uptake, drainage) and it decodes the three phases, washout T½, output efficiency, NORA,
+relative (split) function, the furosemide response, and the O'Reilly pattern live — plus a separate
+flow-phase strip, an ACE-inhibitor (captopril) module with the consensus positivity criteria, and a gallery
+of reference drainage patterns (Types 1/2/3a/3b, Homsy, non-functioning, reduced perfusion, cortical
+retention).
+
+The tool was adapted from a standalone page into the atlas framework:
+- **Rethemed** from a hardcoded dark palette to the atlas light/dark theme variables, so plots, curves,
+  handles, and controls render natively in both modes (verified by screenshot).
+- **Fully scoped** under a `.rgx` wrapper with all element IDs namespaced (`rg-…`) and the script wrapped in
+  an IIFE, so nothing collides with the single-page app.
+- Standalone header/footer removed; the page title/subtitle come from front-matter and the reference list
+  moved into graded evidence (SNMMI/EANM Taylor 2018, O'Reilly 1978, Piepsz NORA 2002, ACEI consensus 1996,
+  Homsy 1988), each linked.
+- Cross-linked from **Renal Scintigraphy** and **Captopril Renography**.
+- Mobile-safe (single-column, 16 px controls, zero horizontal overflow); all hard invariants pass. 273 pages.
+
 ## v1.67 — 2026-07-30 — iPhone navigation, reworked for real Safari
 
 The v1.66 fixes tested clean in the emulator but not on real iOS Safari. Re-diagnosed the two problems at

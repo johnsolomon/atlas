@@ -3,7 +3,7 @@ type: reference
 title: Quantitative Thresholds & Decision Cutoffs
 chapter: boards
 order: 10
-subtitle: The numbers that change management — with their evidence and their caveats
+subtitle: The numbers that change management, with their evidence and their caveats
 aliases: [thresholds, cutoffs, decision values, Krenning, Deauville, PERCIST, H/CL, MFR, TID, lung shunt, dose limits, Mo-99 breakthrough, patient release, medical event]
 review_status: physician-reviewed
 last_updated: 2026-07-27

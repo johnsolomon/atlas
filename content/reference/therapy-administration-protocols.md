@@ -1,6 +1,6 @@
 ---
 type: reference
-title: Radionuclide Therapy — Administration Protocols
+title: "Radionuclide Therapy: Administration Protocols"
 chapter: boards
 order: 60
 subtitle: Representative activities, schedules, premedication, monitoring, and release by therapy

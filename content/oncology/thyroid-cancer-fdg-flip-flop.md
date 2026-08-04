@@ -1,9 +1,9 @@
 ---
 type: disease
-title: Thyroid Cancer — FDG Imaging & the RAI/FDG Flip-Flop
+title: "Thyroid Cancer: FDG Imaging & the RAI/FDG Flip-Flop"
 chapter: oncology
 order: 320
-subtitle: Why dedifferentiated, radioiodine-refractory thyroid cancer turns FDG-avid — the flip-flop phenomenon
+subtitle: Why dedifferentiated, radioiodine-refractory thyroid cancer turns FDG-avid, the flip-flop phenomenon
 aliases: [thyroid cancer FDG, flip-flop phenomenon, radioiodine refractory, RAI refractory thyroid, TENIS, thyroglobulin elevated negative iodine scan, dedifferentiated thyroid cancer]
 isotope: "Fluorine-18 (FDG)"
 review_status: physician-reviewed
@@ -45,6 +45,29 @@ FDG and radioiodine imaging answer different questions and are used **together**
 - {H} A **negative radioiodine scan does not mean no disease** — with elevated thyroglobulin it means *iodine-negative* disease; image with FDG.
 - Physiologic/benign neck uptake and inflammatory nodes can mimic disease on FDG — correlate with anatomy and thyroglobulin trend.
 - Do not offer further ¹³¹I to clearly radioiodine-refractory, FDG-avid disease expecting benefit.
+
+## Board Pearls
+
+- {K} The inverse relationship operates **at the lesion level** — a single patient can harbor both **iodine-avid** and **FDG-avid** metastases, so read the **post-therapy radioiodine scan and FDG-PET together** to map the whole disease burden.
+- **Hürthle-cell (oncocytic)** and **poorly differentiated** carcinomas are typically **iodine-poor and FDG-avid at presentation** — FDG is the functional test of choice rather than diagnostic radioiodine.
+- **FDG-PET yield rises with higher serum thyroglobulin and more aggressive histology**; a modestly elevated thyroglobulin may still give a negative FDG scan.
+- **Medullary and anaplastic carcinomas do not concentrate radioiodine**; anaplastic thyroid cancer is intensely and uniformly FDG-avid.
+
+## Differential Diagnosis
+
+- **Iodine-avid, FDG-negative** disease — well-differentiated (classically **micronodular pulmonary metastases**); still radioiodine-treatable.
+- **FDG-avid, iodine-negative** disease — dedifferentiated, radioiodine-refractory (the flip-flop endpoint).
+- **FDG-avid and iodine-avid** in the same lesion — uncommon mixed/transitional differentiation.
+- **FDG-positive but benign** — reactive/inflammatory cervical nodes, thyroid-remnant or post-RAI inflammation, muscle, and brown fat.
+- **Thyroglobulin elevated with both scans negative** — microscopic/small-volume disease below resolution, or **anti-thyroglobulin antibody** interference affecting the assay.
+
+## Reporting Checklist
+
+- State the **thyroglobulin (and anti-Tg antibody) level and trend**, whether **TSH-stimulated or suppressed**, and the prior **¹³¹I** history.
+- Correlate with the most recent **diagnostic or post-therapy radioiodine scan** and explicitly describe lesions as **concordant vs discordant**.
+- Report the **number, SUV, and volume** of FDG-avid lesions given their prognostic weight.
+- Distinguish physiologic/benign uptake from disease.
+- Give a **management-relevant impression** — iodine-avid (RAI candidate) vs FDG-avid, radioiodine-refractory (systemic therapy; consider redifferentiation).
 
 ## Self-Check
 

@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+
+# Node (only if you use the optional TS tooling)
+node_modules/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+
+# Local build scratch
+_site/
+_repo/
+*.zip
+
+# local cleanup staging (rm is blocked on the desktop bridge)
+_to_delete/
+*.tar.gz

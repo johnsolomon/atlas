@@ -3,7 +3,7 @@ type: reference
 title: What's New
 chapter: boards
 order: 96
-subtitle: A reader-facing summary of recent improvements — the atlas is versioned and maintained continuously
+subtitle: A reader-facing summary of recent improvements, and how the atlas stays current
 aliases: [whats new, what is new, release notes, updates, changelog, version history, recent changes]
 review_status: physician-reviewed
 last_updated: 2026-07-30

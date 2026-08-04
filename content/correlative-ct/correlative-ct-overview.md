@@ -3,7 +3,7 @@ type: reference
 title: CT for the Nuclear Medicine Reader
 chapter: correlative-ct
 order: 10
-subtitle: Why the CT on your PET/CT and SPECT/CT is low-dose and non-contrast — and what you are responsible for seeing in it
+subtitle: Why the CT on your PET/CT and SPECT/CT is low-dose and non-contrast, and what you are responsible for seeing in it
 aliases: [correlative CT, CT for nuclear medicine, attenuation correction CT, localization CT, low-dose CT, non-contrast CT, diagnostic CT vs AC CT, Hounsfield units, CT windowing, hybrid imaging CT]
 review_status: physician-reviewed
 last_updated: 2026-07-28

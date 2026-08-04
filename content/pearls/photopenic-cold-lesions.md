@@ -3,7 +3,7 @@ type: pattern
 title: Photopenic (Cold) Lesions
 chapter: pearls
 order: 30
-subtitle: Reasoning from absent uptake — a defect is a finding, not a blank space
+subtitle: Reasoning from absent uptake, a defect is a finding, not a blank space
 aliases: [photopenic, cold lesion, cold defect, cold spot, absent uptake, photon deficient, cold nodule, cold area]
 review_status: physician-reviewed
 last_updated: 2026-07-28

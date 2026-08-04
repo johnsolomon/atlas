@@ -1,6 +1,6 @@
 ---
 type: disease
-title: Parkinsonism — FDG Metabolic Patterns
+title: "Parkinsonism: FDG Metabolic Patterns"
 chapter: neuro
 order: 55
 subtitle: How brain FDG-PET subtypes atypical parkinsonism where DaTscan only confirms dopaminergic loss
@@ -61,6 +61,22 @@ A **DaTscan** (¹²³I-ioflupane) answers one question — is there **presynapti
 ## Related Pages
 
 - Tracers/related: **I-123-Ioflupane (DaTscan)**, **Brain FDG & dementia imaging**, **Amyloid & tau PET**; selection: **Dementia & movement-disorder imaging — which test when**.
+
+## Differential Diagnosis
+
+- {H} **Normal/borderline DAT** points away from a degenerative parkinsonism toward **essential tremor, drug-induced or psychogenic parkinsonism, and dopa-responsive dystonia** (the "scans without evidence of dopaminergic deficit" group).
+- **Vascular parkinsonism** — lower-body predominant, with white-matter/lacunar disease on MRI and a variable or patchy DAT.
+- **DLB vs Alzheimer disease** — both show posterior hypometabolism, but **occipital involvement + the cingulate island sign** favor DLB.
+- **MSA-C vs other cerebellar ataxias** — the cerebellar/pontine metabolic pattern overlaps with spinocerebellar and other degenerative ataxias; correlate clinically.
+- **Drug-induced parkinsonism superimposed on early PD** — dopamine-blocker exposure can coexist with a truly abnormal DAT, complicating attribution.
+
+## Reporting Checklist
+
+- State the **tracer and the question answered**: DAT-SPECT for **presence of a presynaptic dopaminergic deficit**; FDG-PET for the **regional metabolic pattern/subtype**.
+- For **DAT**: describe **putaminal vs caudate** reduction, **symmetry/laterality**, and background — and state that it confirms but does **not subtype** parkinsonism.
+- For **FDG**: name the **pattern** (e.g. midbrain/medial-frontal for PSP, putaminal for MSA-P, occipital + cingulate island for DLB) and the syndrome it favors.
+- Correlate imaging asymmetry with the **clinically worse side** (relevant for CBD).
+- Suggest **complementary tests** where indicated (cardiac ¹²³I-MIBG, structural MRI) and integrate findings **clinically** rather than diagnosing from imaging alone.
 
 ## Self-Check
 

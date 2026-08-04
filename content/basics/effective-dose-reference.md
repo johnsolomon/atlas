@@ -1,6 +1,6 @@
 ---
 type: reference
-title: Effective Dose Reference — Common NM Procedures
+title: "Effective Dose Reference: Common NM Procedures"
 chapter: dosimetry-safety
 order: 30
 subtitle: Representative patient effective doses for counseling, ALARA justification, and modality comparison

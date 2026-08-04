@@ -3,7 +3,7 @@ type: technique
 title: Post-Treatment & Post-Surgical FDG Pitfalls
 chapter: oncology
 order: 34
-subtitle: Timing windows after chemo, radiation, surgery, and G-CSF — and the inflammatory patterns that mimic tumor
+subtitle: Timing windows after chemo, radiation, surgery, and G-CSF, and the inflammatory patterns that mimic tumor
 aliases: [post-treatment FDG, post-therapy PET timing, radiation pneumonitis PET, mucositis FDG, osteoradionecrosis, surgical bed uptake, marrow rebound, thymic rebound, G-CSF marrow, stunning, treatment timing PET]
 isotope_label: "¹⁸F-FDG"
 modality: [PET]

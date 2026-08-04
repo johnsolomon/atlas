@@ -1,6 +1,6 @@
 ---
 type: therapy
-title: Radionuclide Therapy — Eligibility & Toxicity Monitoring
+title: "Radionuclide Therapy: Eligibility & Toxicity Monitoring"
 chapter: theranostics
 order: 130
 subtitle: Pre-treatment eligibility, organs at risk, and the labs that gate each cycle

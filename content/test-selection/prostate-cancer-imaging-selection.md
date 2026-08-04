@@ -1,6 +1,6 @@
 ---
 type: comparison
-title: Prostate Cancer Imaging — Which Test When
+title: "Prostate Cancer Imaging: Which Test When"
 chapter: test-selection
 order: 50
 subtitle: Choosing among PSMA PET, fluciclovine, choline, and conventional imaging across the disease course

@@ -46,6 +46,23 @@ Avascular necrosis (AVN / osteonecrosis) is bone death from interrupted blood su
 
 - Protocol: **Bone scintigraphy**; pattern: **Photopenic/cold lesions**.
 
+## Differential Diagnosis
+
+- **Aggressive lytic metastasis** or other tumor causing a photopenic defect — a cold focus is not specific to AVN.
+- **Osteomyelitis/septic arthritis**, which can be cold early (devascularized) then hot with repair, overlapping the AVN evolution.
+- **Transient osteoporosis of the hip / bone-marrow-edema syndrome** — diffuse increased uptake that is self-limiting rather than a fixed doughnut.
+- **Subchondral insufficiency or stress fracture** of the femoral head, which can mimic early osteonecrosis.
+- **Degenerative/osteoarthritic** periarticular uptake around the hip.
+- **Attenuation/artifact** from a hip prosthesis or overlying structures producing an apparent cold region.
+
+## Reporting Checklist
+
+- Describe the **phase/pattern** (photopenic defect vs hot-rim "doughnut") and the site/laterality.
+- Add **SPECT/SPECT-CT** of the femoral head; note that a normal planar scan does not exclude AVN.
+- Recommend **MRI** when clinical suspicion persists or the scan is equivocal (reference standard, pre-collapse staging).
+- Survey for **multifocal** infarcts when risk factors are present (steroids, sickle cell).
+- Correlate with **radiographs** for femoral-head collapse and with risk factors.
+
 ## Self-Check
 
 <details><summary><strong>Q1.</strong> Describe the bone-scan evolution of AVN.</summary>

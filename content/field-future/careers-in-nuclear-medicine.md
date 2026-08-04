@@ -3,7 +3,7 @@ type: reference
 title: Careers in Nuclear Medicine
 chapter: field-future
 order: 25
-subtitle: The market, where the live openings are, and how to land them — in a field hiring faster than it can staff
+subtitle: The market, where the live openings are, and how to land them, in a field hiring faster than it can staff
 aliases: [nuclear medicine jobs, nuclear medicine careers, theranostics jobs, academic nuclear medicine faculty, SNMMI career center, nuclear medicine job market, radiopharmaceutical industry jobs, post a role nuclear medicine]
 review_status: physician-reviewed
 last_updated: 2026-07-28

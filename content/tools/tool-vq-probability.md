@@ -3,7 +3,7 @@ type: tool
 title: V/Q Probability Classifier (PE)
 chapter: tools
 order: 40
-subtitle: Categorizing a ventilation–perfusion study for pulmonary embolism
+subtitle: Categorizing a ventilation/perfusion study for pulmonary embolism
 aliases: [VQ probability, PIOPED, modified PIOPED II, PE probability, mismatch, V/Q interpretation, PISAPED]
 tags: [tool, pulmonary, decision]
 ---

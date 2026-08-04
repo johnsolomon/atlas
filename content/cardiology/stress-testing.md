@@ -3,7 +3,7 @@ type: protocol
 title: Stress Testing for MPI
 chapter: cardiac
 order: 30
-subtitle: Exercise and pharmacologic stress agents — mechanisms, dosing, and contraindications
+subtitle: Exercise and pharmacologic stress agents, mechanisms, dosing, and contraindications
 aliases: [stress test, pharmacologic stress, regadenoson, adenosine, dipyridamole, dobutamine, vasodilator stress, Lexiscan, exercise stress]
 review_status: physician-reviewed
 last_updated: 2026-07-27

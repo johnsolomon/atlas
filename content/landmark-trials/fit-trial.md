@@ -3,7 +3,7 @@ type: trial
 title: FIT (First-line Indolent Trial)
 chapter: landmark-trials
 order: 100
-subtitle: Radioimmunotherapy consolidation — ⁹⁰Y-ibritumomab tiuxetan after first remission in follicular lymphoma
+subtitle: Radioimmunotherapy consolidation, ⁹⁰Y-ibritumomab tiuxetan after first remission in follicular lymphoma
 aliases: [FIT trial, First-line Indolent Trial, Y-90 ibritumomab tiuxetan, Zevalin consolidation, radioimmunotherapy follicular lymphoma, Morschhauser FIT, RIT trial]
 review_status: physician-reviewed
 last_updated: 2026-07-28

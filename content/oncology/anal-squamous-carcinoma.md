@@ -37,6 +37,32 @@ Anal squamous cell carcinoma is **FDG-avid**, and PET/CT is well suited to its t
 - Physiologic anal/rectal and bowel activity, and hemorrhoidal/inflammatory uptake, can confound the primary site.
 - Inguinal nodal involvement is field-defining — scrutinise it.
 
+## Board Pearls
+
+- {K} Anal SCC is **HPV-associated** and reliably **FDG-avid**; guidelines endorse **PET/CT for staging** because it upstages nodal disease over CT and defines the radiotherapy field.
+- {H} Standard of care is **definitive chemoradiation** (5-fluorouracil + mitomycin C + radiotherapy, the Nigro-type regimen); **abdominoperineal resection is reserved for salvage** — so imaging, not a resection specimen, drives management.
+- {H} **Inguinal nodal status is field-defining**: FDG-positive inguinal nodes are included in the radiation volume.
+- Assess treatment response on **appropriately delayed** imaging (typically several months after chemoradiation) — earlier scans are confounded by avid post-radiation inflammation.
+- A **complete metabolic response** at an adequate interval predicts better outcome; **persistent or progressive focal uptake** prompts biopsy and consideration of salvage surgery.
+
+## Differential Diagnosis
+
+Causes of FDG uptake in the anal/perianal region that can mimic or obscure tumour:
+
+- **Physiologic anorectal and bowel activity** — usually diffuse and symmetric.
+- **Benign inflammatory uptake** — hemorrhoids, proctitis, fistula-in-ano, or perianal abscess.
+- **Post-radiation inflammation** — timing-dependent; a common cause of a false-positive "residual disease" read.
+- **Anal adenocarcinoma** (vs squamous) — histology and management differ; correlate with biopsy.
+- **Anal condyloma / low-grade HPV lesions** — can be mildly avid.
+
+## Reporting Checklist
+
+- **Primary tumour**: location within the anal canal/margin, size, and SUVmax.
+- **Nodal status by station**: perirectal/mesorectal, internal and external iliac, and — stated explicitly — **inguinal** nodes (field-defining).
+- **Distant disease**: para-aortic nodes, liver, lung, bone.
+- **Response studies**: state the **interval since chemoradiation completion**, classify as complete vs partial metabolic response, and flag any new or persistent focal uptake with a clear recommendation (short-interval follow-up, biopsy, or salvage referral).
+- **Correlation**: reconcile findings with the clinical/anorectal exam, which is directly accessible.
+
 ## Self-Check
 
 <details><summary><strong>Q1.</strong> What is the single most important contribution of FDG-PET in anal squamous cell carcinoma?</summary>

@@ -61,6 +61,24 @@ Its limitation is **specificity** — degenerative endplate (Modic) change, rece
 
 - Related: **Osteomyelitis & the diabetic foot**, **Labeled leukocyte scintigraphy**, **Gallium-67**; search: **Fever & inflammation of unknown origin**.
 
+## Differential Diagnosis
+
+- {H} **Degenerative endplate (Modic type 1) change** — FDG-avid and the leading mimic; favor infection when uptake is **disc-centered with involvement of both adjacent endplates ± paravertebral/epidural extension**.
+- **Metastasis/myeloma** — typically involve the **vertebral body and posterior elements (pedicles) while sparing the disc**, the opposite of the disc-centered infective pattern.
+- **Recent surgery / instrumented spine** — post-operative and hardware-related uptake overlaps with infection; correlate with timing and pattern.
+- **Insufficiency/traumatic fracture** and acute **Schmorl node** — reactive FDG uptake without a disc-endplate infective pattern.
+- **Inflammatory/erosive spondyloarthropathy** — Andersson lesion in ankylosing spondylitis, SAPHO, and **dialysis-related/crystal (CPPD)** spondyloarthropathy can mimic infection.
+- **Neuropathic (Charcot) spine** — destructive changes mimicking aggressive infection.
+
+## Reporting Checklist
+
+- State the **modality/technique** used and, when relevant, note that **labeled WBC is not recommended** for the spine (photopenic false-negatives).
+- Specify the **level(s)** and the **disc + adjacent-endplate** pattern supporting infection versus a degenerative/neoplastic alternative.
+- Describe **paravertebral, psoas, and epidural extension / abscess** — findings that change management urgency.
+- Comment on the **source-of-infection** whole-body survey (e.g. endocarditis, distant septic foci) when performed.
+- For **treatment monitoring**, compare metabolic activity to baseline and note the trend.
+- Recommend **correlation with MRI, inflammatory markers, and image-guided biopsy/culture** as appropriate.
+
 ## Self-Check
 
 <details><summary><strong>Q1.</strong> Why is labeled-WBC scintigraphy unreliable for vertebral osteomyelitis?</summary>

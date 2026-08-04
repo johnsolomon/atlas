@@ -1,6 +1,6 @@
 ---
 type: technique
-title: Paraneoplastic Syndromes — the FDG-PET Tumor Search
+title: Paraneoplastic Syndromes, the FDG-PET Tumor Search
 chapter: oncology
 order: 410
 subtitle: When a neurologic (or other) syndrome signals an occult cancer, and whole-body FDG-PET goes hunting

@@ -52,6 +52,7 @@ Hold ACE inhibitors/ARBs before the study per protocol; ensure hydration; monito
 ## Related Pages
 
 - Tracer: **Tc-99m-MAG3**; protocol: **Renal transplant**, **Diuretic renography**.
+- Interactive: **[Renogram Explorer](#/tool-renogram)** — drag a curve and see the baseline-vs-post-ACEI change and the consensus positivity criteria live.
 
 ## Self-Check
 

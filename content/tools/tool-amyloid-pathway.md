@@ -3,7 +3,7 @@ type: tool
 title: Cardiac Amyloidosis Diagnostic Pathway
 chapter: tools
 order: 30
-subtitle: The non-biopsy ATTR algorithm — gated on the monoclonal screen, with cited reasoning at every branch
+subtitle: The non-biopsy ATTR algorithm, gated on the monoclonal screen, with cited reasoning at every branch
 aliases: [cardiac amyloid pathway, ATTR diagnosis, nonbiopsy ATTR, Gillmore algorithm, monoclonal screen, Perugini, H/CL, PYP pathway, amyloid decision]
 tags: [tool, cardiology, amyloid, decision]
 ---

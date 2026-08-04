@@ -3,7 +3,7 @@ type: trial
 title: ERA-223
 chapter: landmark-trials
 order: 90
-subtitle: The safety trial that changed how radium-223 is combined — fractures with abiraterone
+subtitle: The safety trial that changed how radium-223 is combined, fractures with abiraterone
 aliases: [ERA-223 trial, radium-223 abiraterone fractures, Smith ERA 223, Ra-223 combination safety, bone-health agent radium]
 review_status: physician-reviewed
 last_updated: 2026-07-28

@@ -3,7 +3,7 @@ type: disease
 title: Peritoneal Carcinomatosis
 chapter: oncology
 order: 400
-subtitle: FDG-PET for peritoneal spread — its reach and its small-volume and mucinous limits
+subtitle: FDG-PET for peritoneal spread, its reach and its small-volume and mucinous limits
 aliases: [peritoneal carcinomatosis, peritoneal metastases, omental caking, FDG peritoneum, mucinous carcinomatosis, pseudomyxoma, small volume peritoneal disease]
 isotope: "Fluorine-18 (FDG)"
 review_status: physician-reviewed
@@ -36,6 +36,30 @@ FDG-PET/CT detects peritoneal metastatic disease — from **ovarian, colorectal,
 - {H} A negative FDG-PET does not exclude **small-volume** or **mucinous** peritoneal disease.
 - Physiologic bowel and urinary activity mimic or obscure implants — correlate with CT/delayed imaging.
 - PET complements but does not replace laparoscopy for peritoneal burden before cytoreduction.
+
+## Board Pearls
+
+- {K} The classic avid findings are **omental caking** and **nodular peritoneal/serosal implants**; PET adds value chiefly by finding **extraperitoneal, nodal, or bulky disease** that changes operability.
+- {H} Two classic **false negatives**: **small-volume miliary spread** below PET resolution and **low-grade mucinous disease** (pseudomyxoma peritonei, mucinous appendiceal/ovarian tumors).
+- Common primaries are **ovarian** (most frequent), **colorectal, gastric, and appendiceal**.
+- FDG-PET is particularly useful in **ovarian cancer recurrence with rising CA-125** when conventional imaging is equivocal.
+- **Diagnostic laparoscopy** remains the reference standard for true peritoneal burden (**PCI**) before cytoreductive surgery/HIPEC.
+
+## Differential Diagnosis
+
+- **Tuberculous or other infectious peritonitis** — FDG-avid peritoneal/omental thickening and ascites that closely mimics carcinomatosis.
+- **Peritoneal mesothelioma** and **primary peritoneal carcinoma**.
+- **Post-surgical or reactive inflammation**, dialysis-related peritonitis, and **endometriosis**.
+- **Physiologic bowel and omental-fat FDG** simulating implants.
+- Other avid processes such as **splenosis, desmoid, or talc/suture granulomas**.
+
+## Reporting Checklist
+
+- Report **distribution** (omental caking, implants in subphrenic spaces, paracolic gutters, pouch of Douglas) and any ascites.
+- State the **small-volume/mucinous limitation** — a negative or low-uptake study does not exclude peritoneal disease.
+- Identify **extraperitoneal, nodal, or bulky disease** affecting resectability/complete cytoreduction.
+- Separate **physiologic bowel/urinary activity** using CT correlation and delayed views.
+- Correlate with **contrast CT/MRI** and recommend **laparoscopy** where peritoneal burden is decision-critical.
 
 ## Self-Check
 

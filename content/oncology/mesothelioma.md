@@ -3,7 +3,7 @@ type: disease
 title: Malignant Pleural Mesothelioma
 chapter: oncology
 order: 370
-subtitle: FDG for staging, prognosis, and response — and the talc-pleurodesis pitfall
+subtitle: FDG for staging, prognosis, and response, and the talc-pleurodesis pitfall
 aliases: [mesothelioma, malignant pleural mesothelioma, pleural FDG, talc pleurodesis pitfall, asbestos pleural, pleural thickening PET]
 isotope: "Fluorine-18 (FDG)"
 review_status: physician-reviewed
@@ -36,6 +36,29 @@ Malignant pleural mesothelioma is usually **FDG-avid**, and PET/CT contributes t
 - {H} Talc pleurodesis causes intense, long-lasting FDG uptake — correlate with history and CT density.
 - Benign asbestos-related pleural plaques are usually not avid, but inflammation/infection can be.
 - Diffuse pleural disease is hard to measure — integrate pattern, not a single SUV.
+
+## Board Pearls
+
+- {K} PET/CT's decisive staging role is detecting **extrathoracic, contralateral, transdiaphragmatic, and distant metastases** that render mesothelioma **unresectable** — but it is **insensitive for early T-stage** (chest wall, diaphragm) and **understages mediastinal nodes**, so it complements rather than replaces MRI and surgical (mediastinoscopy/laparoscopy) staging.
+- **Epithelioid** histology carries the best prognosis and is the subtype generally considered for radical surgery; **sarcomatoid/biphasic** disease is more aggressive.
+- FDG-PET improves **biopsy targeting** by directing sampling to the most metabolically active pleura, raising diagnostic yield in diffuse disease.
+- Whole-body FDG can reveal **peritoneal spread** and is also used for **peritoneal mesothelioma**, a distinct primary.
+
+## Differential Diagnosis
+
+- **Benign asbestos-related pleural disease** — plaques (often calcified) and benign fibrothorax; usually low FDG uptake.
+- **Metastatic pleural carcinomatosis** (lung/breast adenocarcinoma, thymic) — mimics mesothelioma on PET; the distinction is histologic/immunohistochemical.
+- **Infectious/inflammatory pleuritis** — empyema, tuberculosis, and prior **talc pleurodesis** are intensely FDG-avid benign mimics.
+- **Pleural lymphoma** and **solitary fibrous tumor of the pleura**.
+- **Peritoneal carcinomatosis** versus peritoneal mesothelioma when abdominal disease is present.
+
+## Reporting Checklist
+
+- State the **CT pattern** and any **prior pleurodesis/procedure history** explicitly before interpreting avid pleura.
+- Localize disease affecting resectability — **mediastinal/hilar nodes, transdiaphragmatic and peritoneal extension, contralateral pleura, chest wall, and distant metastases** — while acknowledging PET understages T and N.
+- Report **SUVmax / metabolic tumor volume** as a baseline and prognostic datum.
+- Indicate the most metabolically active site as a **biopsy target** when tissue is needed.
+- For response, integrate the overall pleural **pattern** rather than a single SUV in diffuse disease.
 
 ## Self-Check
 

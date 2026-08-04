@@ -3,7 +3,7 @@ type: trial
 title: NETTER-1
 chapter: landmark-trials
 order: 20
-subtitle: ¹⁷⁷Lu-DOTATATE transformed midgut neuroendocrine tumor therapy — the trial behind Lutathera
+subtitle: ¹⁷⁷Lu-DOTATATE transformed midgut neuroendocrine tumor therapy, the trial behind Lutathera
 aliases: [NETTER-1 trial, Lutathera trial, Lu-177 DOTATATE trial, PRRT trial, Strosberg NETTER-1, peptide receptor radionuclide therapy trial]
 review_status: physician-reviewed
 last_updated: 2026-07-28

@@ -3,7 +3,7 @@ type: trial
 title: PSMAfore
 chapter: landmark-trials
 order: 70
-subtitle: ¹⁷⁷Lu-PSMA-617 before chemotherapy — moving radioligand therapy earlier in mCRPC
+subtitle: ¹⁷⁷Lu-PSMA-617 before chemotherapy, moving radioligand therapy earlier in mCRPC
 aliases: [PSMAfore trial, Lu-177 PSMA pre-taxane, Morris PSMAfore, taxane-naive mCRPC PSMA, PSMA therapy vs ARPI switch]
 review_status: physician-reviewed
 last_updated: 2026-07-28

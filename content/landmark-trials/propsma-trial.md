@@ -3,7 +3,7 @@ type: trial
 title: proPSMA
 chapter: landmark-trials
 order: 50
-subtitle: PSMA PET beat conventional imaging for prostate cancer staging — the trial that changed the staging paradigm
+subtitle: PSMA PET beat conventional imaging for prostate cancer staging, the trial that changed the staging paradigm
 aliases: [proPSMA trial, PSMA PET staging trial, Hofman proPSMA, gallium PSMA staging accuracy, PSMA vs CT bone scan]
 review_status: physician-reviewed
 last_updated: 2026-07-28

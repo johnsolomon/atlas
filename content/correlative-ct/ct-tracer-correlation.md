@@ -3,7 +3,7 @@ type: reference
 title: Correlating Tracer Uptake with CT
 chapter: correlative-ct
 order: 30
-subtitle: Reading uptake and its CT substrate together — the benign signatures, the worrying ones, and the mismatches
+subtitle: Reading uptake and its CT substrate together, the benign signatures, the worrying ones, and the mismatches
 aliases: [tracer CT correlation, uptake CT substrate, calcified granuloma FDG, brown fat CT, sclerotic lytic bone uptake, benign FDG substrate, PET CT fusion interpretation, matched mismatched uptake CT]
 review_status: physician-reviewed
 last_updated: 2026-07-28

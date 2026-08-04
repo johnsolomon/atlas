@@ -1,6 +1,6 @@
 ---
 type: reference
-title: Acquisition Parameters — PET
+title: "Acquisition Parameters: PET"
 chapter: boards
 order: 50
 subtitle: Representative adult activity, uptake time, and acquisition by PET tracer

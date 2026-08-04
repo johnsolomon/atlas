@@ -4,7 +4,7 @@ title: PSMA PET agents
 chapter: genitourinary
 order: 90
 isotope_label: "⁶⁸Ga-PSMA-11 · ¹⁸F-DCFPyL · ¹⁸F-rhPSMA"
-subtitle: Prostate-specific membrane antigen imaging — the companion diagnostic for PSMA radioligand therapy
+subtitle: Prostate-specific membrane antigen imaging, the companion diagnostic for PSMA radioligand therapy
 aliases: [PSMA, Ga-68 PSMA-11, gallium PSMA, PSMA-11, gozetotide, F-18 DCFPyL, piflufolastat, Pylarify, rhPSMA, flotufolastat, Posluma, PSMA PET, celiac ganglion, PSMA-RADS, PROMISE]
 isotope: "Gallium-68 / Fluorine-18"
 half_life: "Ga-68: 68 min · F-18: 110 min"

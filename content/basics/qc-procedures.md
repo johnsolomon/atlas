@@ -3,7 +3,7 @@ type: physics
 title: Quality Control Procedures
 chapter: instrumentation
 order: 20
-subtitle: Gamma camera, SPECT, PET/CT, dose calibrator, and generator QC — cadence and pass criteria
+subtitle: Gamma camera, SPECT, PET/CT, dose calibrator, and generator QC, cadence and pass criteria
 aliases: [quality control, QC, uniformity, flood, center of rotation, COR, bar phantom, spatial resolution, linearity, dose calibrator constancy linearity accuracy geometry, NEMA, normalization, blank scan, Mo-99 breakthrough, aluminum]
 review_status: physician-reviewed
 last_updated: 2026-07-27

@@ -3,7 +3,7 @@ type: physics
 title: Pediatric Dosimetry & Weight-Based Activity
 chapter: dosimetry-safety
 order: 70
-subtitle: Scaling administered activity to children — dose cards, minimums, and ALARA
+subtitle: Scaling administered activity to children, dose cards, minimums, and ALARA
 aliases: [pediatric dosimetry, weight-based activity, pediatric dose card, EANM dose card, North American consensus guidelines, minimum activity, image gently, child radiation dose]
 review_status: physician-reviewed
 last_updated: 2026-07-27

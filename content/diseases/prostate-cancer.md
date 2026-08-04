@@ -166,6 +166,14 @@ Localized low-risk disease has excellent long-term survival, often without any t
 - A **disease-state timeline** (localized → mHSPC → nmCRPC → mCRPC) annotated with the imaging and therapy decision points.
 - Annotated PSMA-PET **normal biodistribution / benign mimics** plate (salivary, kidneys, bowel, celiac ganglion).
 
+## Common Pitfalls
+
+- {H} Treating a **negative FDG-PET as excluding disease**: typical AR-driven adenocarcinoma is often **FDG-low**, so FDG is informative chiefly in **high-grade/dedifferentiated or neuroendocrine** disease and for PSMA-discordant lesions — not for routine staging.
+- Intense **urinary tracer excretion** into the bladder and ureters (FDG and, conceptually, PSMA) obscuring **local recurrence and pelvic nodes** — use delayed/diuretic imaging or careful anatomic correlation.
+- **Bone-scan flare** after effective therapy — new or more intense osteoblastic uptake at **healing** lesions in the first months — misread as progression; interpret against PSA trajectory and follow-up.
+- A **superscan** (diffusely intense skeleton with faint kidneys/soft tissue) mistaken for a normal or degenerative study when it actually signals heavy metastatic burden.
+- **Inflammatory/benign FDG uptake** (recent biopsy, prostatitis, treated marrow) over-called as malignant.
+
 ## Self-Check (Board-Style)
 
 <details><summary><strong>Q1.</strong> A man with rising PSA (0.4 ng/mL) after prostatectomy has a negative CT and bone scan. What is the most appropriate next imaging step and why?</summary>

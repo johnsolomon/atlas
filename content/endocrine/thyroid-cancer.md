@@ -176,6 +176,13 @@ Overall prognosis is excellent. **AJCC staging is age-dependent** (a threshold a
 - The **flip-flop** concept illustrated: differentiated (I-131-avid, FDG-low) → dedifferentiated (I-131-negative, FDG-high).
 - Annotated **post-therapy WBS** normal-variant / contamination plate.
 
+## Common Pitfalls
+
+- {H} **Diffuse hepatic uptake** on the post-therapy whole-body scan is an expected sign of functioning thyroid tissue elsewhere (hepatic metabolism of iodinated thyroid hormone) — not a liver metastasis.
+- **Contamination and physiologic foci** (salivary, nasopharyngeal, swallowed-saliva esophageal, gastric, urinary) mimic nodal or mediastinal disease — resolve with **SPECT/CT** and re-imaging after the patient washes/drinks before calling metastasis.
+- **Anti-Tg antibodies** falsely lower or abolish measurable thyroglobulin — a false-negative surveillance marker; track the antibody titer as a surrogate rather than trusting an undetectable Tg.
+- **Physiologic gastric/bowel activity** and **struma ovarii** or ectopic uptake can be misread as abdominal/pelvic metastatic disease.
+
 ## Self-Check (Board-Style)
 
 <details><summary><strong>Q1.</strong> A low-risk PTC patient after total thyroidectomy is to undergo remnant ablation. What activity is supported by randomized evidence, and how should TSH be raised?</summary>

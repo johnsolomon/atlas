@@ -62,6 +62,21 @@ CTEPH produces **multiple bilateral segmental (or larger) mismatched perfusion d
 
 - Base study: **V/Q scan & pulmonary embolism**; perfusion agent: **⁹⁹ᵐTc-MAA**.
 
+## Differential Diagnosis
+
+- **Acute PE** — also produces mismatched segmental defects, but these should **resolve** on follow-up; CTEPH defects are chronic and persistent.
+- Non-thromboembolic causes of **mismatched** defects that mimic CTEPH — **pulmonary artery sarcoma**, extrinsic vascular compression (mediastinal fibrosis, tumor, adenopathy), large-vessel **vasculitis (Takayasu)**, congenital pulmonary-artery stenosis, and pulmonary veno-occlusive disease.
+- **Pulmonary arterial hypertension (Group 1)** — perfusion is typically **normal or patchy and non-segmental**; a normal V/Q redirects the workup here.
+- **Matched** defects from parenchymal/airway disease (COPD/emphysema, fibrosis, effusion, prior resection) — Group 3 PH, not CTEPH; correlate ventilation and CT.
+
+## Reporting Checklist
+
+- State the **ventilation agent** and whether **SPECT/SPECT-CT** was performed (improves sensitivity and specificity over planar).
+- Report defect **number, size, distribution**, and **mismatched-vs-matched** character (segmental vs non-segmental).
+- Give a screening-level conclusion: a **normal/near-normal perfusion scan effectively excludes CTEPH**.
+- Correlate with **CT/ventilation** to separate CTEPH mismatch from parenchymal matched defects.
+- If **mismatched segmental defects** are present, recommend referral to a **CTEPH/PEA center** with CTPA/pulmonary angiography and right-heart catheterization for confirmation and operability.
+
 ## Self-Check
 
 <details><summary><strong>Q1.</strong> In a pulmonary-hypertension workup, what does a normal V/Q scan tell you about CTEPH?</summary>

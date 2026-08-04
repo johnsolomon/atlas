@@ -3,7 +3,7 @@ type: disease
 title: Complex Regional Pain Syndrome (CRPS/RSD)
 chapter: musculoskeletal
 order: 60
-subtitle: The three-phase bone scan's classic periarticular pattern — and its real diagnostic role
+subtitle: The three-phase bone scan's classic periarticular pattern, and its real diagnostic role
 aliases: [complex regional pain syndrome, CRPS, reflex sympathetic dystrophy, RSD, causalgia, Sudeck atrophy, three phase bone scan CRPS, periarticular uptake]
 isotope_label: "⁹⁹ᵐTc-MDP/HDP"
 modality: [Planar]
@@ -46,6 +46,22 @@ Complex regional pain syndrome (CRPS, formerly reflex sympathetic dystrophy) is 
 ## Related Pages
 
 - Protocol: **Bone scintigraphy** (three-phase technique).
+
+## Differential Diagnosis
+
+- **Disuse (immobilization) osteoporosis** — diffuse periarticular uptake from non-use can overlap with, and be hard to separate from, CRPS.
+- **Osteomyelitis / septic arthritis** — three-phase positive but typically **focal, single-joint** with intense delayed uptake, rather than the diffuse multi-joint periarticular CRPS pattern.
+- **Cellulitis / soft-tissue infection** — increased flow and blood pool **without** focal delayed bony uptake.
+- **Inflammatory arthritis** (e.g. rheumatoid) — periarticular uptake but usually **bilateral and symmetric** in a characteristic joint distribution.
+- **Recent fracture, surgery, or stress injury** — focal uptake localizing to the site of injury rather than a regional multi-joint pattern.
+
+## Reporting Checklist
+
+- Report all **three phases** (flow, blood pool, delayed) and state which are abnormal.
+- Describe the **distribution** — periarticular, multi-joint, affected extremity — and compare with the contralateral side.
+- Characterize the pattern as **hot** (early) or **normal/photopenic** (chronic or pediatric), noting that appearance evolves.
+- State explicitly that the scan is **supportive/adjunctive**; CRPS is a **clinical diagnosis (Budapest criteria)** and a normal scan does **not** exclude it.
+- Address alternative explanations (infection, fracture, disuse) for the observed uptake.
 
 ## Self-Check
 

@@ -3,7 +3,7 @@ type: therapy
 title: Phosphorus-32 & Legacy Radionuclide Therapies
 chapter: theranostics
 order: 120
-subtitle: P-32 for polycythemia vera and other myeloproliferative/effusion uses — and their modern context
+subtitle: P-32 for polycythemia vera and other myeloproliferative/effusion uses, and their modern context
 aliases: [phosphorus-32, P-32, sodium phosphate, polycythemia vera, essential thrombocythemia, chromic phosphate, intracavitary P-32, legacy therapy, myeloproliferative]
 isotope: Phosphorus-32
 half_life: "14.3 days"

@@ -1,6 +1,6 @@
 ---
 type: comparison
-title: Pulmonary Embolism Imaging — Which Test When
+title: "Pulmonary Embolism Imaging: Which Test When"
 chapter: test-selection
 order: 70
 subtitle: Choosing among planar V/Q, V/Q SPECT, and CT pulmonary angiography by patient and clinical context
