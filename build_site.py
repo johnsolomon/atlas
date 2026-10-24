@@ -2405,7 +2405,7 @@ __HEADEXTRA__
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nuclear Medicine Atlas">
 <meta name="twitter:description" content="The evidence-graded reference for nuclear medicine.">
-<link rel="canonical" href="https://nuc.med/"><script>if(/\.nuc\.med$/.test(location.hostname))location.replace('https://nuc.med/'+location.hash)</script>
+<link rel="canonical" href="https://nuc.med/"><script>if(/[.]nuc[.]med$/.test(location.hostname))location.replace('https://nuc.med/'+location.hash)</script>
 <meta property="og:url" content="__SITEURL__">
 <meta name="robots" content="index,follow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
