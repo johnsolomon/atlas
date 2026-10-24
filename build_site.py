@@ -23,8 +23,8 @@ _ROOT = os.path.dirname(BASE)
 # SITE_URL: the canonical https origin the atlas will be hosted at (no trailing slash).
 # CONTACT_EMAIL: where "Report an issue" corrections are sent.
 # REPO_URL: optional public source/issues URL (e.g. a GitHub repo); blank to omit.
-SITE_URL = "https://nuclear-medicine-atlas.org"
-CONTACT_EMAIL = "corrections@nuclear-medicine-atlas.org"
+SITE_URL = "https://nuc.med"
+CONTACT_EMAIL = "mail@jhs.md"
 REPO_URL = ""
 CSS = open(os.path.join(_ROOT, 'assets', 'atlas.css'), encoding='utf-8').read()
 JS = open(os.path.join(_ROOT, 'assets', 'atlas.js'), encoding='utf-8').read()
@@ -2405,7 +2405,7 @@ __HEADEXTRA__
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nuclear Medicine Atlas">
 <meta name="twitter:description" content="The evidence-graded reference for nuclear medicine.">
-<link rel="canonical" href="__SITEURL__">
+<link rel="canonical" href="https://nuc.med/"><script>if(/\.nuc\.med$/.test(location.hostname))location.replace('https://nuc.med/'+location.hash)</script>
 <meta property="og:url" content="__SITEURL__">
 <meta name="robots" content="index,follow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
