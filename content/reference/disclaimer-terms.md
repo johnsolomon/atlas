@@ -28,7 +28,7 @@ The content is provided **"as is," without warranty of any kind**, express or im
 
 ## Content, provenance & copyright
 
-{D} The atlas is compiled from **public, primary literature and society guidelines, expressed in original prose and original vector figures** — it reproduces no copyrighted text or images. Contributed articles are attributed to their named authors (see the Scholarship & Community section). Unless otherwise stated, the compiled work is the property of its authors; see the accompanying LICENSE for permitted use. Trademarks and brand names belong to their respective owners and are used only for identification.
+{D} The atlas is compiled from **public, primary literature and society guidelines, expressed in original prose and original vector figures** — it reproduces no copyrighted text or images. Contributed articles are attributed to their named authors (see the Scholarship & Community section). The atlas is published by John Solomon LLC, a California company; unless otherwise stated, the compiled work is its property. See the full terms at johnsolomon.org/legal and the accompanying LICENSE for permitted use. Trademarks and brand names belong to their respective owners and are used only for identification.
 
 ## Corrections & contact
 

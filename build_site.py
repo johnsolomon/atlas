@@ -2166,7 +2166,7 @@ def home_html():
             f'thresholds, timings, and protocols against current society guidelines, product labelling, and local/regulatory '
             f'policy before any clinical use. Values are representative and vary by scanner, protocol, patient, and jurisdiction; '
             f'regulatory figures follow US NRC conventions (ICRP/other frameworks differ). Content is compiled from public primary '
-            f'literature and society guidelines in original prose; some pages are AI-drafted and pending physician review.</div>'
+            f'literature and society guidelines in original prose; some pages are AI-drafted and pending physician review.</div><div class="home-credit" style="margin-top:12px;font-size:.85em;opacity:.8">Created by <a href="https://jhs.md">John H. Solomon, MD</a> · Published by <a href="https://johnsolomon.org">John Solomon LLC</a> · <a href="https://johnsolomon.org/legal/">Terms &amp; privacy</a></div>'
             f'</article>')
 
 pages_html = home_html() + "".join(page_html(p) for p in pages)
