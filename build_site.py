@@ -2029,7 +2029,7 @@ def page_html(p):
     cite = ("" if p['chapter'] == "tools" else
             f'<div class="cite"><b>Cite this page.</b> <span class="cite-txt">Nuclear Medicine Atlas. '
             f'&ldquo;{p["title"]}.&rdquo; v{VERSION}, {BUILD_DATE}. Permalink: '
-            f'<code>#/{p["id"]}</code></span> <button class="cite-copy" onclick="copyCite(this)">Copy</button>{_report}</div>')
+            f'<code>{SITE_URL}/{p["id"]}/</code></span> <button class="cite-copy" onclick="copyCite(this)">Copy</button>{_report}</div>')
     # authorship / provenance blocks (empty string for ordinary pages)
     prebody = (PROVBAR_HTML.get(p['id'], '')
                + ARTICLE_HEAD_HTML.get(p['id'], '')
@@ -2488,17 +2488,70 @@ out = (TEMPLATE.replace("__CSS__", CSS).replace("__JS__", JS)
        .replace("__FIRST__", "home"))
 open(OUT, "w", encoding="utf-8").write(out)
 
-# ---- Deployment artifacts: robots.txt + sitemap.xml (SPA → single canonical URL) ----
-# The atlas is a hash-routed single page: all content lives on one indexable URL, so the
-# sitemap lists that origin. (Per-URL indexing would require server-rendered routes.)
+# ---- Deployment artifacts: robots.txt, sitemap.xml and one crawlable page per entry ----
+# The app itself is hash-routed (one URL). So that search engines can index every entry, the
+# build also writes a lightweight static copy of each page at SITE_URL/<id>/ when
+# STATIC_PAGES_DIR is set (the GitHub Pages workflow sets it to _site). Each copy links back
+# into the interactive app at /#/<id>.
 open(os.path.join(_ROOT, "robots.txt"), "w", encoding="utf-8").write(
     f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n")
+_sm = [f"{SITE_URL}/"] + [f"{SITE_URL}/{p['id']}/" for p in pages] + [
+    f"{SITE_URL}/legal/terms/", f"{SITE_URL}/legal/privacy/", f"{SITE_URL}/legal/disclaimer/"]
 open(os.path.join(_ROOT, "sitemap.xml"), "w", encoding="utf-8").write(
     '<?xml version="1.0" encoding="UTF-8"?>\n'
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-    f'  <url><loc>{SITE_URL}/</loc><lastmod>{BUILD_DATE}</lastmod>'
-    '<changefreq>weekly</changefreq><priority>1.0</priority></url>\n'
-    '</urlset>\n')
+    + "".join(f'  <url><loc>{u}</loc><lastmod>{BUILD_DATE}</lastmod></url>\n' for u in _sm)
+    + '</urlset>\n')
+
+_STATIC_DIR = os.environ.get("STATIC_PAGES_DIR")
+if _STATIC_DIR:
+    import html as _html
+    _GO_A = re.compile(r"""<a([^>]*?)onclick="go\('([a-z0-9-]+)'\)\"""")
+    _GO_SPAN = re.compile(r"""<span([^>]*?)onclick="go\('([a-z0-9-]+)'\)"([^>]*)>((?:(?!</?span).)*?)</span>""", re.S)
+    def _static_links(h):
+        # turn in-app links into real hrefs so crawlers (and no-JS readers) can follow them
+        u = lambda i: "/" if i == "home" else f"/{i}/"
+        h = _GO_SPAN.sub(lambda m: f'<a{m.group(1)}href="{u(m.group(2))}"{m.group(3)}>{m.group(4)}</a>', h)
+        return _GO_A.sub(lambda m: (f'<a{m.group(1)}href="{u(m.group(2))}"'
+                                    if 'href=' not in m.group(1) else m.group(0)), h)
+    _STATIC_TPL = (
+        '<!DOCTYPE html><html lang="en"><head>\n<meta charset="utf-8">'
+        '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
+        '<title>__T__ · Nuclear Medicine Atlas</title>\n'
+        '<meta name="description" content="__D__">\n'
+        '<link rel="canonical" href="__U__">\n'
+        '<meta property="og:type" content="article"><meta property="og:site_name" content="Nuclear Medicine Atlas">'
+        '<meta property="og:title" content="__T__"><meta property="og:description" content="__D__">'
+        '<meta property="og:url" content="__U__"><meta name="twitter:card" content="summary">\n'
+        '<meta name="theme-color" content="#4A3A82">\n' + HEADEXTRA + '\n'
+        '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+        '<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Inter:wght@400;450;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">\n'
+        '<link rel="stylesheet" href="/assets/atlas.css">\n'
+        '<style>.page{display:block!important}.bm,.cite-copy{display:none}.static-main{max-width:840px;margin:0 auto}'
+        '.static-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 22px;padding-bottom:14px;border-bottom:1px solid var(--line)}'
+        '.static-top a{text-decoration:none}.static-brand{font-weight:600;color:var(--ink)}'
+        'a.rel-chip,.static-main a[class*=chip]{text-decoration:none;color:inherit}.static-open{white-space:nowrap;font-size:13px;padding:7px 12px;border-radius:8px;background:var(--ac);color:#fff!important}</style>\n'
+        '</head><body><main class="main static-main">\n'
+        '<div class="static-top"><a class="static-brand" href="/">Nuclear Medicine Atlas</a>'
+        '<a class="static-open" href="/#/__ID__">Interactive atlas</a></div>\n'
+        '__BODY__\n'
+        '<div class="appfoot"><span>Nuclear Medicine Atlas · v' + VERSION + ' · built ' + BUILD_DATE + '</span>'
+        '<span><a href="/legal/terms/">Terms</a> · <a href="/legal/privacy/">Privacy</a> · <a href="/legal/disclaimer/">Disclaimer</a></span></div>\n'
+        '</main><script>function go(id){location.href=id==="home"?"/":"/"+id+"/"}'
+        'function toggleCh(){}function lightbox(){}function toggleBM(){}function copyCite(){}</script></body></html>')
+    _n = 0
+    for p in pages:
+        d = os.path.join(_STATIC_DIR, p["id"])
+        os.makedirs(d, exist_ok=True)
+        body = _static_links(page_html(p)).replace('class="page"', 'class="page active"', 1)
+        desc = _html.escape(re.sub(r"<[^>]+>", "", p["subtitle"] or p["title"]), quote=True)
+        title = _html.escape(re.sub(r"<[^>]+>", "", p["title"]), quote=True)
+        doc = (_STATIC_TPL.replace("__T__", title).replace("__D__", desc)
+               .replace("__U__", f"{SITE_URL}/{p['id']}/").replace("__ID__", p["id"])
+               .replace("__CONTACT__", CONTACT_EMAIL).replace("__BODY__", body))
+        open(os.path.join(d, "index.html"), "w", encoding="utf-8").write(doc)
+        _n += 1
+    print(f"Wrote {_n} static pages to {_STATIC_DIR}")
 
 covered = sum(1 for p in pages if p["id"] in EVIDENCE)
 print(f"Wrote {OUT}: {len(pages)} pages across {len({p['chapter'] for p in pages})} chapters, "
