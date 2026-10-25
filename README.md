@@ -1,7 +1,7 @@
 # Nuclear Medicine Atlas
 
 A single-file, offline-capable, evidence-graded nuclear medicine reference —
-263 pages across 25 chapters, interactive calculators, a study/mock-exam
+274 pages across 25 chapters, interactive calculators, a study/mock-exam
 engine, guided learning paths, dark mode, and verified primary-source
 citations. The entire site compiles to **one self-contained `nuclear-medicine-atlas.html`**.
 
@@ -27,27 +27,17 @@ python3 validate.py        # must print "All hard invariants pass"
 titles, and a JS syntax check — plus a health report (review status, staleness,
 evidence coverage).
 
-## Before you publish — set two placeholders
+## How it is published
 
-In `build_site.py` (top of file):
+`nuc.med` is built and deployed by GitHub Actions (`.github/workflows/pages.yml`) on every
+push to `main`. The workflow runs `build_site.py` with `STATIC_PAGES_DIR=_site` — which also
+writes a crawlable copy of every entry at `https://nuc.med/<id>/` — then runs `validate.py`
+(a failed check stops the deploy), and publishes the app, the static pages, `legal/`,
+`assets/`, `robots.txt` and `sitemap.xml`.
 
-- `SITE_URL` — the https origin you'll host at (e.g. `https://your-domain.org`). Drives the canonical link, Open Graph URL, `robots.txt`, and `sitemap.xml`.
-- `CONTACT_EMAIL` — the address for the footer "Report an issue" / corrections link and the Disclaimer page.
-
-Then rebuild. Also edit `LICENSE.md` (copyright holder / license choice) and
-the **Disclaimer & Terms of Use** page if your terms differ.
-
-## Deploy (it's a static site)
-
-The output is a static file, so any static host works. Put
-`nuclear-medicine-atlas.html` (renamed to `index.html`), `robots.txt`, and
-`sitemap.xml` at the site root:
-
-- **GitHub Pages** — commit to a repo, enable Pages on the branch/root.
-- **Netlify / Cloudflare Pages / Vercel** — drag-and-drop the folder, or connect the repo (no build command needed; it's prebuilt).
-- **Any web server** — copy the three files to the web root.
-
-Add your custom domain in the host's dashboard, then set `SITE_URL` to match and rebuild.
+`SITE_URL` and `CONTACT_EMAIL` at the top of `build_site.py` set the canonical address and the
+corrections address. The committed `index.html` / `nuclear-medicine-atlas.html` are an
+offline copy only; the live site is always rebuilt from `content/`.
 
 ### PWA / install
 The build includes a web-app manifest, icon, and app-capable meta, so once
