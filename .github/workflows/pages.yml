@@ -1,0 +1,45 @@
+# Builds the atlas and publishes nuc.med: the interactive app at / plus a crawlable
+# static copy of every entry at /<id>/. Runs on every push to main.
+name: Build and deploy nuc.med
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install PyYAML==6.0.3 Markdown==3.10.3 latex2mathml==3.81.1
+      - run: STATIC_PAGES_DIR=_site python build_site.py
+      - name: Assemble site
+        run: |
+          cp nuclear-medicine-atlas.html _site/index.html
+          cp -r nuclear-medicine-atlas.html 404.html CNAME robots.txt sitemap.xml legal assets _site/
+          touch _site/.nojekyll
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
