@@ -24,7 +24,7 @@ _ROOT = os.path.dirname(BASE)
 # CONTACT_EMAIL: where "Report an issue" corrections are sent.
 # REPO_URL: optional public source/issues URL (e.g. a GitHub repo); blank to omit.
 SITE_URL = "https://nuc.med"
-CONTACT_EMAIL = "mail@jhs.md"
+CONTACT_EMAIL = "hello@nuc.med"
 REPO_URL = ""
 CSS = open(os.path.join(_ROOT, 'assets', 'atlas.css'), encoding='utf-8').read()
 JS = open(os.path.join(_ROOT, 'assets', 'atlas.js'), encoding='utf-8').read()
@@ -2166,7 +2166,7 @@ def home_html():
             f'thresholds, timings, and protocols against current society guidelines, product labelling, and local/regulatory '
             f'policy before any clinical use. Values are representative and vary by scanner, protocol, patient, and jurisdiction; '
             f'regulatory figures follow US NRC conventions (ICRP/other frameworks differ). Content is compiled from public primary '
-            f'literature and society guidelines in original prose; some pages are AI-drafted and pending physician review.</div><div class="home-credit" style="margin-top:12px;font-size:.85em;opacity:.8">Also on nuc.med: <a href="https://thyroid.nuc.med">I-131 Activity Planner</a> · <a href="https://johnsolomon.org/legal/terms/">Terms</a> · <a href="https://johnsolomon.org/legal/privacy/">Privacy</a></div>'
+            f'literature and society guidelines in original prose; some pages are AI-drafted and pending physician review.</div><div class="home-credit" style="margin-top:12px;font-size:.85em;opacity:.8">Also on nuc.med: <a href="https://thyroid.nuc.med">I-131 Activity Planner</a> · <a href="https://nuc.med/legal/terms/">Terms</a> · <a href="https://nuc.med/legal/privacy/">Privacy</a></div>'
             f'</article>')
 
 pages_html = home_html() + "".join(page_html(p) for p in pages)
